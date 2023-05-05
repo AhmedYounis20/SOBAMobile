@@ -10,7 +10,6 @@ const TopContainer = styled.View`
 `;
 
 const MidContainer = styled.View`
-  flex: 1;
   padding: ${(props) => props.theme.space[2]};
 `;
 
@@ -20,7 +19,6 @@ const BottomContainer = styled.View`
 `;
 
 export const DashboardScreen = () => {
-  
   return (
     <SafeArea>
       <TopContainer>

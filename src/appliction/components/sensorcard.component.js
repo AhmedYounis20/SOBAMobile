@@ -4,6 +4,9 @@ import styled from "styled-components";
 import { Text } from "../../components/typography/text.component";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { React, useState } from "react";
+import { SensorsList } from "./sensorslist.component";
+import { View, StyleSheet } from "react-native";
+import { TodayTemperature } from "../components/todaytemperature.component";
 
 const SensorCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -22,63 +25,60 @@ const CurrentTemperature = styled.Text`
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
-const CardTop = styled.View``;
+const CardTop = styled.View`
+  flex-direction: row;
+`;
 
 const CardBottom = styled.View`
   flex-direction: row;
   justify-content: center;
 `;
 
-const SensorReadView = styled.View`
-  flex: 1;
-  margin: ${(props) => props.theme.space[2]};
+const TemperatureContainer = styled.View`
+  flex-direction: row;
 `;
 
-const SensorRead = ({ property = "Humidity", value = "30%" }) => {
-  return (
-    <>
-      <Text variant="body">{property}</Text>
-      <Text variant="label">{value}</Text>
-    </>
-  );
-};
+const DataContainer = styled.View``;
+
+const WeatherIconContainer = styled.View`
+  flex: 1;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: ${(props) => props.theme.space[2]};
+`;
+
 export const SensorCardComponent = () => {
   return (
     <SensorCard>
       <CardTop>
-        <LocationContainer>
-          <Spacer position="right" size="small">
-            <MaterialIcons name="location-pin" size={24} color="black" />
-          </Spacer>
-          <Text variant="body">As Santa</Text>
-          <Spacer position="left" size="xl" />
+        <DataContainer>
+          <LocationContainer>
+            <Spacer position="right" size="small">
+              <MaterialIcons name="location-pin" size={24} color="black" />
+            </Spacer>
+            <Text variant="body">As Santa</Text>
+          </LocationContainer>
+          <TemperatureContainer>
+            <CurrentTemperature>17°C</CurrentTemperature>
+            <TodayTemperature h="12" l="10" />
+          </TemperatureContainer>
+        </DataContainer>
+        <WeatherIconContainer>
           <MaterialCommunityIcons
             name="weather-pouring"
-            size={24}
+            size={100}
             color="black"
           />
-        </LocationContainer>
-        <>
-          <CurrentTemperature>17°C</CurrentTemperature>
-          <></>
-        </>
+        </WeatherIconContainer>
       </CardTop>
-      <></>
+      <View
+        style={{
+          borderBottomColor: "black",
+          borderBottomWidth: StyleSheet.hairlineWidth,
+        }}
+      />
       <CardBottom>
-        <>
-          <SensorReadView>
-            <SensorRead />
-          </SensorReadView>
-          <SensorReadView>
-            <SensorRead property="Precpitation" value="5.1mL" />
-          </SensorReadView>
-          <SensorReadView>
-            <SensorRead property="Pressure" value="450hPa" />
-          </SensorReadView>
-          <SensorReadView>
-            <SensorRead property="Wind" value="23m/s" />
-          </SensorReadView>
-        </>
+        <SensorsList />
       </CardBottom>
     </SensorCard>
   );
