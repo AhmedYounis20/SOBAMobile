@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Text } from "../../components/typography/text.component";
+import { Text } from "../../../components/typography/text.component";
 
 const SensorReadView = styled.View`
   margin: ${(props) => props.theme.space[3]};

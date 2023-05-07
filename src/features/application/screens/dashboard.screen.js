@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Topbar } from "../components/topbar.component";
 import { React, useState } from "react";
-import { SafeArea } from "../../components/SafeArea/SafeArea.Component";
+import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { SensorCardComponent } from "../components/sensorcard.component";
 
 const TopContainer = styled.View`
@@ -28,6 +28,7 @@ export const DashboardScreen = () => {
         <SensorCardComponent />
       </MidContainer>
       <BottomContainer />
+
     </SafeArea>
   );
 };

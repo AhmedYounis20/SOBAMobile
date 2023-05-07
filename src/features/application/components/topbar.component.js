@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { React, useState,useContext } from "react";
 
-import { Spacer } from "../../components/spacer/spacer.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import { Searchbar } from "react-native-paper";
 import {TouchableOpacity} from "react-native";
-import { AuthenticationContext } from "../../services/authentication/authentication.context";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 const SearchContainer = styled.View`
   flex: 1;

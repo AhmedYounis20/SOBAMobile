@@ -1,6 +1,6 @@
 // import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {SafeArea} from "../../../src/components/SafeArea/SafeArea.Component"
-import { DashboardScreen } from "../../appliction/screens/dashboard.screen";
+import { DashboardScreen } from "../../features/application/screens/dashboard.screen";
 
 // const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {

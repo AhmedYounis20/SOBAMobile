@@ -4,7 +4,7 @@ import { AuthenticationContext, AuthenticationContextProvider } from './src/serv
 import { LoginScreen } from './src/features/authentication/screens/login.screen'
 import { ThemeProvider } from 'styled-components/native';
 import { Navigation } from './src/infrastructure/navigation';
-import { DashboardScreen } from "./src/appliction/screens/dashboard.screen";
+import { DashboardScreen } from "./src/features/application/screens/dashboard.screen";
 
 import { theme } from "./src/infrastructure/theme";
 import { useFonts as useLato, Lato_400Regular } from "@expo-google-fonts/lato";

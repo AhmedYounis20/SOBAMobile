@@ -1,12 +1,12 @@
 import { Card } from "react-native-paper";
-import { Spacer } from "../../components/spacer/spacer.component";
+import { Spacer } from "../../../components/spacer/spacer.component";
 import styled from "styled-components";
-import { Text } from "../../components/typography/text.component";
+import { Text } from "../../../components/typography/text.component";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { React, useState } from "react";
 import { SensorsList } from "./sensorslist.component";
 import { View, StyleSheet,ScrollView } from "react-native";
-import { TodayTemperature } from "../components/todaytemperature.component";
+import { TodayTemperature } from "./todaytemperature.component";
 
 const SensorCard = styled(Card)`
   background-color: ${(props) => props.theme.colors.bg.primary};
@@ -79,6 +79,8 @@ export const SensorCardComponent = () => {
         style={{
           borderBottomColor: "black",
           borderBottomWidth: StyleSheet.hairlineWidth,
+          width:"90%",
+          alignSelf:"center"
         }}
       />
       <CardBottom>
