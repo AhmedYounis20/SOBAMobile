@@ -5,7 +5,7 @@ import { Text } from "../../components/typography/text.component";
 import { MaterialIcons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { React, useState } from "react";
 import { SensorsList } from "./sensorslist.component";
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet,ScrollView } from "react-native";
 import { TodayTemperature } from "../components/todaytemperature.component";
 
 const SensorCard = styled(Card)`
@@ -29,9 +29,13 @@ const CardTop = styled.View`
   flex-direction: row;
 `;
 
-const CardBottom = styled.View`
+const CardBottom = styled(ScrollView).attrs(
+{
+  horizontal:true,
+  showsHorizontalScrollIndicator:false
+}
+)`
   flex-direction: row;
-  justify-content: center;
 `;
 
 const TemperatureContainer = styled.View`

@@ -31,13 +31,24 @@ const sensorData = [
     property: "Wind",
     value: "23m/s",
   },
+  {
+    property: "Wind",
+    value: "23m/s",
+  }, {
+    property: "Wind",
+    value: "23m/s",
+  }, 
+  {
+    property: "Wind",
+    value: "23m/s",
+  },
 ];
 
 export const SensorsList = () => {
   return (
     <>
-      {sensorData.map((item) => (
-        <SensorReadView>
+      {sensorData.map((item,index) => (
+        <SensorReadView key={index}>
           <SensorRead property={item.property} value={item.value} />
         </SensorReadView>
       ))}

@@ -4,7 +4,6 @@ import { AuthenticationContext, AuthenticationContextProvider } from './src/serv
 import { LoginScreen } from './src/features/authentication/screens/login.screen'
 import { ThemeProvider } from 'styled-components/native';
 import { Navigation } from './src/infrastructure/navigation';
-import { ThemeProvider } from "styled-components";
 import { DashboardScreen } from "./src/appliction/screens/dashboard.screen";
 
 import { theme } from "./src/infrastructure/theme";
