@@ -1,12 +1,21 @@
-import { View, Text } from "react-native";
-import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
+import { View, Text, ScrollView } from "react-native";
 import { Button } from "react-native";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import { apiGet } from "../../../services/apirequest/apirequest.service";
 
 export const HomeScreen = () => {
   const { onLogout, user } = useContext(AuthenticationContext);
+  const [data,setData] =useState(null); 
+  useEffect(() => {
+    
+    apiGet()
+        .then((res) =>res.text())
+        .then((res) =>setData(res))
+        .catch((err) => console.log(err));
+    
+  }, []);
 
   return (
     <View
@@ -17,13 +26,13 @@ export const HomeScreen = () => {
         alignSelf: "center",
       }}
     >
-      <View>
+      <ScrollView style={{maxHeight:100,margin:40}} horizontal showsHorizontalScrollIndicator={false}>
         <Text style={{ fontSize: 20, fontWeight: "bold" }}>
           {JSON.stringify(user)}
         </Text>
         <Spacer position={"top"} size="large" />
-      </View>
-      <View style={{ width: "40%",alignSelf:"center" }}>
+      </ScrollView>
+      <View style={{ width: "40%", alignSelf: "center" }}>
         <Button title="logout" onPress={onLogout} />
       </View>
     </View>
