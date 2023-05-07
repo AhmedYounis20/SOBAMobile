@@ -36,7 +36,6 @@ export const AuthenticationContextProvider = ({ children }) => {
   const onLogin = (email, password) => {
     loginrequest(email, password)
       .then((user) => {
-        console.log(user);
         setUser(user);
         setIsLoading(false);
       })
@@ -50,7 +49,6 @@ export const AuthenticationContextProvider = ({ children }) => {
     removeUser(user);
     setUser(null);
     setError(null);
-    console.log("user", user);
   };
   const onRegister = (email, password, passwordConfirmation) => {
     if (password !== passwordConfirmation) {
