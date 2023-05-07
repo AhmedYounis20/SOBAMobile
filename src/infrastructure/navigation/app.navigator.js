@@ -1,7 +1,6 @@
 // import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View,Text } from "react-native";
-import { HomeScreen } from "../../features/application/screens/home.screen";
 import {SafeArea} from "../../../src/components/SafeArea/SafeArea.Component"
+import { DashboardScreen } from "../../appliction/screens/dashboard.screen";
 
 // const Tab = createBottomTabNavigator();
 export const AppNavigator = () => {
@@ -37,7 +36,7 @@ export const AppNavigator = () => {
   //   );
   return (
     <SafeArea>
-    <HomeScreen/>
+    <DashboardScreen/>
     </SafeArea>
   );
 };
