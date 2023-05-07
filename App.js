@@ -1,4 +1,9 @@
-import { StatusBar } from "expo-status-bar";
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View } from 'react-native';
+import { AuthenticationContext, AuthenticationContextProvider } from './src/services/authentication/authentication.context';
+import { LoginScreen } from './src/features/authentication/screens/login.screen'
+import { ThemeProvider } from 'styled-components/native';
+import { Navigation } from './src/infrastructure/navigation';
 import { ThemeProvider } from "styled-components";
 import { DashboardScreen } from "./src/appliction/screens/dashboard.screen";
 
@@ -22,11 +27,19 @@ export default function App() {
     return null;
   }
   return (
-    <>
-      <ThemeProvider theme={theme}>
-        <DashboardScreen />
-      </ThemeProvider>
-      <StatusBar style="auto" />
-    </>
+      
+    <ThemeProvider theme={theme}>
+
+    <AuthenticationContextProvider>
+    <Navigation/>
+    </AuthenticationContextProvider>
+    </ThemeProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+
+  },
+});
