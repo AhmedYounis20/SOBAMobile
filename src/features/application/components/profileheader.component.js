@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Ionicons, Feather } from "@expo/vector-icons";
+import { MaterialIcons, Feather } from "@expo/vector-icons";
 import { ImageBackground, SafeAreaView, Image } from "react-native";
 
 const ProfileHeaderViews = styled.View``;
@@ -58,7 +58,7 @@ export const ProfileHeader = () => {
         >
           <SafeAreaView>
             <NavigationButtonsView>
-              <Ionicons name="arrow-back-outline" size={24} color="white" />
+              <MaterialIcons name="navigate-before" size={24} color="white" />
               <SettingsView>
                 <Feather name="settings" size={24} color="white" />
               </SettingsView>
