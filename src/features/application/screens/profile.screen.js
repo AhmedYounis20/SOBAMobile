@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { StatusBar, View, StyleSheet } from "react-native";
-import { ProfileHeader } from "../components/profileheader.component";
-import { InfoRow } from "../components/inforow.component";
+import { StatusBar } from "react-native";
 
+import { ProfileHeader } from "../components/profileheader.component";
 import { ProfileContent } from "../components/profilecontent.component";
 
 const ProfileView = styled.View`

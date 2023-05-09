@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { View, StyleSheet } from "react-native";
 import { InfoRow } from "./inforow.component";
+import { View, StyleSheet } from "react-native";
 
 const ProfileContentView = styled.View`
   margin-top: 16px;

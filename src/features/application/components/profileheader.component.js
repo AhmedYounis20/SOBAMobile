@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import { ImageBackground, SafeAreaView, Image } from "react-native";
 
-import { Text } from "../../../components/typography/text.component";
-
 const ProfileHeaderViews = styled.View``;
 
 const ProfileCover = styled.View`
