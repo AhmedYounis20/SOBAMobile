@@ -1,13 +1,16 @@
 // import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import {SafeArea} from "../../../src/components/SafeArea/SafeArea.Component"
 import { DashboardScreen } from "../../features/application/screens/dashboard.screen";
-
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { HomeScreen } from "../../features/application/screens/home.screen";
+import { TransitionPresets } from "@react-navigation/stack";
+import { DrawerScreen } from "../../features/drawer/screens/drawer.screen";
+import { View } from "react-native";
+import { Text } from "../../components/typography/text.component";
 // const Tab = createBottomTabNavigator();
+const Drawer=createDrawerNavigator();
+
 export const AppNavigator = () => {
   //   return (
-  //     <FavouritesContextProvider>
-  //       <LocationContextProvider>
-  //         <RestaurantsContextProvider>
   //           <Tab.Navigator
   //             screenOptions={({ route }) => ({
   //               tabBarActiveTintColor: "tomato",
@@ -30,13 +33,12 @@ export const AppNavigator = () => {
   //             <Tab.Screen name="map" component={MapScreen} />
   //             <Tab.Screen name="settings" component={SettingsNavigator} />
   //           </Tab.Navigator>
-  //         </RestaurantsContextProvider>
-  //       </LocationContextProvider>
-  //     </FavouritesContextProvider>
   //   );
+
   return (
-    <SafeArea>
-    <DashboardScreen/>
-    </SafeArea>
+      <Drawer.Navigator drawerContent={(props)=><DrawerScreen {...props}/>}  initialRouteName="Dashboard" screenOptions={{headerShown:false,drawerStatusBarAnimation:"fade",drawerStyle:{width:356,height:"100%"},swipeEnabled:true}} >
+    <Drawer.Screen name="Dashboard" component={DashboardScreen}/>
+    <Drawer.Screen name="new" component={HomeScreen}/>
+  </Drawer.Navigator>
   );
 };
