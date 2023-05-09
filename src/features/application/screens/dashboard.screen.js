@@ -18,11 +18,11 @@ const BottomContainer = styled.View`
   background-color: gray;
 `;
 
-export const DashboardScreen = () => {
+export const DashboardScreen = ({navigation}) => {
   return (
     <SafeArea>
       <TopContainer>
-        <Topbar />
+        <Topbar nav={navigation} />
       </TopContainer>
       <MidContainer>
         <SensorCardComponent />

@@ -15,20 +15,13 @@ import {
   useFonts as useOswald,
   Oswald_400Regular,
 } from "@expo-google-fonts/oswald";
+import { LoadFonts } from './src/services/fonts/fonts.services';
 import { Profile } from "./src/features/application/screens/profile.screen";
 
 export default function App() {
-  const [oswaldLoaded] = useOswald({
-    Oswald_400Regular,
-  });
-
-  const [latoLoaded] = useLato({
-    Lato_400Regular,
-  });
-
-  if (!oswaldLoaded || !latoLoaded) {
+  const isfontloaded=LoadFonts();
+  if(!isfontloaded)
     return null;
-  }
   return (
     <ThemeProvider theme={theme}>
       {/* <AuthenticationContextProvider>

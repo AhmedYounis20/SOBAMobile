@@ -18,7 +18,7 @@ const AccountIcon = styled.Image`
   margin-top: ${(props) => props.theme.space[3]};
 `;
 
-export const Topbar = () => {
+export const Topbar = ({nav}) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   const [searchQuery, setSearchQuery] = useState("");
   return (
@@ -31,7 +31,7 @@ export const Topbar = () => {
         />
       </SearchContainer>
       <Spacer position="right" size="large">
-        <TouchableOpacity onPress={onLogout}>
+        <TouchableOpacity onPress={nav.openDrawer} >
         <AccountIcon
           source={{
             uri: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
