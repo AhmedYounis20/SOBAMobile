@@ -1,13 +1,8 @@
-// import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { DashboardScreen } from "../../features/application/screens/dashboard.screen";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { HomeScreen } from "../../features/application/screens/home.screen";
-import { TransitionPresets } from "@react-navigation/stack";
 import { DrawerScreen } from "../../features/drawer/screens/drawer.screen";
-import { View } from "react-native";
-import { Text } from "../../components/typography/text.component";
-// const Tab = createBottomTabNavigator();
-const Drawer=createDrawerNavigator();
+import { DashboardNavigator } from "./dashboard.navigator";
+import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+const Drawer = createDrawerNavigator();
 
 export const AppNavigator = () => {
   //   return (
@@ -36,9 +31,25 @@ export const AppNavigator = () => {
   //   );
 
   return (
-      <Drawer.Navigator drawerContent={(props)=><DrawerScreen {...props}/>}  initialRouteName="Dashboard" screenOptions={{headerShown:false,drawerStatusBarAnimation:"fade",drawerStyle:{width:356,height:"100%"},swipeEnabled:true}} >
-    <Drawer.Screen name="Dashboard" component={DashboardScreen}/>
-    <Drawer.Screen name="new" component={HomeScreen}/>
-  </Drawer.Navigator>
+    <Drawer.Navigator
+      drawerContent={(props) => <DrawerScreen {...props} />}
+      initialRouteName="Dashboard"
+      screenOptions={{
+        headerShown: false,
+        drawerStatusBarAnimation: "fade",
+        drawerStyle: { width: 356, height: "100%" },
+        drawerActiveTintColor: (props) => props.theme.colors.text.info,
+        swipeEnabled: true,
+        drawerIcon: ({ color, size }) => (
+          <MaterialIcons name="dashboard" size={size} color={color} />
+          ),
+          
+        }}
+        
+    >
+      <Drawer.Screen name="Dashboard" component={DashboardNavigator} />
+      <Drawer.Screen name="item 1" component={DashboardNavigator} />
+      <Drawer.Screen name="item 2" component={DashboardNavigator} />
+    </Drawer.Navigator>
   );
 };
