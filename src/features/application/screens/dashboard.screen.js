@@ -3,6 +3,7 @@ import { Topbar } from "../components/topbar.component";
 import { React, useState } from "react";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { SensorCardComponent } from "../components/sensorcard.component";
+import { Notes } from "../components/notes.component";
 
 const TopContainer = styled.View`
   flex-direction: row;
@@ -18,7 +19,7 @@ const BottomContainer = styled.View`
   background-color: gray;
 `;
 
-export const DashboardScreen = ({navigation}) => {
+export const DashboardScreen = ({ navigation }) => {
   return (
     <SafeArea>
       <TopContainer>
@@ -26,9 +27,9 @@ export const DashboardScreen = ({navigation}) => {
       </TopContainer>
       <MidContainer>
         <SensorCardComponent />
+        <Notes />
       </MidContainer>
       <BottomContainer />
-
     </SafeArea>
   );
 };
