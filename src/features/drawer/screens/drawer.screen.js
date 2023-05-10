@@ -46,6 +46,7 @@ const CurrentDrawerSection = ({
                     name={"account-circle-outline"}
                     color={color}
                     size={size}
+                    key={index}
                   />
                 );
               else 
@@ -91,7 +92,7 @@ export const DrawerScreen = (props) => {
           size={props.size}
           title={"Account"}
           navigation={navigation}
-          items={["profile", "profile settings", "profile styles"]}
+          items={["Profile", "Profile Settings", "Profile Styles"]}
         />
         <HairLine />
         <CurrentDrawerSection

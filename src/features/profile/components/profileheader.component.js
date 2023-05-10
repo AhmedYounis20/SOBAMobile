@@ -41,6 +41,8 @@ const UserNameText = styled.Text`
 const NavigationButtonsView = styled.View`
   flex-direction: row;
   margin: 16px;
+  margin-top:45px;
+  
 `;
 
 const SettingsView = styled.View`
@@ -56,14 +58,14 @@ export const ProfileHeader = ({navigation}) => {
         <CoverImage
           source={require("../../../../assets/profile_background.png")}
         >
-          <SafeAreaView>
+          <ProfileHeaderViews>
             <NavigationButtonsView>
               <MaterialIcons name="navigate-before" size={24} color="white" onPress={()=>navigation.goBack()} />
               <SettingsView>
                 <Feather name="settings" size={24} color="white" />
               </SettingsView>
             </NavigationButtonsView>
-          </SafeAreaView>
+          </ProfileHeaderViews>
         </CoverImage>
       </ProfileCover>
       <ProfileAvatar

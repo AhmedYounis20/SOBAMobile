@@ -23,13 +23,12 @@ export const LoginScreen = ({ navigation }) => {
   return (
       <AccountBackground>
           <AccountCover >
-        <LottieView
+        {/* <LottieView
         key="animation"
         autoPlay
         source={require("../../../../assets/login_bg.json")}
         resizeMode="cover"
-        />
-
+        /> */}
         </AccountCover>
         <AccountContainer style={{ width: "80%" }}>
           <TextInput

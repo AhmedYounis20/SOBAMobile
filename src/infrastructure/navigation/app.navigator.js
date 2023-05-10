@@ -2,6 +2,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { DrawerScreen } from "../../features/drawer/screens/drawer.screen";
 import { DashboardNavigator } from "./dashboard.navigator";
 import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
+import { TransitionPresets } from "@react-navigation/stack";
 const Drawer = createDrawerNavigator();
 
 export const AppNavigator = () => {
@@ -43,9 +44,9 @@ export const AppNavigator = () => {
         drawerIcon: ({ color, size }) => (
           <MaterialIcons name="dashboard" size={size} color={color} />
           ),
+          ...TransitionPresets.ModalTransition,
           
         }}
-        
     >
       <Drawer.Screen name="Dashboard" component={DashboardNavigator} />
       <Drawer.Screen name="item 1" component={DashboardNavigator} />

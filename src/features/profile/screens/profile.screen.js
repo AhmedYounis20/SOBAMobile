@@ -5,7 +5,7 @@ import { ProfileHeader } from "../components/profileheader.component";
 import { ProfileContent } from "../components/profilecontent.component";
 
 const ProfileView = styled.View`
-  ${StatusBar.currentHeight && `margin-top:${StatusBar.currentHeight}px`};
+  // ${StatusBar.currentHeight && `margin-top:${StatusBar.currentHeight}px`};
 `;
 
 const infoList = [

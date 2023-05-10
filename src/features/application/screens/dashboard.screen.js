@@ -16,12 +16,12 @@ const MidContainer = styled.View`
 
 const BottomContainer = styled.View`
   flex: 1;
-  background-color: gray;
+  
 `;
 
 export const DashboardScreen = ({ navigation }) => {
   return (
-    <SafeArea>
+    <SafeArea style={{backgroundColor:(props)=>props.theme.colors.bg.primary}}>
       <TopContainer>
         <Topbar nav={navigation} />
       </TopContainer>
