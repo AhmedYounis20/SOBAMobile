@@ -49,7 +49,7 @@ const SettingsView = styled.View`
   justify-content: flex-end;
 `;
 
-export const ProfileHeader = () => {
+export const ProfileHeader = ({navigation}) => {
   return (
     <ProfileHeaderViews>
       <ProfileCover>
@@ -58,7 +58,7 @@ export const ProfileHeader = () => {
         >
           <SafeAreaView>
             <NavigationButtonsView>
-              <MaterialIcons name="navigate-before" size={24} color="white" />
+              <MaterialIcons name="navigate-before" size={24} color="white" onPress={()=>navigation.goBack()} />
               <SettingsView>
                 <Feather name="settings" size={24} color="white" />
               </SettingsView>

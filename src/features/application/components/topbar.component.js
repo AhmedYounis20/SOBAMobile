@@ -33,9 +33,9 @@ export const Topbar = ({nav}) => {
       <Spacer position="right" size="large">
         <TouchableOpacity onPress={nav.openDrawer} >
         <AccountIcon
-          source={{
-            uri: "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aHVtYW58ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
-          }}
+          source={
+            require("../../../../assets/profile_picture.png")
+          }
           />
           </TouchableOpacity>
           
