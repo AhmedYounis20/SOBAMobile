@@ -25,5 +25,6 @@ export const colors = {
     inverse: "#FFFFFF",
     error: "#D0421B",
     success: "#138000",
+    info:"6F6F6F"
   },
 };
