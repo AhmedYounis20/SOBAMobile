@@ -31,10 +31,10 @@ const infoList = [
   },
 ];
 
-export const Profile = () => {
+export const ProfileScreen = ({navigation}) => {
   return (
     <ProfileView>
-      <ProfileHeader />
+      <ProfileHeader navigation={navigation}/>
       <ProfileContent infoList={infoList} />
     </ProfileView>
   );
