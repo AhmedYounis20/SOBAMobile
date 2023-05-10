@@ -5,5 +5,6 @@ style={{
   borderBottomWidth: StyleSheet.hairlineWidth,
   width: "90%",
   alignSelf: "center",
+  marginBottom:10
 }}
 />;

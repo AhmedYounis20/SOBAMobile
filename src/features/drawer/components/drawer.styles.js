@@ -46,12 +46,17 @@ export const ProfileUsername = styled(Text)`
 `;
 export const DrawerSection = styled(Drawer.Section)`
   margin-bottom: 15px;
-`;
-export const LogoutItem = styled(DrawerItem)`
-  color: (props) => ${(props) => props.theme.colors.text.info};
-  font-family: ${(props) => props.theme.fonts.username};
+  padding-left:0px;
 `;
 
-export const DrawerSectionTitleView=styled.View``;
+export const DrawerSectionTitleView=styled.View`
+padding-left:18px;
+padding-bottom:10px;
+`;
 
-export const DrawerSectionTitle=styled(Text)``;
+export const DrawerSectionTitle=styled(Text)`
+font-size:${(props)=>props.theme.fontSizes.body};
+font-weight:${(props)=>props.theme.fontWeights.bold};
+
+
+`;
