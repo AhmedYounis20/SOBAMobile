@@ -1,4 +1,4 @@
-import { Modal, Keyboard, ScrollView } from "react-native";
+import { Modal, KeyboardAvoidingView, Platform } from "react-native";
 import { Text } from "../../../components/typography/text.component";
 import React, { useState } from "react";
 
@@ -42,17 +42,11 @@ export const Notes = () => {
     setModalVisible(false);
   };
 
-  const handleModalKeyPress = ({ nativeEvent }) => {
-    if (nativeEvent.key === "Enter") {
-      Keyboard.dismiss();
-    }
-  };
-
   return (
     <>
       <NotesCard>
         <Text>Notes</Text>
-        <NotesList>
+        <NotesList showsVerticalScrollIndicator={false}>
           {notes.map((note, index) => (
             <NoteItem key={index}>
               <NoteTime>{note.time}</NoteTime>
@@ -68,39 +62,44 @@ export const Notes = () => {
           Add Note
         </AddNoteButton>
       </NotesCard>
-      <Modal visible={modalVisible} animationType="slide">
-        <ModalContainer>
-          <ModalCard>
-            <Text>Add Note</Text>
-            <ModalInput
-              placeholder="Type your note here"
-              multiline={true}
-              numberOfLines={4}
-              value={note}
-              onChangeText={handleNoteChange}
-              onKeyPress={handleModalKeyPress}
-            />
-            <ModalButtonContainer>
-              <CancelButton
-                mode="contained"
-                icon="cancel"
-                onPress={() => {
-                  setModalVisible(false);
-                  setNote("");
-                }}
-              >
-                Cancel
-              </CancelButton>
-              <SaveButton
-                mode="contained"
-                icon="content-save"
-                onPress={handleSaveNote}
-              >
-                Save
-              </SaveButton>
-            </ModalButtonContainer>
-          </ModalCard>
-        </ModalContainer>
+      <Modal transparent visible={modalVisible} animationType="fade">
+        <KeyboardAvoidingView
+          behavior={Platform.OS === "ios" ? "padding" : null}
+          style={{ flex: 1 }}
+        >
+          <ModalContainer>
+            <ModalCard>
+              <Text>Add Note</Text>
+              <ModalInput
+                mode="outlined"
+                placeholder="Type your note here"
+                multiline={true}
+                numberOfLines={2}
+                value={note}
+                onChangeText={handleNoteChange}
+              />
+              <ModalButtonContainer>
+                <CancelButton
+                  mode="contained"
+                  icon="cancel"
+                  onPress={() => {
+                    setModalVisible(false);
+                    setNote("");
+                  }}
+                >
+                  Cancel
+                </CancelButton>
+                <SaveButton
+                  mode="contained"
+                  icon="content-save"
+                  onPress={handleSaveNote}
+                >
+                  Save
+                </SaveButton>
+              </ModalButtonContainer>
+            </ModalCard>
+          </ModalContainer>
+        </KeyboardAvoidingView>
       </Modal>
     </>
   );

@@ -32,7 +32,7 @@ export const NoteTime = styled(Text)`
 `;
 
 export const AddNoteButton = styled(Button)`
-  background-color: black;
+  background-color: ${(props) => props.theme.colors.ui.primary};
   margin-top: ${(props) => props.theme.space[2]};
 `;
 
@@ -49,11 +49,14 @@ export const ModalCard = styled(Card)`
 `;
 
 export const ModalInput = styled(TextInput)`
-  margin: ${(props) => props.theme.space[2]};
+  margin: ${(props) => props.theme.space[2]} ${(props) => props.theme.space[3]};
   padding: ${(props) => props.theme.space[2]};
   font-size: ${(props) => props.theme.fontSizes.body};
   background-color: ${(props) => props.theme.colors.bg.secondary};
   color: ${(props) => props.theme.colors.text.primary};
+  border-radius: 16px;
+  border-width: 1px;
+  border-color: ${(props) => props.theme.colors.bg.primary};
 `;
 
 export const ModalButtonContainer = styled.View`
@@ -64,10 +67,10 @@ export const ModalButtonContainer = styled.View`
 
 export const SaveButton = styled(Button)`
   margin-left: ${(props) => props.theme.space[2]};
-  background-color: green;
+  background-color: ${(props) => props.theme.colors.ui.success};
 `;
 
 export const CancelButton = styled(Button)`
   margin-left: ${(props) => props.theme.space[2]};
-  background-color: red;
+  background-color: ${(props) => props.theme.colors.ui.error};
 `;
