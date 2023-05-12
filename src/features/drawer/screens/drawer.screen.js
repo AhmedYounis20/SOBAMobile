@@ -32,8 +32,9 @@ export const DrawerScreen = (props) => {
     <>
       <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
         <ImageBackground
-          source={require("../../../../assets/profile_background.png")}
-          style={{ height: 162, paddingTop: 20 }}
+          source={require("../../../../assets/green_cover1.jpg")}
+          style={{ height: 162, paddingTop: 20,borderTopRightRadius:100 }}
+          borderTopRightRadius={50}
         >
           <ProfileView>
             <ProfileImage

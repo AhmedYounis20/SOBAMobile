@@ -15,7 +15,7 @@ export const AppNavigator = () => {
       screenOptions={(props)=>({
         headerShown: false,
         drawerStatusBarAnimation: "fade",
-        drawerStyle: { width: 356, height: "100%" },
+        drawerStyle: { width: 340, height: "100%",borderBottomRightRadius:50,borderTopRightRadius:50, },
         drawerActiveTintColor: (props) => props.theme.colors.text.primary,
         drawerInActiveTintColor: (props) => props.theme.colors.text.primary,
         swipeEnabled: true,

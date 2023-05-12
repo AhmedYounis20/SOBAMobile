@@ -56,7 +56,7 @@ export const ProfileHeader = ({navigation}) => {
     <ProfileHeaderViews>
       <ProfileCover>
         <CoverImage
-          source={require("../../../../assets/profile_background.png")}
+          source={require("../../../../assets/green_cover1.jpg")}
         >
           <ProfileHeaderViews>
             <NavigationButtonsView>
