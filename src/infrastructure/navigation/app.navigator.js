@@ -36,15 +36,16 @@ export const AppNavigator = () => {
     <Drawer.Navigator
       drawerContent={(props) => <DrawerScreen {...props} />}
       initialRouteName="Dashboard"
-      screenOptions={{
+      screenOptions={(props)=>({
         headerShown: false,
         drawerStatusBarAnimation: "fade",
         drawerStyle: { width: 356, height: "100%" },
-        drawerActiveTintColor: (props) => props.theme.colors.text.info,
+        drawerActiveTintColor: (props) => props.theme.colors.text.primary,
+        drawerInActiveTintColor: (props) => props.theme.colors.text.primary,
         swipeEnabled: true,
         ...TransitionPresets.ModalTransition,
           
-        }}
+        })}
     >
       <Drawer.Screen name="Dashboard" component={ApplicationNavigator} />
     </Drawer.Navigator>
