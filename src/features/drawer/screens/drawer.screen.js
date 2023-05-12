@@ -2,14 +2,9 @@ import { MaterialIcons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { useContext } from "react";
 import {
-  Image,
   ImageBackground,
-  Text,
   TouchableOpacity,
-  View,
 } from "react-native";
-import { Drawer } from "react-native-paper";
-import styled from "styled-components";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { HairLine } from "../../../components/hairlines/hairline.component";
 import {
@@ -19,14 +14,11 @@ import {
   ProfileUsername,
   UsernameView,
   DrawerSection,
-  LogoutItem,
-  DrawerSectionTitleView,
-  DrawerSectionTitle,
   CurrentDrawerSection
 } from "../components/drawer.styles";
 
 export const DrawerScreen = (props) => {
-  const { user, onLogout } = useContext(AuthenticationContext);
+  const { onLogout } = useContext(AuthenticationContext);
   const { navigation } = props;
   return (
     <>

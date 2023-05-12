@@ -1,12 +1,8 @@
 import styled from "styled-components";
-import { StatusBar } from "react-native";
-
 import { ProfileHeader } from "../components/profileheader.component";
 import { ProfileContent } from "../components/profilecontent.component";
 
-const ProfileView = styled.View`
-  // ${StatusBar.currentHeight && `margin-top:${StatusBar.currentHeight}px`};
-`;
+const ProfileView = styled.View``;
 
 const infoList = [
   {

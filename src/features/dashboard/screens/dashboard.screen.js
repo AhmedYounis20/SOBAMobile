@@ -1,10 +1,10 @@
+import React from "react";
 import styled from "styled-components";
-import { Topbar } from "../components/topbar.component";
-import { React, useState } from "react";
-import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
-import { SensorCardComponent } from "../components/sensorcard.component";
-import { Notes } from "../components/notes.component";
 import { Button } from "react-native-paper";
+import { Notes } from "../components/notes.component";
+import { Topbar } from "../components/topbar.component";
+import { SensorCardComponent } from "../components/sensorcard.component";
+import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 
 const TopContainer = styled.View`
   flex-direction: row;

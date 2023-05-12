@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { MaterialIcons, Feather } from "@expo/vector-icons";
-import { ImageBackground, SafeAreaView, Image } from "react-native";
+import { ImageBackground , Image } from "react-native";
 
 const ProfileHeaderViews = styled.View``;
 

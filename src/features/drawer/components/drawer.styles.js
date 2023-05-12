@@ -1,17 +1,11 @@
 import styled from "styled-components";
 import { Drawer } from "react-native-paper";
-import { HairLine } from "../../../components/hairlines/hairline.component";
 import {
   Image,
-  ImageBackground,
   Text,
-  TouchableOpacity,
-  View,
 } from "react-native";
 import {
-  DrawerContentScrollView,
   DrawerItem,
-  DrawerItemList,
 } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -49,12 +43,10 @@ export const DrawerSection = styled(Drawer.Section)`
   margin-bottom: 15px;
   padding-left: 0px;
 `;
-
 export const DrawerSectionTitleView = styled.View`
   padding-left: 18px;
   padding-bottom: 10px;
 `;
-
 export const DrawerSectionTitle = styled(Text)`
   font-size: ${(props) => props.theme.fontSizes.body};
   font-weight: ${(props) => props.theme.fontWeights.bold};
@@ -77,29 +69,32 @@ export const CurrentDrawerSection = ({
         return (
           <DrawerItem
             icon={({ color, size }) => {
-              console.log(`${title}-${index}`);
+
               let iconName = "";
               if (item.includes("Profile")) iconName = "account-outline";
               else if (item.includes("Sensor"))
                 iconName = "robot-happy-outline";
               else if (item.includes("Notifications"))
-                iconName="bell-outline";
-              else if (item.includes("Notes"))
-                iconName="notebook-outline";
+                iconName = "bell-outline";
+              else if (item.includes("Notes")) iconName = "notebook-outline";
               else if (item.includes("Statistics"))
-                iconName="chart-line-variant";
-              else if (item.includes("Map"))
-                iconName="map"
-              return(
-              <MaterialCommunityIcons
-                name={iconName}
-                color={color}
-                size={size}
-              />);
+                iconName = "chart-line-variant";
+              else if (item.includes("Map")) iconName = "map";
+
+              return (
+                <MaterialCommunityIcons
+                  name={iconName}
+                  color={color}
+                  size={size}
+                />
+              );
+
             }}
+
             label={`${item}`}
             onPress={() => navigation.navigate(`${item}`)}
             key={`${title}-${index}`}
+
           />
         );
       })}
