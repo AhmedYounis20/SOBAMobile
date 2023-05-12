@@ -1,4 +1,4 @@
-import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { useContext } from "react";
 import {
@@ -22,48 +22,9 @@ import {
   LogoutItem,
   DrawerSectionTitleView,
   DrawerSectionTitle,
+  CurrentDrawerSection
 } from "../components/drawer.styles";
-const CurrentDrawerSection = ({
-  items = [],
-  title,
-  color,
-  size,
-  navigation,
-  ItemsContent = null,
-}) => {
-  return (
-    <DrawerSection showDivider={false}>
-      <DrawerSectionTitleView>
-        <DrawerSectionTitle>{title}</DrawerSectionTitle>
-      </DrawerSectionTitleView>
-      {items.map((item, index) => {
-        return (
-          <DrawerItem
-            icon={({ color, size }) => {
-              if (item.includes("profile"))
-                return (
-                  <MaterialCommunityIcons
-                    name={"account-circle-outline"}
-                    color={color}
-                    size={size}
-                    key={index}
-                  />
-                );
-              else 
-              return <MaterialCommunityIcons
-              name={"robot-happy-outline"}
-              color={color}
-              size={size}
-            />
-            }}
-            label={`${item}`}
-            onPress={() => navigation.navigate(`${item}`)}
-          />
-        );
-      })}
-    </DrawerSection>
-  );
-};
+
 export const DrawerScreen = (props) => {
   const { user, onLogout } = useContext(AuthenticationContext);
   const { navigation } = props;
@@ -86,12 +47,12 @@ export const DrawerScreen = (props) => {
         </ImageBackground>
       </TouchableOpacity>
       <DrawerContentScrollView {...props}>
-        {/* <DrawerItemList {...props}  /> */}
         <CurrentDrawerSection
           color={props.color}
           size={props.size}
           title={"Account"}
           navigation={navigation}
+          key={"profile"}
           items={["Profile", "Profile Settings", "Profile Styles"]}
         />
         <HairLine />
@@ -100,6 +61,7 @@ export const DrawerScreen = (props) => {
           size={props.size}
           title={"Sensors"}
           navigation={navigation}
+          key={"sensors"}
           items={["Sensor 1", "Sensor 2", "Sensor 3"]}
         />
         <HairLine />

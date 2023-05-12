@@ -3,6 +3,7 @@ import { DrawerScreen } from "../../features/drawer/screens/drawer.screen";
 import { DashboardNavigator } from "./dashboard.navigator";
 import { FontAwesome5, MaterialIcons } from "@expo/vector-icons";
 import { TransitionPresets } from "@react-navigation/stack";
+import { ApplicationNavigator } from "./application.navigator";
 const Drawer = createDrawerNavigator();
 
 export const AppNavigator = () => {
@@ -41,16 +42,11 @@ export const AppNavigator = () => {
         drawerStyle: { width: 356, height: "100%" },
         drawerActiveTintColor: (props) => props.theme.colors.text.info,
         swipeEnabled: true,
-        drawerIcon: ({ color, size }) => (
-          <MaterialIcons name="dashboard" size={size} color={color} />
-          ),
-          ...TransitionPresets.ModalTransition,
+        ...TransitionPresets.ModalTransition,
           
         }}
     >
-      <Drawer.Screen name="Dashboard" component={DashboardNavigator} />
-      <Drawer.Screen name="item 1" component={DashboardNavigator} />
-      <Drawer.Screen name="item 2" component={DashboardNavigator} />
+      <Drawer.Screen name="Dashboard" component={ApplicationNavigator} />
     </Drawer.Navigator>
   );
 };

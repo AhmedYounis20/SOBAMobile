@@ -13,6 +13,7 @@ import {
   DrawerItem,
   DrawerItemList,
 } from "@react-navigation/drawer";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export const ProfileImage = styled(Image)`
   height: 89px;
@@ -46,17 +47,55 @@ export const ProfileUsername = styled(Text)`
 `;
 export const DrawerSection = styled(Drawer.Section)`
   margin-bottom: 15px;
-  padding-left:0px;
+  padding-left: 0px;
 `;
 
-export const DrawerSectionTitleView=styled.View`
-padding-left:18px;
-padding-bottom:10px;
+export const DrawerSectionTitleView = styled.View`
+  padding-left: 18px;
+  padding-bottom: 10px;
 `;
 
-export const DrawerSectionTitle=styled(Text)`
-font-size:${(props)=>props.theme.fontSizes.body};
-font-weight:${(props)=>props.theme.fontWeights.bold};
-
-
+export const DrawerSectionTitle = styled(Text)`
+  font-size: ${(props) => props.theme.fontSizes.body};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
+
+export const CurrentDrawerSection = ({
+  items = [],
+  title,
+  color,
+  size,
+  navigation,
+  ItemsContent = null,
+}) => {
+  return (
+    <DrawerSection showDivider={false}>
+      <DrawerSectionTitleView>
+        <DrawerSectionTitle>{title}</DrawerSectionTitle>
+      </DrawerSectionTitleView>
+      {items.map((item, index) => {
+        return (
+          <DrawerItem
+            icon={({ color, size }) => {
+              console.log(`${title}-${index}`);
+              return (
+                <MaterialCommunityIcons
+                  name={
+                    item.includes("profile")
+                      ? "account-circle-outline"
+                      : "robot-happy-outline"
+                  }
+                  color={color}
+                  size={size}
+                />
+              );
+            }}
+            label={`${item}`}
+            onPress={() => navigation.navigate(`${item}`)}
+            key={`${title}-${index}`}
+          />
+        );
+      })}
+    </DrawerSection>
+  );
+};
