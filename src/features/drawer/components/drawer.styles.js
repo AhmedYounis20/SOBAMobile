@@ -78,17 +78,24 @@ export const CurrentDrawerSection = ({
           <DrawerItem
             icon={({ color, size }) => {
               console.log(`${title}-${index}`);
-              return (
-                <MaterialCommunityIcons
-                  name={
-                    item.includes("profile")
-                      ? "account-circle-outline"
-                      : "robot-happy-outline"
-                  }
-                  color={color}
-                  size={size}
-                />
-              );
+              let iconName = "";
+              if (item.includes("Profile")) iconName = "account-outline";
+              else if (item.includes("Sensor"))
+                iconName = "robot-happy-outline";
+              else if (item.includes("Notifications"))
+                iconName="bell-outline";
+              else if (item.includes("Notes"))
+                iconName="notebook-outline";
+              else if (item.includes("Statistics"))
+                iconName="chart-line-variant";
+              else if (item.includes("Map"))
+                iconName="map"
+              return(
+              <MaterialCommunityIcons
+                name={iconName}
+                color={color}
+                size={size}
+              />);
             }}
             label={`${item}`}
             onPress={() => navigation.navigate(`${item}`)}

@@ -21,7 +21,7 @@ export const ApplicationNavigator = () => {
 
       tabBarPosition="bottom" 
       screenOptions={{
-        tabBarActiveTintColor: "powderblue",
+        tabBarActiveTintColor: "#00FF00",
         tabBarInactiveTintColor:"gray",
         tabBarStyle:{
             height:50,

@@ -54,22 +54,19 @@ export const DrawerScreen = (props) => {
           title={"Account"}
           navigation={navigation}
           key={"profile"}
-          items={["Profile", "Profile Settings", "Profile Styles"]}
+          items={["Notifications", "Profile Settings","Notes"]}
         />
         <HairLine />
         <CurrentDrawerSection
           color={props.color}
           size={props.size}
-          title={"Sensors"}
+          title={"Farm"}
           navigation={navigation}
-          key={"sensors"}
-          items={["Sensor 1", "Sensor 2", "Sensor 3"]}
+          key={"Farm"}
+          items={["Statistics", "Farm Map", "Sensors Control"]}
         />
         <HairLine />
         <DrawerSection showDivider={false}>
-          <DrawerSectionTitleView>
-            <DrawerSectionTitle>Account</DrawerSectionTitle>
-          </DrawerSectionTitleView>
           <DrawerItem
             icon={({ color, size }) => (
               <MaterialIcons name="logout" color={color} size={size} />
