@@ -4,6 +4,7 @@ import { React, useState } from "react";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { SensorCardComponent } from "../components/sensorcard.component";
 import { Notes } from "../components/notes.component";
+import { Button } from "react-native-paper";
 
 const TopContainer = styled.View`
   flex-direction: row;
@@ -27,6 +28,7 @@ export const DashboardScreen = ({ navigation }) => {
       </TopContainer>
       <MidContainer>
         <SensorCardComponent />
+      <Button onPress={()=>navigation.navigate("Greenhouse")} >Going to Green House</Button>
         <Notes />
       </MidContainer>
       <BottomContainer />
