@@ -7,30 +7,6 @@ import { ApplicationNavigator } from "./application.navigator";
 const Drawer = createDrawerNavigator();
 
 export const AppNavigator = () => {
-  //   return (
-  //           <Tab.Navigator
-  //             screenOptions={({ route }) => ({
-  //               tabBarActiveTintColor: "tomato",
-  //               tabBarInactiveTintColor: "gray",
-  //               headerShown: false,
-  //               tabBarIcon: ({ focused, color, size }) => {
-  //                 let iconName;
-  //                 if (route.name === "Restaurants") {
-  //                   iconName = "md-restaurant";
-  //                 } else if (route.name === "map") {
-  //                   iconName = "md-map";
-  //                 } else if (route.name === "settings") {
-  //                   iconName = "md-settings";
-  //                 }
-  //                 return <Ionicons name={iconName} size={size} color={color} />;
-  //               },
-  //             })}
-  //           >
-  //             <Tab.Screen name="Restaurants" component={RestaurantsNavigator} />
-  //             <Tab.Screen name="map" component={MapScreen} />
-  //             <Tab.Screen name="settings" component={SettingsNavigator} />
-  //           </Tab.Navigator>
-  //   );
 
   return (
     <Drawer.Navigator
