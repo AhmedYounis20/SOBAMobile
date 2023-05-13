@@ -24,7 +24,7 @@ export const UsernameView = styled.View`
 `;
 export const ProfileName = styled(Text)`
   font-style: normal;
-  font-family: ${(props) => props.theme.fonts.profileName};
+  font-family: ${(props) => props.theme.fonts.title};
   font-size: ${(props) => props.theme.fontSizes.body};
   font-weight: ${(props) => props.theme.fontWeights.bold};
   color: ${(props) => props.theme.colors.bg.primary};
@@ -32,7 +32,7 @@ export const ProfileName = styled(Text)`
   align-self: stretch;
 `;
 export const ProfileUsername = styled(Text)`
-  font-family: ${(props) => props.theme.fonts.username};
+  font-family: ${(props) => props.theme.fonts.text};
   font-size: ${(props) => props.theme.fontSizes.caption};
   font-weight: ${(props) => props.theme.fontWeights.regular};
   color: ${(props) => props.theme.colors.bg.primary};

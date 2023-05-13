@@ -30,12 +30,12 @@ const ProfileNameView = styled.View`
 `;
 
 const ProfileNameText = styled.Text`
-  font-family: ${(props) => props.theme.fonts.profileName};
+  font-family: ${(props) => props.theme.fonts.title};
   font-size: ${(props) => props.theme.fontSizes.title};
 `;
 
 const UserNameText = styled.Text`
-  font-family: ${(props) => props.theme.fonts.username};
+  font-family: ${(props) => props.theme.fonts.text};
 `;
 
 const NavigationButtonsView = styled.View`

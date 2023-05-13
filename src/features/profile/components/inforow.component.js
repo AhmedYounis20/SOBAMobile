@@ -22,12 +22,12 @@ const InfoDataView = styled.View`
 `;
 
 const PropertyText = styled.Text`
-  font-family: ${(props) => props.theme.fonts.username};
+  font-family: ${(props) => props.theme.fonts.text};
   color: gray;
 `;
 
 const ValueText = styled.Text`
-  font-family: ${(props) => props.theme.fonts.username};
+  font-family: ${(props) => props.theme.fonts.text};
 `;
 
 const getIcon = (property) => {
