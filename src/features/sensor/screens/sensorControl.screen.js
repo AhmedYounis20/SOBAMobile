@@ -1,23 +1,27 @@
 import React from "react";
-import { View } from "react-native";
+import { Slider, View } from "react-native";
+// import { Slider } from "@react-native-community/slider";
 import { Text } from "../../../components/typography/text.component";
 import styled from "styled-components";
-import { Switch } from "react-native-paper";
+import { Card, Switch } from "react-native-paper";
 import CircularProgress from "react-native-circular-progress-indicator";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 
-const SensorTitle = styled(Text)``;
+const SensorTitle = styled(Text)`
+  font-weight: bold;
+  font-size: 20px;
+`;
 export const SensorControl = () => {
   return (
     <SafeArea>
       <View
         style={{
           flex: 1,
-
           alignItems: "center",
+          paddingTop: 80,
         }}
       >
-        <View>
+        <View style={{ marginBottom: 20 }}>
           <SensorTitle>Time Setting</SensorTitle>
         </View>
         <View
@@ -34,24 +38,54 @@ export const SensorControl = () => {
           <Switch />
         </View>
 
-        <View style={{ height: 400 }}>
-          <CircularProgress
-            value={60}
-            radius={120}
-            duration={1000}
-            maxValue={200}
-            title={"KM/H"}
-            clockwise
-            rotation={180}
-            titleColor=""
-            strokeLinecap="round"
-            activeStrokeColor="green"
-            titleStyle={{ fontWeight: "bold" }}
-          />
+        <View
+          style={{
+            height: 400,
+            width: "100%",
+            flexDirection: "row",
+          }}
+        >
+          <View style={{ marginTop: 50, marginLeft: 10 }}>
+            <Card
+              style={{
+                height: 280,
+                width: 280,
+                margin: 10,
+                borderRadius: 200,
+                position: "absolute",
+              }}
+            />
+            <CircularProgress
+              value={60}
+              radius={150}
+              duration={1000}
+              maxValue={200}
+              title={"KM/H"}
+              clockwise
+              rotation={180}
+              strokeLinecap="round"
+              inActiveStrokeWidth={5}
+              activeStrokeWidth={8}
+              activeStrokeColor="green"
+              titleStyle={{ fontWeight: "bold" }}
+              titleFontSize={20}
+            />
+          </View>
+          <View
+            style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
+          >
+            <Slider
+              style={{
+                width: 200,
+                height: 300,
+                transform: [{ rotate: "-90deg" }],
+              }}
+              minimumValue={0}
+              maximumValue={100}
+            />
+          </View>
         </View>
-        <View>
-          <SensorTitle>Time Setting</SensorTitle>
-        </View>
+        <View></View>
       </View>
     </SafeArea>
   );
