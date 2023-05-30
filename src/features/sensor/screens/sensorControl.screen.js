@@ -47,9 +47,7 @@ export const SensorControl = () => {
             strokeLinecap="round"
             activeStrokeColor="green"
             titleStyle={{ fontWeight: "bold" }}
-          >
-            <CircularProgress
-          </CircularProgress>
+          />
         </View>
         <View>
           <SensorTitle>Time Setting</SensorTitle>
