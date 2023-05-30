@@ -1,45 +1,72 @@
 import styled from "styled-components";
-import { React, useState,useContext } from "react";
+import { React, useState, useContext } from "react";
 
 import { Spacer } from "../../../components/spacer/spacer.component";
 import { Searchbar } from "react-native-paper";
-import {TouchableOpacity} from "react-native";
+import { TouchableOpacity, View, TextInput } from "react-native";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { Octicons, SimpleLineIcons } from "@expo/vector-icons";
+import { Text } from "../../../components/typography/text.component";
 
-const SearchContainer = styled.View`
-  flex: 1;
-  padding: ${(props) => props.theme.space[3]};
+const TopbarContainer = styled.View`
+  gap: 10px;
+`;
+
+const HelloView = styled.View`
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
 `;
 
 const AccountIcon = styled.Image`
   width: 50px;
   height: 50px;
   border-radius: 30px;
-  margin-top: ${(props) => props.theme.space[3]};
+  border-width: 2px;
+  border-color: #008800;
 `;
 
-export const Topbar = ({nav}) => {
+const GreetUser = styled.Text`
+  font-size: ${(props) => props.theme.fontSizes.h4};
+  font-family: ${(props) => props.theme.fonts.heading};
+  font-weight: ${(props) => props.theme.fontWeights.bold};
+  color: #008800;
+`;
+
+const SearchContainer = styled.View`
+  width: 100%;
+  height: 50px;
+  background-color: #ffffff;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 2px solid #008800;
+  border-radius: 24px;
+`;
+
+const SearchInput = styled.TextInput`
+  flex: 1;
+  font-size: 16px;
+  margin-left: 10px;
+`;
+
+export const Topbar = ({ nav }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
   const [searchQuery, setSearchQuery] = useState("");
   return (
-    <>
+    <TopbarContainer>
+      <HelloView>
+        <TouchableOpacity onPress={nav.openDrawer}>
+          <AccountIcon source={require("../../../../assets/home_bg.jpg")} />
+        </TouchableOpacity>
+        <GreetUser>Hello, Amanda!</GreetUser>
+      </HelloView>
       <SearchContainer>
-        <Searchbar
-          placeholder="Search"
-          onChangeText={(q) => setSearchQuery(q)}
-          value={searchQuery}
-        />
+        <Octicons name="search" size={24} color="#008800" />
+        <SearchInput placeholder="Search" />
+        <SimpleLineIcons name="microphone" size={24} color="#008800" />
       </SearchContainer>
-      <Spacer position="right" size="large">
-        <TouchableOpacity onPress={nav.openDrawer} >
-        <AccountIcon
-          source={
-            require("../../../../assets/profile_picture.png")
-          }
-          />
-          </TouchableOpacity>
-          
-      </Spacer>
-    </>
+    </TopbarContainer>
   );
 };
