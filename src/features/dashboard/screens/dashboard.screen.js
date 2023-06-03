@@ -9,7 +9,8 @@ import { GreenHouses } from "../components/greenhouses.component";
 import { ScrollView, View } from "react-native";
 
 const TopContainer = styled.View`
-  margin: ${(props) => props.theme.space[3]};
+  background-color: white;
+  padding: ${(props) => props.theme.space[3]};
 `;
 
 const MidContainer = styled.View`
@@ -31,10 +32,11 @@ const GreenHousesText = styled.Text`
 export const DashboardScreen = ({ navigation }) => {
   return (
     <>
+      <TopContainer>
+        <SafeArea></SafeArea>
+        <Topbar nav={navigation} />
+      </TopContainer>
       <SafeArea>
-        <TopContainer>
-          <Topbar nav={navigation} />
-        </TopContainer>
         <ScrollView>
           <MidContainer>
             <WeatherViewComponent />
