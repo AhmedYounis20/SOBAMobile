@@ -2,11 +2,16 @@ import { Card } from "react-native-paper";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import styled from "styled-components";
 import { Text } from "../../../components/typography/text.component";
-import { MaterialIcons, MaterialCommunityIcons, Fontisto } from "@expo/vector-icons";
+import {
+  MaterialIcons,
+  MaterialCommunityIcons,
+  Fontisto,
+} from "@expo/vector-icons";
 import { React, useState } from "react";
 import { WeatherDataList } from "./weatherDatalist.component";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { TodayTemperature } from "./todaytemperature.component";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
 const WeatherIcon = styled.Image`
   width: 89px;
@@ -19,7 +24,7 @@ const WeatherView = styled.View`
 
 const LocationContainer = styled.View`
   flex-direction: row;
-  gap:4px;
+  gap: 4px;
 `;
 
 const CurrentTemperature = styled.Text`
@@ -64,12 +69,22 @@ export const WeatherViewComponent = () => {
         </WeatherIconContainer>
         <DataContainer>
           <LocationContainer>
-            <MaterialIcons name="location-pin" size={24} color="#008800" />
+            <Icon
+              iconType={IconTypes.MaterialIcons}
+              name="location-pin"
+              size={24}
+              color="#008800"
+            />
             <Text variant="body">As Santa</Text>
           </LocationContainer>
           <TodayTemperature h="12" l="10" />
           <LocationContainer>
-            <Fontisto name="cloudy" size={24} color="#008800" />
+            <Icon
+              iconType={IconTypes.Fontisto}
+              name="cloudy"
+              size={24}
+              color="#008800"
+            />
             <Text variant="body">Cloudy</Text>
           </LocationContainer>
         </DataContainer>

@@ -4,6 +4,7 @@ import { Image, TouchableOpacity } from "react-native";
 import { Text } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
 const GreenHouseCard = styled(Card)`
   margin: 20px 0px;
@@ -68,19 +69,39 @@ export const GreenHouses = ({ navigation }) => {
           />
           <SensorReads>
             <SensorRead>
-              <Ionicons name="md-sunny" size={32} color="black" />
+              <Icon
+                iconType={IconTypes.Ionicons}
+                name="md-sunny"
+                size={32}
+                color="black"
+              />
               <SensorValue>59%</SensorValue>
             </SensorRead>
             <SensorRead>
-              <Ionicons name="md-sunny" size={32} color="black" />
+              <Icon
+                iconType={IconTypes.Ionicons}
+                name="md-sunny"
+                size={32}
+                color="black"
+              />
               <SensorValue>59%</SensorValue>
             </SensorRead>
             <SensorRead>
-              <Ionicons name="md-sunny" size={32} color="lightgray" />
+              <Icon
+                iconType={IconTypes.Ionicons}
+                name="md-sunny"
+                size={32}
+                color="lightgray"
+              />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
             <SensorRead>
-              <Ionicons name="md-sunny" size={32} color="lightgray" />
+              <Icon
+                iconType={IconTypes.Ionicons}
+                name="md-sunny"
+                size={32}
+                color="lightgray"
+              />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
           </SensorReads>
@@ -98,19 +119,39 @@ export const GreenHouses = ({ navigation }) => {
           />
           <SensorReads>
             <SensorRead>
-              <Ionicons name="md-sunny" size={32} color="black" />
+              <Icon
+                iconType={IconTypes.Ionicons}
+                name="md-sunny"
+                size={32}
+                color="black"
+              />
               <SensorValue>59%</SensorValue>
             </SensorRead>
             <SensorRead>
-              <Ionicons name="md-sunny" size={32} color="black" />
+              <Icon
+                iconType={IconTypes.Ionicons}
+                name="md-sunny"
+                size={32}
+                color="black"
+              />
               <SensorValue>59%</SensorValue>
             </SensorRead>
             <SensorRead>
-              <Ionicons name="md-sunny" size={32} color="lightgray" />
+              <Icon
+                iconType={IconTypes.Ionicons}
+                name="md-sunny"
+                size={32}
+                color="lightgray"
+              />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
             <SensorRead>
-              <Ionicons name="md-sunny" size={32} color="lightgray" />
+              <Icon
+                iconType={IconTypes.Ionicons}
+                name="md-sunny"
+                size={32}
+                color="lightgray"
+              />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
           </SensorReads>

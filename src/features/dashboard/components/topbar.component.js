@@ -5,8 +5,14 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { Searchbar } from "react-native-paper";
 import { TouchableOpacity, View, TextInput, Image } from "react-native";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-import { Feather, Ionicons, Octicons, SimpleLineIcons } from "@expo/vector-icons";
+import {
+  Feather,
+  Ionicons,
+  Octicons,
+  SimpleLineIcons,
+} from "@expo/vector-icons";
 import { Text } from "../../../components/typography/text.component";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
 const TopbarContainer = styled.View`
   gap: 10px;
@@ -81,12 +87,22 @@ export const Topbar = ({ nav }) => {
       <HelloView>
         <TouchableOpacity onPress={nav.openDrawer}>
           {/* <AccountIcon source={require("../../../../assets/home_bg.jpg")} /> */}
-          <Feather name="menu" size={24} color="black" />
+          <Icon
+            iconType={IconTypes.Feather}
+            name="menu"
+            size={24}
+            color="black"
+          />
         </TouchableOpacity>
         <Logo source={require("../../../../assets/logo-no-background.png")} />
         <BrandName>SOBA</BrandName>
         <NotificationView>
-          <Ionicons name="notifications" size={24} color="black" />
+          <Icon
+            iconType={IconTypes.Ionicons}
+            name="notifications"
+            size={24}
+            color="black"
+          />
         </NotificationView>
       </HelloView>
       {/* <SearchContainer>

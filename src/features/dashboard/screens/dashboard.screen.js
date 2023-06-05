@@ -10,6 +10,7 @@ import { ScrollView, View } from "react-native";
 
 const TopContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
+  margin-bottom: 30px;
 `;
 
 const MidContainer = styled.View`
