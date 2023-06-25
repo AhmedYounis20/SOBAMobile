@@ -16,15 +16,15 @@ export const colors = {
   },
   bg: {
     primary: "#FFFFFF",
-    secondary: "#F1F1F1",
+    secondary: "#008800",
   },
   text: {
     primary: "#262626",
     secondary: "#757575",
-    disabled: "#9C9C9C",
+    disabled: "lightgray",
     inverse: "#FFFFFF",
     error: "#D0421B",
     success: "#138000",
-    info:"6F6F6F"
+    info: "6F6F6F",
   },
 };

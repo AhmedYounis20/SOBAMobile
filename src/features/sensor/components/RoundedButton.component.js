@@ -19,7 +19,7 @@ export const RoundedButton = ({ children }) => {
           height: 50,
           width: 50,
           borderRadius: 50,
-          backgroundColor: "#1a1a1a",
+          backgroundColor: "#000000",
           alignItems: "center",
           justifyContent: "center",
         }}
