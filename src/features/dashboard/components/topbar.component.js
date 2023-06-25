@@ -1,17 +1,7 @@
 import styled from "styled-components";
 import { React, useState, useContext } from "react";
-
-import { Spacer } from "../../../components/spacer/spacer.component";
-import { Searchbar } from "react-native-paper";
 import { TouchableOpacity, View, TextInput, Image } from "react-native";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-import {
-  Feather,
-  Ionicons,
-  Octicons,
-  SimpleLineIcons,
-} from "@expo/vector-icons";
-import { Text } from "../../../components/typography/text.component";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
 const TopbarContainer = styled.View`
@@ -42,23 +32,20 @@ const AccountIcon = styled.Image`
 const Logo = styled.Image`
   width: 40px;
   height: 40px;
-  // border-radius: 30px;
-  // border-width: 2px;
-  // border-color: #008800;
 `;
 
 const BrandName = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.h5};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  color: #008800;
+  color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
 const GreetUser = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.h4};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  color: #008800;
+  color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
 const SearchContainer = styled.View`
@@ -69,7 +56,7 @@ const SearchContainer = styled.View`
   align-items: center;
   padding-left: 10px;
   padding-right: 10px;
-  border: 2px solid #008800;
+  border: 2px solid ${(props) => props.theme.colors.bg.secondary};
   border-radius: 24px;
 `;
 

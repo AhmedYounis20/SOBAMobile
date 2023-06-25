@@ -33,14 +33,14 @@ const Background = styled.View`
   height: 100px;
   width: 100%;
   position: absolute;
-  top:0px;
-  right:0px;
-  background-color: #90EE90;
+  top: 0px;
+  right: 0px;
+  background-color: #90ee90;
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
 `;
 
-export const DashboardScreen = ({ navigation }) => {
+export const DashboardScreen = ({ navigation, theme }) => {
   return (
     <>
       <Background />

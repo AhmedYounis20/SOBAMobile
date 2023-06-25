@@ -1,12 +1,7 @@
 import styled from "styled-components";
 import { Drawer } from "react-native-paper";
-import {
-  Image,
-  Text,
-} from "react-native";
-import {
-  DrawerItem,
-} from "@react-navigation/drawer";
+import { Image, Text } from "react-native";
+import { DrawerItem } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export const ProfileImage = styled(Image)`
@@ -69,7 +64,6 @@ export const CurrentDrawerSection = ({
         return (
           <DrawerItem
             icon={({ color, size }) => {
-
               let iconName = "";
               if (item.includes("Profile")) iconName = "account-outline";
               else if (item.includes("Sensor"))
@@ -88,13 +82,10 @@ export const CurrentDrawerSection = ({
                   size={size}
                 />
               );
-
             }}
-
             label={`${item}`}
             onPress={() => navigation.navigate(`${item}`)}
             key={`${title}-${index}`}
-
           />
         );
       })}

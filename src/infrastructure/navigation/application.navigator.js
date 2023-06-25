@@ -7,7 +7,6 @@ import {
 import { ProfileNavigator } from "./profile.navigator";
 import { AssistantNavigator } from "./assistant.navigator";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-
 const ApplicationTab = createMaterialTopTabNavigator();
 
 export const ApplicationNavigator = () => {
@@ -17,15 +16,6 @@ export const ApplicationNavigator = () => {
       screenOptions={{
         tabBarActiveTintColor: "#00FF00",
         tabBarInactiveTintColor: "gray",
-        tabBarStyle: {
-          height: 50,
-          marginBottom: 10,
-          borderRadius: 40,
-          width: "85%",
-          alignSelf: "center",
-          position: "absolute",
-          bottom: 10,
-        },
         tabBarIconStyle: {
           fontWeight: 700,
           fontSize: 50,

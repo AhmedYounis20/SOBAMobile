@@ -32,7 +32,7 @@ export const TodayTemperature = ({ h = "23", l = "14" }) => {
           iconType={IconTypes.FontAwesome5}
           name="temperature-high"
           size={20}
-          color="#008800"
+          color={"#008800"}
         />
         <Text variant="body">{h}°C</Text>
       </TemperatureDegView>

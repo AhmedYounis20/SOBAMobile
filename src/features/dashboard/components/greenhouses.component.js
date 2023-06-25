@@ -1,7 +1,6 @@
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { Image, TouchableOpacity } from "react-native";
-import { Text } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
@@ -35,21 +34,21 @@ const SensorValue = styled.Text`
 `;
 
 const DisabledSensorValue = styled.Text`
-  color: lightgray;
+  color: ${(props) => props.theme.colors.text.disabled};
   font-size: ${(props) => props.theme.fontSizes.body};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
 const GreenHouseText = styled.Text`
-  color: white;
+  color: ${(props) => props.theme.colors.text.inverse};
   font-size: ${(props) => props.theme.fontSizes.title};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
 const GreenHouseName = styled.View`
-  background-color: #008800;
+  background-color: ${(props) => props.theme.colors.bg.secondary};
   position: absolute;
   padding: 5px 10px;
   border-radius: 16px;
