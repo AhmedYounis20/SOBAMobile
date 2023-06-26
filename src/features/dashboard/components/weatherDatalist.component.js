@@ -15,12 +15,14 @@ const ValueText = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.body};
   font-family: ${(props) => props.theme.fonts.title};
   font-weight: ${(props) => props.theme.fontWeights.regular};
+  color: ${(props) => props.theme.colors.text.primary};
 `;
 
 const PropertyText = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.body};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.regular};
+  color: ${(props) => props.theme.colors.text.primary};
 `;
 
 const WeatherRead = ({ property = "Humidity", value = "30%" }) => {

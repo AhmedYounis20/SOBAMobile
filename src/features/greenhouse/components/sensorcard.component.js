@@ -1,10 +1,11 @@
 import { RowView } from "../../../components/views/row.component";
 import { Card, Switch } from "react-native-paper";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Icon } from "../../../components/Icons/Icons.components";
 import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components";
 import { Text } from "../../../components/typography/text.component";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
 const BodyView = styled.View`
   padding: 12px;
@@ -30,10 +31,15 @@ export const SensorCard = ({
   iconName,
   iconType,
 }) => {
+  const { theme } = useContext(ThemeContext);
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
-  let front_color = isEnabled ? "#FFFFFF" : "#008800";
-  let back_color = !isEnabled ? "#FFFFFF" : "#008800";
+  let front_color = isEnabled
+    ? theme.colors.bg.secondary
+    : theme.colors.text.primary;
+  let back_color = !isEnabled
+    ? theme.colors.bg.secondary
+    : theme.colors.text.primary;
   return (
     <DataCard
       style={{

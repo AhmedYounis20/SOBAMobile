@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { Button } from "react-native-paper";
 import { Notes } from "../components/notes.component";
@@ -6,10 +6,12 @@ import { Topbar } from "../components/topbar.component";
 import { WeatherViewComponent } from "../components/weatherview.component";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { GreenHouses } from "../components/greenhouses.component";
-import { ScrollView, View } from "react-native";
+import { ScrollView, StatusBar, View } from "react-native";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
 const TopContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
+  padding-bottom: 0px;
   margin-bottom: 30px;
 `;
 
@@ -26,7 +28,7 @@ const GreenHousesText = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.h5};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  color: #008800;
+  color: ${(props) => props.theme.colors.text.primary};
 `;
 
 const Background = styled.View`
@@ -35,31 +37,29 @@ const Background = styled.View`
   position: absolute;
   top: 0px;
   right: 0px;
-  background-color: #90ee90;
+  background-color: ${(props) => props.theme.colors.ui.primary};
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
 `;
 
-export const DashboardScreen = ({ navigation, theme }) => {
+export const DashboardScreen = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   return (
-    <>
+    <SafeArea>
       <Background />
       <TopContainer>
-        <SafeArea></SafeArea>
         <Topbar nav={navigation} />
       </TopContainer>
-      <SafeArea>
-        <ScrollView>
-          <MidContainer>
-            <WeatherViewComponent />
-            {/* <Notes /> */}
-          </MidContainer>
-          <BottomContainer>
-            <GreenHousesText>Your GreenHouses</GreenHousesText>
-            <GreenHouses navigation={navigation} />
-          </BottomContainer>
-        </ScrollView>
-      </SafeArea>
-    </>
+      <ScrollView style={{ backgroundColor: theme.colors.bg.primary }}>
+        <MidContainer>
+          <WeatherViewComponent />
+          {/* <Notes /> */}
+        </MidContainer>
+        <BottomContainer>
+          <GreenHousesText>Your GreenHouses</GreenHousesText>
+          <GreenHouses navigation={navigation} />
+        </BottomContainer>
+      </ScrollView>
+    </SafeArea>
   );
 };

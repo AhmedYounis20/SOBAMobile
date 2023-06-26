@@ -3,11 +3,15 @@ import { React, useState, useContext } from "react";
 import { TouchableOpacity, View, TextInput, Image } from "react-native";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
-const TopbarContainer = styled.View`
-  gap: 10px;
+const TopbarContainer = styled.View``;
+
+const AppNameContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  flex-direction: row;
 `;
-
 const HelloView = styled.View`
   flex-direction: row;
   align-items: center;
@@ -15,7 +19,6 @@ const HelloView = styled.View`
 `;
 
 const NotificationView = styled.View`
-  flex: 1;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
@@ -38,7 +41,7 @@ const BrandName = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.h5};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  color: ${(props) => props.theme.colors.bg.secondary};
+  color: ${(props) => props.theme.colors.text.whiteBlack};
 `;
 
 const GreetUser = styled.Text`
@@ -68,6 +71,7 @@ const SearchInput = styled.TextInput`
 
 export const Topbar = ({ nav }) => {
   const { onLogout, user } = useContext(AuthenticationContext);
+  const { theme } = useContext(ThemeContext);
   const [searchQuery, setSearchQuery] = useState("");
   return (
     <TopbarContainer>
@@ -78,17 +82,18 @@ export const Topbar = ({ nav }) => {
             iconType={IconTypes.Feather}
             name="menu"
             size={24}
-            color="black"
+            color={theme.colors.text.whiteBlack}
           />
         </TouchableOpacity>
-        <Logo source={require("../../../../assets/logo-no-background.png")} />
-        <BrandName>SOBA</BrandName>
+        <AppNameContainer>
+          <BrandName>SOBA</BrandName>
+        </AppNameContainer>
         <NotificationView>
           <Icon
             iconType={IconTypes.Ionicons}
             name="notifications"
             size={24}
-            color="black"
+            color={theme.colors.text.whiteBlack}
           />
         </NotificationView>
       </HelloView>

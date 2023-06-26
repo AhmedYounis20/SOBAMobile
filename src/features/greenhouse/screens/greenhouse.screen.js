@@ -4,6 +4,8 @@ import { FlatList, Image, View } from "react-native";
 import { SensorCard } from "../components/sensorcard.component";
 import { IconTypes } from "../../../components/Icons/Icons.components";
 import { Card } from "react-native-paper";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { useContext } from "react";
 const TopSlider = styled.View`
   height: 40%;
   background-color: "red";
@@ -14,6 +16,7 @@ const PageContent = styled.View`
 `;
 
 export const GreenHouseScreen = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   const sens = [
     {
       name: "Light",
@@ -47,7 +50,9 @@ export const GreenHouseScreen = ({ navigation }) => {
 
   return (
     <SafeArea>
-      <View style={{ minHeight: "100%" }}>
+      <View
+        style={{ minHeight: "100%", backgroundColor: theme.colors.bg.primary }}
+      >
         <TopSlider style={{ padding: 10 }}>
           <Card>
             <Card.Cover
