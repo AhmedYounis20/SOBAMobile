@@ -1,9 +1,11 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
-import { useContext } from "react";
-import { ImageBackground, TouchableOpacity } from "react-native";
+import { useContext, useState } from "react";
+import { ImageBackground, Text, TouchableOpacity, View } from "react-native";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { HairLine } from "../../../components/hairlines/hairline.component";
+import { light } from "../../../infrastructure/theme/light";
+import { dark } from "../../../infrastructure/theme/dark";
 import {
   ProfileView,
   ProfileImage,
@@ -14,9 +16,22 @@ import {
   CurrentDrawerSection,
 } from "../components/drawer.styles";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { Switch } from "react-native-paper";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import styled from "styled-components";
+
+const DarkThemeView = styled.View`
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  padding-horizontal: 20px;
+`;
+
 export const DrawerScreen = (props) => {
   const { onLogout } = useContext(AuthenticationContext);
-  const { theme } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const [isDark, setIsDark] = useState(theme === dark);
+
   const { navigation } = props;
   return (
     <>
@@ -58,6 +73,37 @@ export const DrawerScreen = (props) => {
         />
         <HairLine />
         <DrawerSection showDivider={false}>
+          <DarkThemeView>
+            <Icon
+              iconType={IconTypes.FontAwesome5}
+              name={"moon"}
+              size={props.size}
+              color={theme.colors.text.disabled}
+            />
+            <Text
+              style={{
+                color: theme.colors.text.disabled,
+                fontSize: props.size,
+                fontWeight: "bold",
+                marginLeft: "12%",
+                width: "65%",
+              }}
+            >
+              Dark theme
+            </Text>
+            <Switch
+              trackColor="#AAAAAA"
+              thumbColor="#FFFFFF"
+              onValueChange={() => {
+                toggleTheme();
+                setIsDark(!isDark);
+              }}
+              value={isDark}
+            />
+          </DarkThemeView>
+        </DrawerSection>
+        <HairLine />
+        <DrawerSection showDivider={false}>
           <DrawerItem
             icon={({ color, size }) => (
               <MaterialIcons
@@ -66,7 +112,7 @@ export const DrawerScreen = (props) => {
                 size={size}
               />
             )}
-            label="logout"
+            label="Logout"
             onPress={onLogout}
             labelStyle={{ color: theme.colors.text.disabled }}
           />
