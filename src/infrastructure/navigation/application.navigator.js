@@ -7,23 +7,26 @@ import {
 import { ProfileNavigator } from "./profile.navigator";
 import { AssistantNavigator } from "./assistant.navigator";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { useContext } from "react";
+import { ThemeContext } from "../../services/ThemeContext/Theme.context";
 const ApplicationTab = createMaterialTopTabNavigator();
 
 export const ApplicationNavigator = () => {
+  const { theme } = useContext(ThemeContext);
   return (
     <ApplicationTab.Navigator
       tabBarPosition="bottom"
       screenOptions={{
-        tabBarActiveTintColor: "#00FF00",
-        tabBarInactiveTintColor: "gray",
+        tabBarActiveTintColor: theme.colors.text.primary,
+        tabBarInactiveTintColor: theme.colors.text.disabled,
         tabBarIconStyle: {
           fontWeight: 700,
           fontSize: 50,
         },
         tabBarShowLabel: false,
         tabBarIndicatorStyle: { height: 0 },
-        tabBarContentContainerStyle: {
-          borderRadius: 50,
+        tabBarStyle: {
+          backgroundColor: theme.colors.bg.secondary,
         },
       }}
     >

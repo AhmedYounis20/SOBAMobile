@@ -1,10 +1,7 @@
 import { MaterialIcons } from "@expo/vector-icons";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import { useContext } from "react";
-import {
-  ImageBackground,
-  TouchableOpacity,
-} from "react-native";
+import { ImageBackground, TouchableOpacity } from "react-native";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { HairLine } from "../../../components/hairlines/hairline.component";
 import {
@@ -14,18 +11,19 @@ import {
   ProfileUsername,
   UsernameView,
   DrawerSection,
-  CurrentDrawerSection
+  CurrentDrawerSection,
 } from "../components/drawer.styles";
-
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 export const DrawerScreen = (props) => {
   const { onLogout } = useContext(AuthenticationContext);
+  const { theme } = useContext(ThemeContext);
   const { navigation } = props;
   return (
     <>
       <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
         <ImageBackground
           source={require("../../../../assets/green_cover1.jpg")}
-          style={{ height: 162, paddingTop: 20,borderTopRightRadius:100 }}
+          style={{ height: 162, paddingTop: 20, borderTopRightRadius: 100 }}
           borderTopRightRadius={50}
         >
           <ProfileView>
@@ -39,18 +37,19 @@ export const DrawerScreen = (props) => {
           </ProfileView>
         </ImageBackground>
       </TouchableOpacity>
-      <DrawerContentScrollView {...props}>
+      <DrawerContentScrollView
+        {...props}
+        style={{ backgroundColor: theme.colors.bg.primary }}
+      >
         <CurrentDrawerSection
-          color={props.color}
           size={props.size}
           title={"Account"}
           navigation={navigation}
           key={"profile"}
-          items={["Notifications", "Profile Settings","Notes"]}
+          items={["Notifications", "Profile Settings", "Notes"]}
         />
         <HairLine />
         <CurrentDrawerSection
-          color={props.color}
           size={props.size}
           title={"Farm"}
           navigation={navigation}
@@ -61,10 +60,15 @@ export const DrawerScreen = (props) => {
         <DrawerSection showDivider={false}>
           <DrawerItem
             icon={({ color, size }) => (
-              <MaterialIcons name="logout" color={color} size={size} />
+              <MaterialIcons
+                name="logout"
+                color={theme.colors.text.disabled}
+                size={size}
+              />
             )}
             label="logout"
             onPress={onLogout}
+            labelStyle={{ color: theme.colors.text.disabled }}
           />
         </DrawerSection>
       </DrawerContentScrollView>

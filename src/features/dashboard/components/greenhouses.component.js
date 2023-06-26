@@ -1,12 +1,14 @@
 import { Ionicons } from "@expo/vector-icons";
-import React from "react";
+import React, { useContext } from "react";
 import { TouchableOpacity } from "react-native";
 import { Card } from "react-native-paper";
 import styled from "styled-components";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
 const GreenHouseCard = styled(Card)`
   margin: 20px 0px;
+  background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
 const GreenHouseCover = styled.Image`
@@ -41,14 +43,14 @@ const DisabledSensorValue = styled.Text`
 `;
 
 const GreenHouseText = styled.Text`
-  color: ${(props) => props.theme.colors.text.inverse};
+  color: ${(props) => props.theme.colors.text.primary};
   font-size: ${(props) => props.theme.fontSizes.title};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
 
 const GreenHouseName = styled.View`
-  background-color: ${(props) => props.theme.colors.bg.secondary};
+  background-color: ${(props) => props.theme.colors.ui.primaryTransparent};
   position: absolute;
   padding: 5px 10px;
   border-radius: 16px;
@@ -57,6 +59,7 @@ const GreenHouseName = styled.View`
 `;
 
 export const GreenHouses = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   return (
     <>
       <TouchableOpacity onPress={() => navigation.navigate("Greenhouse")}>
@@ -72,7 +75,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color="black"
+                color={theme.colors.text.secondary}
               />
               <SensorValue>59%</SensorValue>
             </SensorRead>
@@ -81,7 +84,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color="black"
+                color={theme.colors.text.secondary}
               />
               <SensorValue>59%</SensorValue>
             </SensorRead>
@@ -90,7 +93,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color="lightgray"
+                color={theme.colors.text.disabled}
               />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
@@ -99,7 +102,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color="lightgray"
+                color={theme.colors.text.disabled}
               />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
@@ -131,7 +134,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color="black"
+                color={theme.colors.text.secondary}
               />
               <SensorValue>59%</SensorValue>
             </SensorRead>
@@ -140,7 +143,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color="lightgray"
+                color={theme.colors.text.disabled}
               />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
@@ -149,7 +152,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color="lightgray"
+                color={theme.colors.text.disabled}
               />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>

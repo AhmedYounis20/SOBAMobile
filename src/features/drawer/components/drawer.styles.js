@@ -3,7 +3,8 @@ import { Drawer } from "react-native-paper";
 import { Image, Text } from "react-native";
 import { DrawerItem } from "@react-navigation/drawer";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
+import { useContext } from "react";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 export const ProfileImage = styled(Image)`
   height: 89px;
   width: 89px;
@@ -22,7 +23,7 @@ export const ProfileName = styled(Text)`
   font-family: ${(props) => props.theme.fonts.title};
   font-size: ${(props) => props.theme.fontSizes.body};
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  color: ${(props) => props.theme.colors.bg.primary};
+  color: ${(props) => props.theme.colors.text.white};
   line-height: 24px;
   align-self: stretch;
 `;
@@ -30,7 +31,7 @@ export const ProfileUsername = styled(Text)`
   font-family: ${(props) => props.theme.fonts.text};
   font-size: ${(props) => props.theme.fontSizes.caption};
   font-weight: ${(props) => props.theme.fontWeights.regular};
-  color: ${(props) => props.theme.colors.bg.primary};
+  color: ${(props) => props.theme.colors.text.white};
   line-height: 18px;
   align-self: stretch;
 `;
@@ -45,16 +46,17 @@ export const DrawerSectionTitleView = styled.View`
 export const DrawerSectionTitle = styled(Text)`
   font-size: ${(props) => props.theme.fontSizes.body};
   font-weight: ${(props) => props.theme.fontWeights.bold};
+  color: ${(props) => props.theme.colors.text.primary};
 `;
 
 export const CurrentDrawerSection = ({
   items = [],
   title,
-  color,
   size,
   navigation,
   ItemsContent = null,
 }) => {
+  const { theme } = useContext(ThemeContext);
   return (
     <DrawerSection showDivider={false}>
       <DrawerSectionTitleView>
@@ -63,7 +65,7 @@ export const CurrentDrawerSection = ({
       {items.map((item, index) => {
         return (
           <DrawerItem
-            icon={({ color, size }) => {
+            icon={({ size }) => {
               let iconName = "";
               if (item.includes("Profile")) iconName = "account-outline";
               else if (item.includes("Sensor"))
@@ -78,7 +80,7 @@ export const CurrentDrawerSection = ({
               return (
                 <MaterialCommunityIcons
                   name={iconName}
-                  color={color}
+                  color={theme.colors.text.disabled}
                   size={size}
                 />
               );
@@ -86,6 +88,7 @@ export const CurrentDrawerSection = ({
             label={`${item}`}
             onPress={() => navigation.navigate(`${item}`)}
             key={`${title}-${index}`}
+            labelStyle={{ color: theme.colors.text.disabled }}
           />
         );
       })}
