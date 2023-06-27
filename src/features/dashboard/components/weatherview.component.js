@@ -2,16 +2,12 @@ import { Card } from "react-native-paper";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import styled from "styled-components";
 import { Text } from "../../../components/typography/text.component";
-import {
-  MaterialIcons,
-  MaterialCommunityIcons,
-  Fontisto,
-} from "@expo/vector-icons";
-import { React, useState } from "react";
+import { React, useContext, useState } from "react";
 import { WeatherDataList } from "./weatherDatalist.component";
 import { View, StyleSheet, ScrollView } from "react-native";
 import { TodayTemperature } from "./todaytemperature.component";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
 const WeatherIcon = styled.Image`
   width: 89px;
@@ -27,11 +23,10 @@ const LocationContainer = styled.View`
   gap: 4px;
 `;
 
-const CurrentTemperature = styled.Text`
-  padding: ${(props) => props.theme.space[2]};
-  font-size: ${(props) => props.theme.fontSizes.h3};
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-weight: ${(props) => props.theme.fontWeights.bold};
+const DataText = styled.Text`
+  font-size: ${(props) => props.theme.fontSizes.body};
+  font-family: ${(props) => props.theme.fonts.text};
+  color: ${(props) => props.theme.colors.text.primary}
 `;
 
 const CardTop = styled.View`
@@ -61,6 +56,7 @@ const DataContainer = styled.View`
 `;
 
 export const WeatherViewComponent = () => {
+  const { theme } = useContext(ThemeContext);
   return (
     <WeatherView>
       <CardTop>
@@ -73,7 +69,7 @@ export const WeatherViewComponent = () => {
               iconType={IconTypes.MaterialIcons}
               name="location-pin"
               size={24}
-              color="#008800"
+              color= {theme.colors.ui.primary}
             />
             <Text variant="body">As Santa</Text>
           </LocationContainer>
@@ -83,9 +79,9 @@ export const WeatherViewComponent = () => {
               iconType={IconTypes.Fontisto}
               name="cloudy"
               size={24}
-              color="#008800"
+              color={theme.colors.ui.primary}
             />
-            <Text variant="body">Cloudy</Text>
+            <DataText>Cloudy</DataText>
           </LocationContainer>
         </DataContainer>
       </CardTop>
