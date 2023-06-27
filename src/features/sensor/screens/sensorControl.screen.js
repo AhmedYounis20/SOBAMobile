@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { View } from "react-native";
 import Slider from "@react-native-community/slider";
 import { Text } from "../../../components/typography/text.component";
@@ -20,6 +20,8 @@ import {
   Row,
   SliderText,
 } from "../components/sensorControlStyles";
+import { LineChart } from "react-native-chart-kit";
+import { Dimensions } from "react-native";
 const SensorTitle = styled(Text)`
   font-weight: bold;
   font-size: 20px;
@@ -80,7 +82,7 @@ export const SensorControl = () => {
             style={{
               flex: 1,
               alignItems: "center",
-              paddingTop: 100,
+              paddingTop: 50,
             }}
           >
             <View style={{ marginBottom: 50 }}>
@@ -110,6 +112,51 @@ export const SensorControl = () => {
             </RoundedButton>
           ))}
         </Row>
+        <View>
+          <LineChart
+            data={{
+              labels: ["January", "February", "March", "April", "May", "June"],
+              datasets: [
+                {
+                  data: [
+                    Math.random() * 100,
+                    Math.random() * 100,
+                    Math.random() * 100,
+                    Math.random() * 100,
+                    Math.random() * 100,
+                    Math.random() * 100,
+                  ],
+                },
+              ],
+            }}
+            width={Dimensions.get("window").width - 10} // from react-native
+            height={220}
+            yAxisLabel=""
+            yAxisSuffix="ْC"
+            yAxisInterval={1} // optional, defaults to 1
+            chartConfig={{
+              backgroundColor: "#00000",
+              backgroundGradientFrom: "#FFFFFF",
+              backgroundGradientTo: "#FFFFFF",
+              decimalPlaces: 2, // optional, defaults to 2dp
+              color: (opacity = 1) => `rgba(120, 120, 120, ${opacity})`,
+              labelColor: (opacity = 1) => `rgba(120, 120, 120, ${opacity})`,
+              style: {
+                borderRadius: 16,
+              },
+              propsForDots: {
+                r: "6",
+                strokeWidth: "2",
+                stroke: "#ffa726",
+              },
+            }}
+            bezier
+            style={{
+              marginVertical: 8,
+              borderRadius: 16,
+            }}
+          />
+        </View>
       </Container>
     </SafeArea>
   );

@@ -28,11 +28,11 @@ export const Row = styled.View`
 export const Container = styled.View`
   flex: 1;
   align-items: center;
-  padding-top: 80px;
+  padding-top: 20px;
 `;
 
 export const CenterView = styled.View`
-  height: 400px;
+  height: auto;
   width: 100%;
   flex-direction: row;
 `;
