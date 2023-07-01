@@ -69,7 +69,12 @@ export const DrawerScreen = (props) => {
           title={"Farm"}
           navigation={navigation}
           key={"Farm"}
-          items={["Statistics", "Farm Map", "Sensors Control"]}
+          items={[
+            "Disease Detection",
+            "Statistics",
+            "Farm Map",
+            "Sensors Control",
+          ]}
         />
         <HairLine />
         <DrawerSection showDivider={false}>
