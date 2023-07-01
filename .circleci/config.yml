@@ -6,7 +6,7 @@ jobs:
   build:
     executor:
       name: node/default
-      tag: 16.13.0
+      tag: 18.2.0
 
     steps:
       - checkout
