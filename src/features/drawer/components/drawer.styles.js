@@ -76,6 +76,8 @@ export const CurrentDrawerSection = ({
               else if (item.includes("Statistics"))
                 iconName = "chart-line-variant";
               else if (item.includes("Map")) iconName = "map";
+              else if (item.includes("Disease Detection"))
+                iconName = "magnify-scan";
 
               return (
                 <MaterialCommunityIcons
