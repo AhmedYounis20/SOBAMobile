@@ -6,12 +6,11 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { StyleSheet } from "react-native";
 
 export const FirstWelcome = ({ navigation }) => {
   return (
-    <SafeArea>
+    <>
       <ImageBackground
         resizeMode="cover"
         source={require("../../../../assets/images/intro1/intro1.png")}
@@ -83,7 +82,7 @@ export const FirstWelcome = ({ navigation }) => {
           </View>
         </ImageBackground>
       </ImageBackground>
-    </SafeArea>
+    </>
   );
 };
 

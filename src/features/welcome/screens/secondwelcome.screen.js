@@ -1,9 +1,7 @@
-import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import {
   Text,
   Image,
   ImageBackground,
-  Button,
   StyleSheet,
   View,
   TouchableOpacity,
@@ -11,7 +9,7 @@ import {
 
 export const SecondWelcome = ({ navigation }) => {
   return (
-    <SafeArea>
+    <>
       <ImageBackground
         resizeMode="cover"
         source={require("../../../../assets/images/intro2/intro2.png")}
@@ -94,7 +92,7 @@ export const SecondWelcome = ({ navigation }) => {
           </View>
         </ImageBackground>
       </ImageBackground>
-    </SafeArea>
+    </>
   );
 };
 const styles = StyleSheet.create({
