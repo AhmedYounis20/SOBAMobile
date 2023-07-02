@@ -1,5 +1,5 @@
 import { Card, TextInput, Button } from "react-native-paper";
-import { Text } from "../../../components/typography/text.component";
+import { Text } from "react-native";
 import styled from "styled-components";
 
 export const NotesCard = styled(Card)`

@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Button } from "react-native-paper";
-import { Notes } from "../components/notes.component";
 import { Topbar } from "../components/topbar.component";
 import { WeatherViewComponent } from "../components/weatherview.component";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";

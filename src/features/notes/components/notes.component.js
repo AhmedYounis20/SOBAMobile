@@ -1,5 +1,4 @@
-import { Modal, KeyboardAvoidingView, Platform } from "react-native";
-import { Text } from "../../../components/typography/text.component";
+import { Modal, KeyboardAvoidingView, Platform, Text } from "react-native";
 import React, { useState } from "react";
 
 import {
