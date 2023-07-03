@@ -69,7 +69,7 @@ const getIcon = (property) => {
       return <AntDesign name="twitter" size={32} color="gray" />;
     case "Location":
       return <Entypo name="location-pin" size={32} color="#27AE60" />;
-    case "Facebook":
+    case "Arrow":
       return <Entypo name="chevron-right" size={32} color="black" />;
     default:
       return <Feather name="info" size={32} color="gray" />;
@@ -90,7 +90,7 @@ export const InfoRow = ({ property, value }) => {
         </InfoDataView>
       </InfoRowView>
       <ArrowContainer>
-        <InfoIconView>{getIcon("Facebook")}</InfoIconView>
+        <InfoIconView>{getIcon("Arrow")}</InfoIconView>
       </ArrowContainer>
     </InfoRowContainer>
   );
