@@ -5,6 +5,7 @@ import {
 import { LoginScreen } from "../../features/account/screens/login.screen";
 import { AccountScreen } from "../../features/account/screens/account.screen";
 import { RegisterScreen } from "../../features/account/screens/register.screen";
+import { WelcomeNavigator } from "./welcome.navigator";
 
 const AccountStack = createStackNavigator();
 
