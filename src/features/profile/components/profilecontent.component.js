@@ -14,7 +14,6 @@ export const ProfileContent = ({ infoList }) => {
       {infoList.map((item, index) => (
         <InfoDataView key={index}>
           <InfoRow property={item.property} value={item.value} />
-          {index !== infoList.length - 1 && <HairLine />}
         </InfoDataView>
       ))}
     </ProfileContentView>
