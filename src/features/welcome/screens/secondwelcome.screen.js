@@ -1,48 +1,46 @@
+import { Text, Image, View, TouchableOpacity } from "react-native";
 import {
-  Text,
-  Image,
-  ImageBackground,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-} from "react-native";
+  BackGround,
+  ContentText,
+  DotContainer,
+  HeaderView,
+  LogoView,
+  NavigationContainer,
+  NextText,
+  PrevView,
+  SleepDot,
+  WakeDot,
+  WelcomeText,
+} from "../components/welcome.styles";
 
 export const SecondWelcome = ({ navigation }) => {
   return (
     <>
-      <ImageBackground
+      <BackGround
         resizeMode="cover"
         source={require("../../../../assets/images/intro2/intro2.png")}
-        style={{ height: "100%" }}
       >
-        <ImageBackground
+        <BackGround
           resizeMode="cover"
           source={require("../../../../assets/images/Black_frame.png")}
-          style={{ height: "100%" }}
         >
-          <View style={styles.header}>
+          <HeaderView>
             <View>
               <Image
                 source={require("../../../../assets/images/intro2/left.png")}
               />
             </View>
-            <View
-              style={{
-                position: "absolute",
-                marginLeft: "42%",
-                marginBottom: "80%",
-              }}
-            >
+            <LogoView>
               <Image
                 source={require("../../../../assets/images/top_center.png")}
               />
-            </View>
+            </LogoView>
             <View>
               <Image
                 source={require("../../../../assets/images/intro2/right.png")}
               />
             </View>
-          </View>
+          </HeaderView>
           <View
             style={{
               alignItems: "center",
@@ -56,91 +54,32 @@ export const SecondWelcome = ({ navigation }) => {
             />
           </View>
           <View style={{ alignItems: "center", marginTop: "45%" }}>
-            <Text style={styles.largeText}>Create a Sustainable</Text>
-            <Text style={styles.largeText}>Garden Anywhere</Text>
-            <Text style={styles.smallText}>
-              It’s the perfect tool for anyone who wants to
-            </Text>
-            <Text style={styles.smallText}>
-              create a beautiful and sustainable garden,
-            </Text>
-            <Text style={styles.smallText}>no matter where they live.</Text>
+            <WelcomeText>Create a Sustainable Garden Anywhere</WelcomeText>
+            <ContentText>
+              It’s the perfect tool for anyone who wants to create a beautiful
+              and sustainable garden, no matter where they live.
+            </ContentText>
           </View>
-          <View style={styles.Container}>
-            <View>
-              <TouchableOpacity
-                style={{ justifyContent: "flex-end" }}
-                onPress={() => navigation.goBack()}
-              >
+          <NavigationContainer>
+            <PrevView>
+              <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Text style={{ color: "#FFFFFF" }}>Prev</Text>
               </TouchableOpacity>
-            </View>
-            <View style={styles.dotContainer}>
-              <View style={styles.sleep} />
-              <View style={styles.wake} />
-              <View style={styles.sleep} />
-            </View>
+            </PrevView>
+            <DotContainer>
+              <SleepDot />
+              <WakeDot />
+              <SleepDot />
+            </DotContainer>
 
             <View>
-              <TouchableOpacity
-                style={{ justifyContent: "flex-end" }}
-                onPress={() => navigation.navigate("welcome3")}
-              >
-                <Text style={{ color: "#FFFFFF" }}>Next</Text>
+              <TouchableOpacity onPress={() => navigation.navigate("welcome3")}>
+                <NextText>Next</NextText>
               </TouchableOpacity>
             </View>
-          </View>
-        </ImageBackground>
-      </ImageBackground>
+          </NavigationContainer>
+        </BackGround>
+      </BackGround>
     </>
   );
 };
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  sleep: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: "#414141",
-    marginHorizontal: 3,
-  },
-  wake: {
-    width: 10,
-    height: 10,
-    borderRadius: 6,
-    backgroundColor: "#FFFFFF",
-    marginHorizontal: 3,
-  },
-  Container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingRight: "8%",
-    paddingLeft: "8%",
-    marginTop: 30,
-    alignItems: "center",
-    position: "absolute",
-    bottom: 60,
-    left: 0,
-    right: 0,
-    width: "100%",
-  },
-  dotContainer: {
-    flexDirection: "row",
-    paddingRight: "8%",
-  },
-  largeText: {
-    fontSize: 29,
-    color: "#27AE60",
-    fontWeight: "800",
-    letterSpacing: 2,
-  },
-  smallText: {
-    fontSize: 15,
-    color: "#27AE60",
-    letterSpacing: 0.6,
-  },
-});

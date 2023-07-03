@@ -1,26 +1,30 @@
+import { Text, Image, View, TouchableOpacity } from "react-native";
 import {
-  Text,
-  Image,
-  ImageBackground,
-  StyleSheet,
-  View,
-  TouchableOpacity,
-} from "react-native";
+  BackGround,
+  ContentText,
+  DotContainer,
+  HeaderView,
+  NavigationContainer,
+  NextText,
+  PrevView,
+  SleepDot,
+  WakeDot,
+  WelcomeText,
+} from "../components/welcome.styles";
 
 export const ThirdWelcome = ({ navigation }) => {
   return (
     <>
-      <ImageBackground
+      <BackGround
         resizeMode="cover"
         source={require("../../../../assets/images/intro3/intro3.png")}
         style={{ height: "100%" }}
       >
-        <ImageBackground
+        <BackGround
           resizeMode="cover"
           source={require("../../../../assets/images/Black_frame.png")}
-          style={{ height: "100%" }}
         >
-          <View style={styles.header}>
+          <HeaderView>
             <View>
               <Image
                 source={require("../../../../assets/images/intro3/left.png")}
@@ -42,7 +46,7 @@ export const ThirdWelcome = ({ navigation }) => {
                 source={require("../../../../assets/images/intro3/right.png")}
               />
             </View>
-          </View>
+          </HeaderView>
           <View
             style={{
               alignItems: "center",
@@ -56,89 +60,35 @@ export const ThirdWelcome = ({ navigation }) => {
             />
           </View>
           <View style={{ alignItems: "center", marginTop: "35%" }}>
-            <Text style={styles.largeText}>Save Money on</Text>
-            <Text style={styles.largeText}>Groceries with Our App</Text>
-            <Text style={styles.smallText}>
-              With our app, you can grow your own fresh
-            </Text>
-            <Text style={styles.smallText}>
-              produce and save money on groceries in the
-            </Text>
-            <Text style={styles.smallText}>
-              process, all while contributing to a more
-            </Text>
-            <Text style={styles.smallText}>sustainable future.</Text>
+            <WelcomeText> Save Money on Groceries with Our App</WelcomeText>
+            <ContentText>
+              With our app, you can grow your own fresh produce and save money
+              on groceries in the process, all while contributing to a more
+              sustainable future.
+            </ContentText>
           </View>
 
-          <View style={styles.Container}>
-            <View>
+          <NavigationContainer>
+            <PrevView>
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Text style={{ color: "#FFFFFF" }}>Prev</Text>
               </TouchableOpacity>
-            </View>
-            <View style={styles.dotContainer}>
-              <View style={styles.sleep} />
-              <View style={styles.sleep} />
-              <View style={styles.wake} />
-            </View>
-
+            </PrevView>
+            <DotContainer>
+              <SleepDot />
+              <SleepDot />
+              <WakeDot />
+            </DotContainer>
             <View>
-              <TouchableOpacity onPress={() => navigation.navigate("Account")}>
-                <Text style={{ color: "#FFFFFF" }}>Next</Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate("goingToAccount")}
+              >
+                <NextText>Next</NextText>
               </TouchableOpacity>
             </View>
-          </View>
-        </ImageBackground>
-      </ImageBackground>
+          </NavigationContainer>
+        </BackGround>
+      </BackGround>
     </>
   );
 };
-const styles = StyleSheet.create({
-  header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  sleep: {
-    width: 12,
-    height: 12,
-    borderRadius: 6,
-    backgroundColor: "#414141",
-    marginHorizontal: 3,
-  },
-  wake: {
-    width: 10,
-    height: 10,
-    borderRadius: 6,
-    backgroundColor: "#FFFFFF",
-    marginHorizontal: 3,
-  },
-  Container: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    paddingRight: "8%",
-    paddingLeft: "8%",
-    marginTop: 30,
-    alignItems: "center",
-    position: "absolute",
-    bottom: 60,
-    left: 0,
-    right: 0,
-    width: "100%",
-  },
-  dotContainer: {
-    flexDirection: "row",
-    paddingRight: "8%",
-  },
-  largeText: {
-    fontSize: 29,
-    color: "#27AE60",
-    fontWeight: "800",
-    letterSpacing: 2,
-  },
-  smallText: {
-    fontSize: 15,
-    color: "#27AE60",
-    letterSpacing: 0.6,
-  },
-});
