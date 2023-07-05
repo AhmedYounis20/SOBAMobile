@@ -4,7 +4,6 @@ import { TransitionPresets } from "@react-navigation/stack";
 import { ApplicationNavigator } from "./application.navigator";
 import { DiseaseDetectorNavigator } from "./diseasedetection.navigator";
 import { AccountNavigator } from "./account.navigator";
-import Notes from "../../features/notes/screens/notes.screen";
 
 const Drawer = createDrawerNavigator();
 export const AppNavigator = () => {
@@ -33,7 +32,6 @@ export const AppNavigator = () => {
         component={DiseaseDetectorNavigator}
       />
       <Drawer.Screen name="Account" component={AccountNavigator} />
-      <Drawer.Screen name="Notes" component={Notes} />
     </Drawer.Navigator>
   );
 };
