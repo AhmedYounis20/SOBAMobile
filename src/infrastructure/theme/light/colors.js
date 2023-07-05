@@ -9,6 +9,7 @@ export const colors = {
     primaryTransparent: "rgba(39,174,96,0.5)",
     inverse: "#FFFFFF",
     disabled: "#9D9D9D",
+    outlineActive: "#27AE60",
     // secondary: "#757575",
     // tertiary: "#F1F1F1",
     // quaternary: "#FFFFFF",
