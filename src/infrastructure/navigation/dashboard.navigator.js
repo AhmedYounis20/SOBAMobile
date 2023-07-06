@@ -6,6 +6,7 @@ import { DashboardScreen } from "../../features/dashboard/screens/dashboard.scre
 import { ProfileNavigator } from "./profile.navigator";
 import { GreenHouseScreen } from "../../features/greenhouse/screens/greenhouse.screen";
 import { SensorControl } from "../../features/sensor/screens/sensorControl.screen";
+import FarmMap from "../../features/farmMap/screens/farmMap.screen";
 
 const DashboardStack = createStackNavigator();
 export const DashboardNavigator = () => {
@@ -21,6 +22,7 @@ export const DashboardNavigator = () => {
       <DashboardStack.Screen name="Greenhouse" component={GreenHouseScreen} />
       <DashboardStack.Screen name="SensorControl" component={SensorControl} />
       <DashboardStack.Screen name="Profile" component={ProfileNavigator} />
+      {/* <DashboardStack.Screen name="Farm Map" component={FarmMap} /> */}
     </DashboardStack.Navigator>
   );
 };
