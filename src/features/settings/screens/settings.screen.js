@@ -4,6 +4,7 @@ import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import styled from "styled-components";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { HairLine } from "../../../components/hairlines/hairline.component";
 
 const Background = styled.View`
   height: 14%;
@@ -19,20 +20,28 @@ const Background = styled.View`
 const SettingsTitle = styled.Text`
   font-family: ${(props) => props.theme.fonts.title};
   font-size: ${(props) => props.theme.fontSizes.title};
-  margin:20px 10px;
+  margin: 20px 10px;
+  color: ${(props) => props.theme.colors.text.whiteBlack};
+`;
+
+const SettingText = styled.Text`
+  font-family: ${(props) => props.theme.fonts.text};
+  font-size: ${(props) => props.theme.fontSizes.body};
+  color: ${(props) => props.theme.colors.text.whiteBlack};
 `;
 
 const SettingsView = styled.View`
-  gap: 10px;
+gap: 10px;
 `;
 
 const SettingView = styled.View`
-  flex-direction: row;
-  align-items: center;
-  gap: 16px;
-  padding: 8px;
-  background-color: ${(props) => props.theme.colors.bg.secondary};
+flex-direction: row;
+align-items: center;
+gap: 16px;
+padding: 8px;
+margin: 5px 10px;
 `;
+// background-color: ${(props) => props.theme.colors.bg.secondary};
 
 export default function Settings() {
   const { theme } = useContext(ThemeContext);
@@ -46,54 +55,54 @@ export default function Settings() {
             name="person"
             iconType={IconTypes.Ionicons}
             size={24}
-            color={theme.colors.ui.primary}
+            color={theme.colors.ui.primaryTransparent}
           />
-          <Text>Profile</Text>
+          <SettingText>Profile</SettingText>
         </SettingView>
         <SettingView>
           <Icon
             name="notifications"
             iconType={IconTypes.Ionicons}
             size={24}
-            color={theme.colors.ui.primary}
+            color={theme.colors.ui.primaryTransparent}
           />
-          <Text>Notifications</Text>
+          <SettingText>Notifications</SettingText>
         </SettingView>
         <SettingView>
           <Icon
             name="moon"
             iconType={IconTypes.Ionicons}
             size={24}
-            color={theme.colors.ui.primary}
+            color={theme.colors.ui.primaryTransparent}
           />
-          <Text>Dark theme</Text>
+          <SettingText>Dark theme</SettingText>
         </SettingView>
         <SettingView>
           <Icon
             name="share"
             iconType={IconTypes.FontAwesome}
             size={24}
-            color={theme.colors.ui.primary}
+            color={theme.colors.ui.primaryTransparent}
           />
-          <Text>Tell your friends</Text>
+          <SettingText>Share the app</SettingText>
         </SettingView>
         <SettingView>
           <Icon
             name="help-circle-outline"
             iconType={IconTypes.Ionicons}
             size={24}
-            color={theme.colors.ui.primary}
+            color={theme.colors.ui.primaryTransparent}
           />
-          <Text>Help</Text>
+          <SettingText>Help</SettingText>
         </SettingView>
         <SettingView>
           <Icon
             name="log-out"
             iconType={IconTypes.Feather}
             size={24}
-            color={theme.colors.ui.primary}
+            color={theme.colors.ui.primaryTransparent}
           />
-          <Text>Log out</Text>
+          <SettingText>Log out</SettingText>
         </SettingView>
       </SettingsView>
     </SafeArea>
