@@ -20,7 +20,7 @@ const infoList = [
 
   {
     property: "Location",
-    value: "www.behance.net/amandasmith25",
+    value: "Egypt,Tanta",
   },
 ];
 

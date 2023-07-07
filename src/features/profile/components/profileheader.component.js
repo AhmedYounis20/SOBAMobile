@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import { MaterialIcons, Feather } from "@expo/vector-icons";
-import { ImageBackground, Image } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
+import { useContext } from "react";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
 const ProfileHeaderViews = styled.View``;
 
@@ -53,27 +55,35 @@ const SettingsView = styled.View`
 `;
 
 export const ProfileHeader = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   return (
     <ProfileHeaderViews>
       <ProfileCover>
         <Cover>
           <ProfileHeaderViews>
             <NavigationButtonsView>
-              <MaterialIcons
-                name="navigate-before"
-                size={24}
-                color="white"
-                onPress={() => navigation.goBack()}
-              />
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Icon
+                  name="navigate-before"
+                  iconType={IconTypes.MaterialIcons}
+                  size={24}
+                  color={theme.colors.ui.primaryTransparent}
+                  onPress={() => navigation.goBack()}
+                />
+              </TouchableOpacity>
               <SettingsView>
-                <Feather name="settings" size={24} color="white" />
+                <Icon
+                  name="settings"
+                  iconType={IconTypes.Feather}
+                  size={24}
+                  color={theme.colors.ui.primaryTransparent}
+                />
               </SettingsView>
             </NavigationButtonsView>
           </ProfileHeaderViews>
         </Cover>
       </ProfileCover>
       <ProfileAvatar
-        // source={{ uri: "https://bootdey.com/img/Content/avatar/avatar6.png" }}
         source={require("../../../../assets/profile_picture.png")}
       />
       <ProfileNameView>

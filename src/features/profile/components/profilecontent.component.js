@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { InfoRow } from "./inforow.component";
-import { HairLine } from "../../../components/hairlines/hairline.component";
 
 const ProfileContentView = styled.View`
   margin-top: 16px;
