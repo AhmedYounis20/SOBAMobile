@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "616551042436",
+    "project_id": "sobanotifications",
+    "storage_bucket": "sobanotifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:616551042436:android:8c7df253ec2a7049e6a1d1",
+        "android_client_info": {
+          "package_name": "com.ahmedyounis20.SOBAMobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "616551042436-8utdmihph7omnft5a3d60mjusg6aecv1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahmedyounis20.SOBAMobile",
+            "certificate_hash": "d22048673e454a106fcf9a546c7d4c71a5324d12"
+          }
+        },
+        {
+          "client_id": "616551042436-pqln35t54frjvh59rdcm048kt42a1h77.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahmedyounis20.SOBAMobile",
+            "certificate_hash": "e86e3ce477e71e2f023a1c4ad96b44bc2e1fb721"
+          }
+        },
+        {
+          "client_id": "616551042436-o0v9g328muleep0shkvqdjfc91alv9qn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAGSnq1TWxDp5jCFjNGyAzy-qw2uvqfMJE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "616551042436-o0v9g328muleep0shkvqdjfc91alv9qn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
