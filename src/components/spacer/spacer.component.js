@@ -11,14 +11,14 @@ const sizeVariant = {
   small: 1,
   medium: 2,
   large: 3,
-  xl:4
+  xl: 4,
 };
 
 const getVariant = (position, size, theme) => {
   const sizeIndex = sizeVariant[size];
   const positionIndex = positionVariant[position];
   const space = theme.space[sizeIndex];
-  
+
   return `${positionVariant[position]}:${space}`;
 };
 

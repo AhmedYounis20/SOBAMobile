@@ -19,7 +19,6 @@ export const DisDetectSecondPage = ({ navigation }) => {
         <Background
           resizeMode="cover"
           source={require("../../../../assets/images/Black_frame.png")}
-          style={{ height: "100%" }}
         >
           <View style={{ alignItems: "center", marginTop: "5%" }}>
             <TitleText>Here’s how to get started: </TitleText>

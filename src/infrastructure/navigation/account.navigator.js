@@ -5,6 +5,7 @@ import {
 import { LoginScreen } from "../../features/account/screens/login.screen";
 import { AccountScreen } from "../../features/account/screens/account.screen";
 import { RegisterScreen } from "../../features/account/screens/register.screen";
+import { View } from "react-native";
 
 const AccountStack = createStackNavigator();
 
@@ -13,7 +14,7 @@ export const AccountNavigator = () => {
     <AccountStack.Navigator
       screenOptions={{
         headerShown: false,
-        ...TransitionPresets.SlideFromRightIOS,
+        ...TransitionPresets.ModalFadeTransition,
         gestureEnabled: true,
       }}
     >
