@@ -17,11 +17,6 @@ jobs:
           name: Install dependencies
           command: yarn install
       - run:
-          name: Configure EAS project
-          command: |
-            echo "yes" | npx eas-cli configure --project-id fe210bf5-bf4f-468c-bb14-a6ff474be9d8
-            echo "com.ahmedyounis20.SOBAMobile" | npx eas-cli android-configure --project-id fe210bf5-bf4f-468c-bb14-a6ff474be9d8
-      - run:
           name: Build APK
           command: |
             EAS_USERNAME=$EXPO_USERNAME EAS_PASSWORD=$EXPO_PASSWORD npx eas build --platform android
