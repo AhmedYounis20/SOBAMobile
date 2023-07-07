@@ -4,64 +4,84 @@ import {
   logout,
   saveUser,
   removeUser,
+  registerRequest,
 } from "./authentication.service";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { apiGet, apiPost } from "../apirequest/apirequest.service";
 
-
-const getSavedUser=async ()=>{
-  const data=await AsyncStorage.getItem("@user");
-  const user=JSON.parse(data);
+const getSavedUser = async () => {
+  const data = await AsyncStorage.getItem("@user");
+  const user = JSON.parse(data);
   return user;
-}
+};
 export const AuthenticationContext = createContext();
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState("");
+  const [userInfo, setUserInfo] = useState("");
   const [error, setError] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
 
   useEffect(() => {
-    const load=async()=>{
-        const usr=await getSavedUser();
-        if (usr) setUser(usr);
-        setIsLoading(false);
-    }
+    const load = async () => {
+      const usr = await getSavedUser();
+      if (usr) setUserInfo(usr);
+      setIsLoading(false);
+    };
     load();
-}, []);
+  }, []);
 
   useEffect(() => {
-    if (user) setUser(user);
-    setIsLoading(false);
-  }, [user]);
+    if (userInfo != null) {
+      const load = async () => {
+        console.log("Token: " + userInfo.token);
+        const res = await apiPost(
+          "api/authorize/GetUserByJwt",
+          userInfo.token
+        ).then((res) => {
+          setCurrentUser(res.json());
+          console.log(currentUser);
+          return currentUser;
+        });
+        console.log("usersr: " + res);
+      };
+      load();
+    }
+  }, [userInfo]);
 
-  const onLogin = (email, password) => {
-    loginrequest(email, password)
+  useEffect(() => {
+    if (userInfo) setUserInfo(userInfo);
+    setIsLoading(false);
+  }, [userInfo]);
+
+  const onLogin = (email, password, rememberMe) => {
+    setIsLoading(true);
+    loginrequest(email, password, rememberMe)
       .then((user) => {
-        setUser(user);
+        console.log("user:", user);
+        setUserInfo(user);
         setIsLoading(false);
       })
       .catch((error) => {
-        setError(error.toString().split(":").slice(-1));
+        setError(error);
         setIsLoading(false);
       });
   };
   const onLogout = () => {
     logout();
-    removeUser(user);
-    setUser(null);
+    removeUser(userInfo);
+    setUserInfo(null);
     setError(null);
   };
   const onRegister = (email, password, passwordConfirmation) => {
-    if (password !== passwordConfirmation) {
-      setError("Error:Password does not match");
-      return;
-    }
-    registerrequest(email, password)
+    setIsLoading(true);
+    registerRequest(email, password, passwordConfirmation)
       .then((user) => {
-        setUser(user);
+        console.log("user:", user);
+        setUserInfo(user);
         setIsLoading(false);
       })
       .catch((error) => {
-        setError(error.toString().split(":").slice(-1));
+        setError(error);
         setIsLoading(false);
       });
   };
@@ -69,13 +89,14 @@ export const AuthenticationContextProvider = ({ children }) => {
   return (
     <AuthenticationContext.Provider
       value={{
-        user,
+        userInfo,
         isLoading,
-        isAuthenticated: !!user,
+        isAuthenticated: !!userInfo,
         error,
         onLogin,
         onRegister,
         onLogout,
+        setError,
       }}
     >
       {children}
