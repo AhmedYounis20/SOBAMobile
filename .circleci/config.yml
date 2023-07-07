@@ -17,12 +17,15 @@ jobs:
           name: Install dependencies
           command: yarn install
       - run:
-          name: Login to Expo account
-          command: npx eas-cli login --username $EXPO_USERNAME --password $EXPO_PASSWORD
-      - run:
           name: Build APK
           command: |
             EAS_USERNAME=$EXPO_USERNAME EAS_PASSWORD=$EXPO_PASSWORD npx eas build --platform android
+      - run:
+          name: login email
+          command: echo "$EXPO_USERNAME"
+      - run:
+          name: login password
+          command: echo "$EXPO_PASSWORD"
 
 workflows:
   version: 2
