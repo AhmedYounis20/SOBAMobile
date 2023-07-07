@@ -11,11 +11,15 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Expo CLI
-          command: yarn global add expo-cli
+          name: Install EAS CLI
+          command: yarn global add eas-cli
       - run:
           name: Install dependencies
           command: yarn install
+      - run:
+          name: Build APK
+          command: |
+            EAS_USERNAME=$EXPO_USERNAME EAS_PASSWORD=$EXPO_PASSWORD npx eas build --platform android
 
 workflows:
   version: 2
