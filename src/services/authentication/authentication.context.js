@@ -34,15 +34,14 @@ export const AuthenticationContextProvider = ({ children }) => {
     if (userInfo != null) {
       const load = async () => {
         console.log("Token: " + userInfo.token);
-        const res = await apiPost(
-          "api/authorize/GetUserByJwt",
-          userInfo.token
-        ).then((res) => {
-          setCurrentUser(res.json());
-          console.log(currentUser);
-          return currentUser;
-        });
-        console.log("usersr: " + res);
+        const res = await apiPost("api/authorize/GetUserByJwt", userInfo.token)
+          .then((res) => res.json())
+          .then((res) => {
+            setCurrentUser(res);
+            console.log(currentUser);
+            return currentUser;
+          });
+        console.log("usersr: " + JSON.stringify(res));
       };
       load();
     }

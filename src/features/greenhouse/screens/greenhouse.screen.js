@@ -24,6 +24,8 @@ export const GreenHouseScreen = ({ navigation }) => {
       unit: "watt",
       icon: "sun",
       iconType: IconTypes.Feather,
+      minValue: 200,
+      maxValue: 2000,
     },
     {
       name: "Temperature",
@@ -31,6 +33,8 @@ export const GreenHouseScreen = ({ navigation }) => {
       unit: "℃",
       icon: "thermometer",
       iconType: IconTypes.Feather,
+      minValue: 10,
+      maxValue: 60,
     },
     {
       name: "watering",
@@ -38,6 +42,8 @@ export const GreenHouseScreen = ({ navigation }) => {
       unit: "ml",
       icon: "water",
       iconType: IconTypes.Entypo,
+      minValue: 200,
+      maxValue: 2000,
     },
     {
       name: "ventilation",
@@ -45,6 +51,8 @@ export const GreenHouseScreen = ({ navigation }) => {
       unit: "m/s",
       icon: "wind",
       iconType: IconTypes.Feather,
+      minValue: 20,
+      maxValue: 2000,
     },
   ];
 
@@ -72,6 +80,8 @@ export const GreenHouseScreen = ({ navigation }) => {
                 value={item.value}
                 unit={item.unit}
                 iconName={item.icon}
+                sensor={item}
+                sensors={sens}
                 iconType={item.iconType}
                 key={index}
               />

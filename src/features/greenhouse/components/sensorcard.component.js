@@ -30,6 +30,8 @@ export const SensorCard = ({
   unit,
   iconName,
   iconType,
+  sensor,
+  sensors,
 }) => {
   const { theme } = useContext(ThemeContext);
   const [isEnabled, setIsEnabled] = useState(false);
@@ -62,7 +64,14 @@ export const SensorCard = ({
           value={isEnabled}
         />
       </RowView>
-      <TouchableOpacity onPress={() => navigation.navigate("SensorControl")}>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("SensorControl", {
+            sensor: sensor,
+            sensors: sensors,
+          })
+        }
+      >
         <BodyView>
           <SensorTitle style={{ color: front_color }}>{name}</SensorTitle>
           <SensorData style={{ color: front_color }}>
