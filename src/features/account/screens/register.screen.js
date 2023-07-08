@@ -1,7 +1,6 @@
 import {
   AuthButton,
   AuthButtonView,
-  ErrorContainer,
   FirstPlant,
   FormView,
   FourthPlant,
@@ -19,21 +18,24 @@ import {
 } from "../components/account.styles";
 import { ActivityIndicator } from "react-native-paper";
 import { Spacer } from "../../../components/spacer/spacer.component";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 import { Text } from "../../../components/typography/text.component";
 import { Colors } from "react-native/Libraries/NewAppScreen";
-import { View } from "react-native";
+import { Keyboard, View } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import { CenterRow } from "../../welcome/components/welcome.styles";
 
 export const RegisterScreen = ({ navigation }) => {
-  const { error, isLoading, onLogin } = useContext(AuthenticationContext);
+  const { error, isLoading, onRegister, setError } = useContext(
+    AuthenticationContext
+  );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const passwordRef = useRef(null);
   const [showPasswordConfirmation, setShowPasswordConfirmation] =
     useState(false);
   const togglePassword = () => {
@@ -42,6 +44,8 @@ export const RegisterScreen = ({ navigation }) => {
   const togglePasswordConfirmation = () => {
     setShowPasswordConfirmation(!showPasswordConfirmation);
   };
+
+  useEffect(() => setError(null), []);
   return (
     <>
       <LoginBackGround>
@@ -87,16 +91,31 @@ export const RegisterScreen = ({ navigation }) => {
               <Input
                 label={"Email address"}
                 secureTextEntry={true}
-                onChangeText={(input) => setPassword(input)}
+                onChangeText={(input) => setEmail(input)}
                 textContentType="emailAddress"
                 keyboardType="email-address"
               />
             </InputFieldView>
+            <View style={{ alignSelf: "flex-start", left: 10 }}>
+              {error &&
+                error.UserName &&
+                error.UserName.map((item, index) => {
+                  return (
+                    <Text
+                      key={index}
+                      style={{ color: "red", fontWeight: "bold" }}
+                    >
+                      {item}
+                    </Text>
+                  );
+                })}
+            </View>
             <Spacer position={"top"} size={"large"} />
             <InputFieldView>
               <PasswordInput
+                ref={passwordRef}
                 label={"Password"}
-                secureTextEntry={showPassword}
+                secureTextEntry={!showPassword}
                 onChangeText={(input) => setPassword(input)}
               />
               <TouchableOpacity onPress={() => togglePassword()}>
@@ -107,11 +126,25 @@ export const RegisterScreen = ({ navigation }) => {
                 />
               </TouchableOpacity>
             </InputFieldView>
+            <View style={{ alignSelf: "flex-start", left: 10 }}>
+              {error &&
+                error.Password &&
+                error.Password.map((item, index) => {
+                  return (
+                    <Text
+                      key={index}
+                      style={{ color: "red", fontWeight: "bold" }}
+                    >
+                      {item}
+                    </Text>
+                  );
+                })}
+            </View>
             <Spacer position={"top"} size={"large"} />
             <InputFieldView>
               <PasswordInput
                 label={"Confirm password"}
-                secureTextEntry={showPasswordConfirmation}
+                secureTextEntry={!showPasswordConfirmation}
                 onChangeText={(input) => setPasswordConfirmation(input)}
               />
               <TouchableOpacity onPress={() => togglePasswordConfirmation()}>
@@ -122,27 +155,44 @@ export const RegisterScreen = ({ navigation }) => {
                 />
               </TouchableOpacity>
             </InputFieldView>
-            <Spacer position={"top"} size={"medium"} />
-            {error && (
-              <>
-                <ErrorContainer>
-                  <Text
-                    variation={error}
-                    style={{ color: "red", fontWeight: "bold" }}
-                  >
-                    {error[0]}
-                  </Text>
-                </ErrorContainer>
-                <Spacer position={"top"} size={"xl"} />
-              </>
-            )}
-
+            <View style={{ alignSelf: "flex-start", left: 10 }}>
+              {error &&
+                error.PasswordConfirm &&
+                error.PasswordConfirm.map((item, index) => {
+                  return (
+                    <Text
+                      key={index}
+                      style={{ color: "red", fontWeight: "bold" }}
+                    >
+                      {item}
+                    </Text>
+                  );
+                })}
+            </View>
+            <View style={{ alignSelf: "flex-start", left: 10 }}>
+              {error &&
+                error.errors &&
+                error.errors.map((item, index) => {
+                  return (
+                    <Text
+                      key={index}
+                      style={{ color: "red", fontWeight: "bold" }}
+                    >
+                      {`\u2022`}
+                      {item}
+                    </Text>
+                  );
+                })}
+            </View>
             <Spacer position={"top"} size={"xl"} />
             <AuthButtonView>
               {!isLoading ? (
                 <AuthButton
                   mode={"contained"}
-                  onPress={() => onLogin(email, password)}
+                  onPress={() => {
+                    onRegister(email, password, passwordConfirmation);
+                    Keyboard.dismiss();
+                  }}
                 >
                   Create an account
                 </AuthButton>

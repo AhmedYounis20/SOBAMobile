@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { Button } from "react-native-paper";
-import { ImageBackground, Image, Text } from "react-native";
+import {
+  ImageBackground,
+  Image,
+  Text,
+  KeyboardAvoidingView,
+  ScrollView,
+} from "react-native";
 import { TextInput } from "react-native-paper";
 export const AccountContainer = styled.View`
     background-color:rgba(255,255,255,0.3);
@@ -110,10 +116,14 @@ export const FourthPlant = styled(Image)`
   width: 100px;
 `;
 
-export const FormView = styled.View`
+export const FormView = styled(ScrollView).attrs({
+  showsVerticalScrollIndicator: false,
+  keyboardShouldPersistTaps: "always",
+})`
   height: 75%;
   width: 100%;
   bottom: 0px;
+  padding-top: 5px;
   top: 10%;
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;

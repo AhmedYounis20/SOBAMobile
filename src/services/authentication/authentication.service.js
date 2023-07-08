@@ -1,41 +1,104 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useState } from "react";
-export const loginrequest = (email, password) => {
+import { apiPost } from "../apirequest/apirequest.service";
+
+let loginError = { username: "", password: "" };
+let signUpError = { username: "", password: "", passwordConfirmation: "" };
+export const loginrequest = (email, password, rememberMe = false) => {
   const data = {
     username: email,
     password: password,
-    rememberMe: false,
+    rememberMe: rememberMe,
   };
 
-  const user = {
-    token:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6ImFobWVkWW91bmlzIiwibmFtZWlkIjoiMmQwODhiNWQtOTk5NC00MTEzLTVlY2ItMDhkYjI5NjU2ODViIiwiZW1haWwiOiIiLCJyb2xlIjoiNldQV1lJRTdJMldYQ1NURDVLQVcyRFJaUkdYSUhKUVYiLCJuYmYiOjE2ODMzMDM0ODAsImV4cCI6MTY4MzczNTQ4MCwiaWF0IjoxNjgzMzAzNDgwfQ.fcH-zB_DhvRCZY4bvlnHIziFzecutHwYz-CoAKc8wXc",
-  };
-  const load = async () => {
+  const load = async (resolve, reject) => {
     try {
-      // console.log(await AsyncStorage.getItem("@data"));
-      // const user = await fetch(
-      //   "https://c53c-156-221-26-227.ngrok-free.app/api/Authentication/AuthenticateJWT",
-      //   {
-      //     method: "POST",
-      //     headers: {
-      //       "Content-Type": "application/json",
-      //     },
-      //     body: JSON.stringify(data),
-      //   }
-      // ).then((res) => res.json());
-      if (user) saveUser(user);
+      let isOk = true;
+      let loginError = {}; // Define loginError object
+      const result = await apiPost("api/authorize/AuthenticateJWT", data).then(
+        (res) => {
+          console.log("res:" + JSON.stringify(res));
+          isOk = res.ok;
+          return res.json();
+        }
+      );
+      console.log("data sent: " + JSON.stringify(data));
+      if (!isOk) {
+        // loginError = result;
+        if (result == "Wrong Password") loginError = { Password: [result] };
+        else if (result == "User does not exist")
+          loginError = { UserName: [result] };
+        else if (typeof result === "string" || result instanceof String) {
+          loginError = { errors: [result] };
+        } else {
+          loginError = result.errors;
+        }
+        console.log("loginError: " + JSON.stringify(loginError));
+        console.log("result: " + JSON.stringify(result));
+        reject(loginError);
+      } else {
+        // Replace dataToSave with the appropriate variable
+        saveUser(result);
+      }
+
+      resolve(AsyncStorage.getItem("@user")); // Move resolve here
     } catch (error) {
       console.log(error);
-    }
-  };
-  load();
-  return new Promise((resolve, reject) => {
-    try {
-      resolve(AsyncStorage.getItem("@user"));
-    } catch (error) {
       reject(error);
     }
+  };
+
+  return new Promise((resolve, reject) => {
+    load(resolve, reject); // Call load function
+  });
+};
+
+export const registerRequest = (email, password, passwordConfirmation) => {
+  const data = {
+    username: email,
+    password: password,
+    passwordConfirm: passwordConfirmation,
+  };
+
+  const load = async (resolve, reject) => {
+    try {
+      let isOk = true;
+      let registerError = {}; // Define loginError object
+      const result = await apiPost("api/authorize/register", data).then(
+        (res) => {
+          console.log("res:" + JSON.stringify(res));
+          isOk = res.ok;
+          return res.json();
+        }
+      );
+
+      if (!isOk) {
+        // loginError = result;
+        if (result == "Password") registerError = { Password: [result] };
+        else if (result == "User already exists!")
+          registerError = { UserName: [result] };
+        else if (typeof result === "string" || result instanceof String) {
+          registerError = { errors: [result] };
+        } else {
+          registerError = result.errors;
+        }
+        console.log("registerError: " + JSON.stringify(registerError));
+        console.log("result: " + JSON.stringify(result));
+        reject(registerError);
+      } else {
+        // Replace dataToSave with the appropriate variable
+        saveUser(result);
+      }
+
+      resolve(AsyncStorage.getItem("@user")); // Move resolve here
+    } catch (error) {
+      console.log(error);
+      reject(error);
+    }
+  };
+
+  return new Promise((resolve, reject) => {
+    load(resolve, reject); // Call load function
   });
 };
 
@@ -43,8 +106,9 @@ export const logout = () => null;
 
 export const saveUser = async (user) => {
   const data = JSON.stringify(user);
-  
+
   await AsyncStorage.setItem("@user", `${data}`);
 };
 
-export const removeUser = async (user) => await AsyncStorage.removeItem(`@user`);
+export const removeUser = async (user) =>
+  await AsyncStorage.removeItem(`@user`);
