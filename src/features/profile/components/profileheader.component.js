@@ -1,48 +1,51 @@
 import styled from "styled-components";
-import { MaterialIcons, Feather } from "@expo/vector-icons";
-import { ImageBackground , Image } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
+import { useContext } from "react";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
 const ProfileHeaderViews = styled.View``;
 
 const ProfileCover = styled.View`
-  height: 180px;
-  background-color: blue;
+  height: 250px;
 `;
 
-const CoverImage = styled(ImageBackground)`
+const Cover = styled.View`
   flex: 1;
+  background-color: ${(props) => props.theme.colors.bg.secondary};
 `;
 
 const ProfileAvatar = styled(Image)`
   width: 89px;
   height: 89px;
   border-radius: 45px;
-  border-width: 4px;
-  border-color: white;
-  margin-top: 120px;
-  margin-left: 16px;
+  left: 38%;
+  top: 25%;
   position: absolute;
 `;
 
 const ProfileNameView = styled.View`
-  margin-top: 32px;
-  margin-left: 16px;
+  align-items: center;
+  left: 30%;
+  top: 70%;
+  position: absolute;
 `;
 
 const ProfileNameText = styled.Text`
   font-family: ${(props) => props.theme.fonts.title};
   font-size: ${(props) => props.theme.fontSizes.title};
+  color: ${(props) => props.theme.colors.text.primary};
 `;
 
 const UserNameText = styled.Text`
   font-family: ${(props) => props.theme.fonts.text};
+  color: ${(props) => props.theme.colors.text.primary};
 `;
 
 const NavigationButtonsView = styled.View`
   flex-direction: row;
   margin: 16px;
-  margin-top:45px;
-  
+  margin-top: 45px;
 `;
 
 const SettingsView = styled.View`
@@ -51,25 +54,36 @@ const SettingsView = styled.View`
   justify-content: flex-end;
 `;
 
-export const ProfileHeader = ({navigation}) => {
+export const ProfileHeader = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   return (
     <ProfileHeaderViews>
       <ProfileCover>
-        <CoverImage
-          source={require("../../../../assets/green_cover1.jpg")}
-        >
+        <Cover>
           <ProfileHeaderViews>
             <NavigationButtonsView>
-              <MaterialIcons name="navigate-before" size={24} color="white" onPress={()=>navigation.goBack()} />
+              <TouchableOpacity onPress={() => navigation.goBack()}>
+                <Icon
+                  name="navigate-before"
+                  iconType={IconTypes.MaterialIcons}
+                  size={24}
+                  color={theme.colors.ui.primaryTransparent}
+                  onPress={() => navigation.goBack()}
+                />
+              </TouchableOpacity>
               <SettingsView>
-                <Feather name="settings" size={24} color="white" />
+                <Icon
+                  name="settings"
+                  iconType={IconTypes.Feather}
+                  size={24}
+                  color={theme.colors.ui.primaryTransparent}
+                />
               </SettingsView>
             </NavigationButtonsView>
           </ProfileHeaderViews>
-        </CoverImage>
+        </Cover>
       </ProfileCover>
       <ProfileAvatar
-        // source={{ uri: "https://bootdey.com/img/Content/avatar/avatar6.png" }}
         source={require("../../../../assets/profile_picture.png")}
       />
       <ProfileNameView>

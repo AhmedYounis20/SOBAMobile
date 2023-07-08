@@ -1,23 +1,35 @@
-import { Modal, KeyboardAvoidingView, Platform } from "react-native";
-import { Text } from "../../../components/typography/text.component";
-import React, { useState } from "react";
+import {
+  Modal,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  TouchableOpacity,
+} from "react-native";
+import React, { useContext, useState } from "react";
 
 import {
-  NotesCard,
+  NotesView,
+  NotesTitle,
   NotesList,
   NoteItem,
+  NoteView,
   NoteText,
   NoteTime,
   AddNoteButton,
   ModalContainer,
   ModalCard,
+  AddText,
   ModalInput,
   ModalButtonContainer,
   SaveButton,
   CancelButton,
 } from "./notes.styles";
+import { Button } from "react-native-paper";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
-export const Notes = () => {
+export const NotesComponent = () => {
+  const { theme } = useContext(ThemeContext);
   const [notes, setNotes] = useState([]);
   const [note, setNote] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
@@ -37,20 +49,36 @@ export const Notes = () => {
     };
     const time = now.toLocaleTimeString("en-us", options);
     const newNote = { text: note, time: time };
-    setNotes([...notes, newNote]);
+    setNotes([newNote, ...notes]);
     setNote("");
     setModalVisible(false);
   };
 
+  const handleDeleteNote = (index) => {
+    const updatedNotes = [...notes];
+    updatedNotes.splice(index, 1);
+    setNotes(updatedNotes);
+  };
+
   return (
     <>
-      <NotesCard>
-        <Text>Notes</Text>
+      <NotesView>
+        <NotesTitle>Notes</NotesTitle>
         <NotesList showsVerticalScrollIndicator={false}>
           {notes.map((note, index) => (
             <NoteItem key={index}>
-              <NoteTime>{note.time}</NoteTime>
-              <NoteText>{note.text}</NoteText>
+              <NoteView>
+                <NoteTime>{note.time}</NoteTime>
+                <NoteText>{note.text}</NoteText>
+              </NoteView>
+              <TouchableOpacity onPress={() => handleDeleteNote(index)}>
+                <Icon
+                  name="delete"
+                  iconType={IconTypes.MaterialIcons}
+                  size={24}
+                  color={theme.colors.ui.error}
+                />
+              </TouchableOpacity>
             </NoteItem>
           ))}
         </NotesList>
@@ -61,7 +89,7 @@ export const Notes = () => {
         >
           Add Note
         </AddNoteButton>
-      </NotesCard>
+      </NotesView>
       <Modal transparent visible={modalVisible} animationType="fade">
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : null}
@@ -69,13 +97,16 @@ export const Notes = () => {
         >
           <ModalContainer>
             <ModalCard>
-              <Text>Add Note</Text>
+              <AddText>Add Note</AddText>
               <ModalInput
                 mode="outlined"
                 placeholder="Type your note here"
                 multiline={true}
                 numberOfLines={2}
                 value={note}
+                textColor={theme.colors.text.primary}
+                outlineColor={theme.colors.ui.disabled}
+                activeOutlineColor={theme.colors.ui.outlineActive}
                 onChangeText={handleNoteChange}
               />
               <ModalButtonContainer>

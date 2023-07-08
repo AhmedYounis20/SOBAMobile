@@ -1,12 +1,10 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { Button } from "react-native-paper";
-import { Notes } from "../components/notes.component";
 import { Topbar } from "../components/topbar.component";
 import { WeatherViewComponent } from "../components/weatherview.component";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { GreenHouses } from "../components/greenhouses.component";
-import { ScrollView, StatusBar, View } from "react-native";
+import { ScrollView, StatusBar, View,TouchableOpacity } from "react-native";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
 const TopContainer = styled.View`
@@ -56,7 +54,9 @@ export const DashboardScreen = ({ navigation }) => {
           {/* <Notes /> */}
         </MidContainer>
         <BottomContainer>
-          <GreenHousesText>Your GreenHouses</GreenHousesText>
+          <TouchableOpacity onPress={()=>navigation.navigate("AddGreenHouse")}>
+            <GreenHousesText>Your GreenHouses</GreenHousesText>
+          </TouchableOpacity>
           <GreenHouses navigation={navigation} />
         </BottomContainer>
       </ScrollView>
