@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
-import { FlatList, Image, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  TouchableOpacity,
+  TouchableOpacityBase,
+  View,
+} from "react-native";
 import { SensorCard } from "../components/sensorcard.component";
 import { IconTypes } from "../../../components/Icons/Icons.components";
 import { Card } from "react-native-paper";
@@ -55,10 +61,14 @@ export const GreenHouseScreen = ({ navigation }) => {
       >
         <TopSlider style={{ padding: 10 }}>
           <Card>
-            <Card.Cover
-              source={require("../../../../assets/green_house.jpg")}
-              style={{ height: "100%" }}
-            />
+            <TouchableOpacity
+              onPress={() => navigation.navigate("GreenHouseDetails")}
+            >
+              <Card.Cover
+                source={require("../../../../assets/green_house.jpg")}
+                style={{ height: "100%" }}
+              />
+            </TouchableOpacity>
           </Card>
         </TopSlider>
         <PageContent>
