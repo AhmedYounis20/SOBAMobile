@@ -10,7 +10,7 @@ export const NotesView = styled.View`
 `;
 
 export const NotesTitle = styled.Text`
-  font-family : ${(props) => props.theme.fonts.title}
+  font-family : ${(props) => props.theme.fonts.title};
   font-size: ${(props) => props.theme.fontSizes.title};
   color: ${(props) => props.theme.colors.text.white};
 `;
