@@ -24,9 +24,7 @@ export const ThemeContextProvider = ({ children }) => {
   };
   useEffect(() => {
     const operate = async () => {
-      await AsyncStorage.removeItem("@theme");
-
-      console.log(await getSavedTheme());
+      // await AsyncStorage.removeItem("@theme");
 
       if ((await getSavedTheme()) === null) {
         SaveTheme("light", setTheme);
