@@ -5,6 +5,7 @@ import {
 import { DashboardScreen } from "../../features/dashboard/screens/dashboard.screen";
 import { ProfileNavigator } from "./profile.navigator";
 import { GreenHouseScreen } from "../../features/greenhouse/screens/greenhouse.screen";
+import { AddGreenHouseScreen } from "../../features/addGreenhouse/screens/addGreenHouse.Screen";
 import { SensorControl } from "../../features/sensor/screens/sensorControl.screen";
 import Notes from "../../features/notes/screens/notes.screen";
 
@@ -22,6 +23,10 @@ export const DashboardNavigator = () => {
       <DashboardStack.Screen name="Greenhouse" component={GreenHouseScreen} />
       <DashboardStack.Screen name="SensorControl" component={SensorControl} />
       <DashboardStack.Screen name="Profile" component={ProfileNavigator} />
+      <DashboardStack.Screen
+        name="AddGreenHouse"
+        component={AddGreenHouseScreen}
+      />
       <DashboardStack.Screen name="Notes" component={Notes} />
     </DashboardStack.Navigator>
   );
