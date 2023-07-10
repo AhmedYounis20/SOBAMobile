@@ -10,3 +10,13 @@ export const GreenHouseDetailsScreen = ({ navigation }) => {
     </View>
   );
 };
+
+
+/*
+* N# of seasons
+* current season
+* types of plant that has been harvested
+* green house name and area
+* no. of sensors and actuators
+* ratio of healthy crops in each harvest
+*/
