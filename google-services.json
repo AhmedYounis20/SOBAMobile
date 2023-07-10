@@ -1,49 +1,94 @@
 {
   "project_info": {
-    "project_number": "616551042436",
-    "project_id": "sobanotifications",
-    "storage_bucket": "sobanotifications.appspot.com"
+    "project_number": "1074051282393",
+    "project_id": "notification-test-f5db5",
+    "storage_bucket": "notification-test-f5db5.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:616551042436:android:8c7df253ec2a7049e6a1d1",
+        "mobilesdk_app_id": "1:1074051282393:android:4cbd43f0961c807004d5c8",
         "android_client_info": {
-          "package_name": "com.ahmedyounis20.SOBAMobile"
+          "package_name": "com.ahmedibrahimali.SOBAMobile"
         }
       },
       "oauth_client": [
         {
-          "client_id": "616551042436-8utdmihph7omnft5a3d60mjusg6aecv1.apps.googleusercontent.com",
+          "client_id": "1074051282393-f1jsdstgdj0c29bd6f5l82fj8cnntavb.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.ahmedyounis20.SOBAMobile",
-            "certificate_hash": "d22048673e454a106fcf9a546c7d4c71a5324d12"
+            "package_name": "com.ahmedibrahimali.SOBAMobile",
+            "certificate_hash": "d288bac078e51f3dab884beb0db29760e7d6043b"
           }
         },
         {
-          "client_id": "616551042436-pqln35t54frjvh59rdcm048kt42a1h77.apps.googleusercontent.com",
+          "client_id": "1074051282393-icehqt98jbplr0u8mpooj7nblgfirla1.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.ahmedyounis20.SOBAMobile",
-            "certificate_hash": "e86e3ce477e71e2f023a1c4ad96b44bc2e1fb721"
+            "package_name": "com.ahmedibrahimali.SOBAMobile",
+            "certificate_hash": "620b2d43cc5c9d1d6738a2b690cd6f142d6f3ffc"
           }
         },
         {
-          "client_id": "616551042436-o0v9g328muleep0shkvqdjfc91alv9qn.apps.googleusercontent.com",
+          "client_id": "1074051282393-mlevcdlukdbsaac32bu1m1323tsbv05e.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAGSnq1TWxDp5jCFjNGyAzy-qw2uvqfMJE"
+          "current_key": "AIzaSyB-CfWyXwEs4EltuJQmWI2MXP8ZzY7MGCA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "616551042436-o0v9g328muleep0shkvqdjfc91alv9qn.apps.googleusercontent.com",
+              "client_id": "1074051282393-mlevcdlukdbsaac32bu1m1323tsbv05e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074051282393:android:de62bdafa1d49e7d04d5c8",
+        "android_client_info": {
+          "package_name": "com.ahmedibrahimali.notificationfirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074051282393-3hsrjr68hcdggmmqkcuhmd2rucc9ldn8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahmedibrahimali.notificationfirebase",
+            "certificate_hash": "8ea3c182119694ab089531891857a0757e1e04a9"
+          }
+        },
+        {
+          "client_id": "1074051282393-bv6kkvgb1u1qclui1tug5s3tcdqeg80u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ahmedibrahimali.notificationfirebase",
+            "certificate_hash": "ee0e4e0bf354df87917edc4d916a26a74d7ea8c0"
+          }
+        },
+        {
+          "client_id": "1074051282393-mlevcdlukdbsaac32bu1m1323tsbv05e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-CfWyXwEs4EltuJQmWI2MXP8ZzY7MGCA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074051282393-mlevcdlukdbsaac32bu1m1323tsbv05e.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
