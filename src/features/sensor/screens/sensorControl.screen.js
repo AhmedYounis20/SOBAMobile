@@ -23,6 +23,7 @@ import {
 import { LineChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { ScreenView } from "../../../components/views/screenView.component";
 const SensorTitle = styled(Text)`
   font-weight: bold;
   font-size: 20px;
@@ -52,7 +53,7 @@ export const SensorControl = ({ route, navigation }) => {
   ];
 
   return (
-    <SafeArea>
+    <ScreenView style={{ paddingTop: 20 }}>
       <Container>
         <View style={{ marginBottom: 20 }}>
           <SensorTitle>{sensor.name}</SensorTitle>
@@ -192,6 +193,6 @@ export const SensorControl = ({ route, navigation }) => {
           />
         </View>
       </Container>
-    </SafeArea>
+    </ScreenView>
   );
 };

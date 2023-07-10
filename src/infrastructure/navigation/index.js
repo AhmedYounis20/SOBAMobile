@@ -7,7 +7,6 @@ import { ThemeProvider } from "styled-components";
 import { WelcomeScreen } from "./welcomescreen.navigator";
 import { AccountNavigator } from "./account.navigator";
 import { WelcomeNavigator } from "./welcome.navigator";
-
 export const Navigation = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const { isAuthenticated } = useContext(AuthenticationContext);
@@ -15,6 +14,7 @@ export const Navigation = () => {
   useEffect(() => {
     console.log("auth", isAuthenticated);
   }, [isAuthenticated]);
+
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>

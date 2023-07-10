@@ -30,6 +30,7 @@ import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 // import { HairLine } from "../../../components/hairlines/hairline.component";
 import { CenterRow } from "../../welcome/components/welcome.styles";
 import styled from "styled-components";
+import { ScreenView } from "../../../components/views/screenView.component";
 export const LoginScreen = ({ navigation }) => {
   const { onLogin, error, isLoading, setError } = useContext(
     AuthenticationContext
@@ -43,7 +44,7 @@ export const LoginScreen = ({ navigation }) => {
     setShowPassword(!showPassword);
   };
   return (
-    <>
+    <ScreenView>
       <LoginBackGround>
         <PlantsView>
           <FirstPlant
@@ -285,6 +286,6 @@ export const LoginScreen = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-    </>
+    </ScreenView>
   );
 };

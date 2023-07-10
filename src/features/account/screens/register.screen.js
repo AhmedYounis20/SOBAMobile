@@ -26,6 +26,7 @@ import { Keyboard, View } from "react-native";
 import { TouchableOpacity } from "react-native";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import { CenterRow } from "../../welcome/components/welcome.styles";
+import { ScreenView } from "../../../components/views/screenView.component";
 
 export const RegisterScreen = ({ navigation }) => {
   const { error, isLoading, onRegister, setError } = useContext(
@@ -47,7 +48,7 @@ export const RegisterScreen = ({ navigation }) => {
 
   useEffect(() => setError(null), []);
   return (
-    <>
+    <ScreenView>
       <LoginBackGround>
         <PlantsView>
           <FirstPlant
@@ -316,6 +317,6 @@ export const RegisterScreen = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-    </>
+    </ScreenView>
   );
 };

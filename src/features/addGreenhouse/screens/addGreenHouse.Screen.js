@@ -5,9 +5,9 @@ import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 import { Platform, ScrollView } from "react-native";
 import * as Location from "expo-location";
-
+import { ScreenView as FullScreenView } from "../../../components/views/screenView.component";
 const Background = styled.View`
-  height: ${Platform.OS == "android" ? "12%" : "14%"};
+  height: 14%;
   width: 100%;
   position: absolute;
   top: 0px;
@@ -122,7 +122,7 @@ export const AddGreenHouseScreen = () => {
   }, []);
 
   return (
-    <SafeArea>
+    <FullScreenView>
       <Background>
         <ScreenTitle>add green house</ScreenTitle>
       </Background>
@@ -168,6 +168,6 @@ export const AddGreenHouseScreen = () => {
       <AddButton icon="plus-circle" mode="contained">
         Add Greenhouse
       </AddButton>
-    </SafeArea>
+    </FullScreenView>
   );
 };

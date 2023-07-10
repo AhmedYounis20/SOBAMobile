@@ -2,10 +2,11 @@ import React from "react";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { NotesComponent } from "../components/notes.component";
 import styled from "styled-components";
-import { Platform } from "react-native";
+import { Platform, StatusBar } from "react-native";
+import { ScreenView } from "../../../components/views/screenView.component";
 
 const Background = styled.View`
-  height: ${Platform.OS == "android" ? "12%": "14%"};
+  height: ${Platform.OS == "android" ? "12%" : "14%"};
   width: 100%;
   position: absolute;
   top: 0px;
@@ -17,9 +18,13 @@ const Background = styled.View`
 
 export default function Notes() {
   return (
-    <SafeArea>
+    <ScreenView
+      style={{
+        paddingTop: 30,
+      }}
+    >
       <Background />
       <NotesComponent />
-    </SafeArea>
+    </ScreenView>
   );
 }

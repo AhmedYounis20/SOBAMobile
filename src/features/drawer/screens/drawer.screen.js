@@ -19,6 +19,7 @@ import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 import { Switch } from "react-native-paper";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import styled from "styled-components";
+import { ScreenView } from "../../../components/views/screenView.component";
 
 const DarkThemeView = styled.View`
   flex: 1;
@@ -34,12 +35,12 @@ export const DrawerScreen = (props) => {
 
   const { navigation } = props;
   return (
-    <>
+    <ScreenView>
       <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
         <View
           style={{
-            height: 162,
-            paddingTop: 20,
+            height: 140,
+            paddingTop: 10,
             backgroundColor: theme.colors.bg.secondary,
           }}
         >
@@ -125,6 +126,6 @@ export const DrawerScreen = (props) => {
           />
         </DrawerSection>
       </DrawerContentScrollView>
-    </>
+    </ScreenView>
   );
 };

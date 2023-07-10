@@ -9,8 +9,9 @@ import {
 import { View, Image, Text, TouchableOpacity } from "react-native";
 import { Button } from "react-native-paper";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import { ScreenView } from "../../../components/views/screenView.component";
 export const AccountScreen = ({ navigation }) => (
-  <>
+  <ScreenView>
     <Background
       resizeMode="cover"
       source={require("../../../../assets/images/account/account.png")}
@@ -99,5 +100,5 @@ export const AccountScreen = ({ navigation }) => (
         </View>
       </View>
     </Background>
-  </>
+  </ScreenView>
 );

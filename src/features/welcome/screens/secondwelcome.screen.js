@@ -12,10 +12,11 @@ import {
   WakeDot,
   WelcomeText,
 } from "../components/welcome.styles";
+import { ScreenView } from "../../../components/views/screenView.component";
 
 export const SecondWelcome = ({ navigation }) => {
   return (
-    <>
+    <ScreenView>
       <BackGround
         resizeMode="cover"
         source={require("../../../../assets/images/intro2/intro2.png")}
@@ -80,6 +81,6 @@ export const SecondWelcome = ({ navigation }) => {
           </NavigationContainer>
         </BackGround>
       </BackGround>
-    </>
+    </ScreenView>
   );
 };

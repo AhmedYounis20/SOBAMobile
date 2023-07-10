@@ -4,10 +4,7 @@ import { View, Image, Text } from "react-native";
 import styled from "styled-components";
 import { ActivityIndicator, Button } from "react-native-paper";
 import { StatusBar } from "expo-status-bar";
-const ScreenView = styled.View`
-  flex: 1;
-  background-color: ${(props) => props.theme.colors.bg.primary};
-`;
+import { ScreenView } from "../../../components/views/screenView.component";
 
 const Background = styled.View`
   height: ${Platform.OS == "android" ? "12%" : "12%"};

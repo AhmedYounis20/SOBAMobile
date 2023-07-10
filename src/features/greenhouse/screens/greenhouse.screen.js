@@ -6,6 +6,8 @@ import { IconTypes } from "../../../components/Icons/Icons.components";
 import { Card } from "react-native-paper";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 import { useContext } from "react";
+import { StatusBar } from "react-native";
+import { ScreenView } from "../../../components/views/screenView.component";
 const TopSlider = styled.View`
   height: 40%;
   background-color: "red";
@@ -57,7 +59,11 @@ export const GreenHouseScreen = ({ navigation }) => {
   ];
 
   return (
-    <SafeArea>
+    <ScreenView
+      style={{
+        paddingTop: 30,
+      }}
+    >
       <View
         style={{ minHeight: "100%", backgroundColor: theme.colors.bg.primary }}
       >
@@ -89,6 +95,6 @@ export const GreenHouseScreen = ({ navigation }) => {
           />
         </PageContent>
       </View>
-    </SafeArea>
+    </ScreenView>
   );
 };

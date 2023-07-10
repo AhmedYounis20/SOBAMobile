@@ -8,10 +8,11 @@ import {
   TitleText,
   Background,
 } from "../components/guide.styles";
+import { ScreenView } from "../../../components/views/screenView.component";
 
 export const DisDetectSecondPage = ({ navigation }) => {
   return (
-    <>
+    <ScreenView>
       <Background
         resizeMode="cover"
         source={require("../../../../assets/images/diseaseDetectionGuide/page1.png")}
@@ -74,6 +75,6 @@ export const DisDetectSecondPage = ({ navigation }) => {
           </GuideButtonsView>
         </Background>
       </Background>
-    </>
+    </ScreenView>
   );
 };
