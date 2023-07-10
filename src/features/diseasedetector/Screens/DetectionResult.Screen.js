@@ -42,7 +42,7 @@ const PlantImage = styled.Image`
 `;
 
 const ResultText = styled(Text)`
-  font-size: 25px;
+  font-size: 20px;
   font-weight: bold;
   color: ${(props) => props.theme.colors.text.primary};
 `;
