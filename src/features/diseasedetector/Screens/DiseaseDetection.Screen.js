@@ -24,16 +24,24 @@ export const DiseaseDetectionScreen = ({ navigation }) => {
           <Text style={{ textAlign: "center" }}>
             We need your permission to show the camera
           </Text>
-          <Button onPress={requestPermission} title="grant permission" />
+          <Button
+            onPress={async () => {
+              await requestPermission();
+            }}
+            title="grant permission"
+          />
         </View>
       </SafeArea>
     );
   }
   const takePicture = async () => {
     if (cameraRef.current) {
-      requestPermission();
-      const { uri } = await cameraRef.current.takePictureAsync(false);
-      navigation.navigate("DetectionResult", { uri: uri });
+      await requestPermission();
+      const options = { quality: 1, base64: true };
+      const result = await cameraRef.current.takePictureAsync(options);
+      const { uri } = result;
+      console.log(uri);
+      navigation.navigate("DetectionResult", { img: result });
     }
   };
   function toggleCameraType() {
@@ -53,7 +61,8 @@ export const DiseaseDetectionScreen = ({ navigation }) => {
     // await getPredictions(result.assets[0].uri);
 
     if (!result.canceled) {
-      navigation.navigate("DetectionResult", { uri: result.assets[0].uri });
+      console.log(result.assets[0]);
+      navigation.navigate("DetectionResult", { img: result.assets[0] });
     }
   };
 
