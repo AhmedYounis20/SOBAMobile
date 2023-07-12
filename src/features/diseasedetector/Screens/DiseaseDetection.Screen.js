@@ -62,7 +62,7 @@ export const DiseaseDetectionScreen = ({ navigation }) => {
 
     if (!result.canceled) {
       console.log(result.assets[0]);
-      navigation.navigate("DetectionResult", { uri: result.assets[0] });
+      navigation.navigate("DetectionResult", { img: result.assets[0] });
     }
   };
 
