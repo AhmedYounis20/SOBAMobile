@@ -22,6 +22,7 @@ export const colors = {
     primary: "#F3F3F3",
     secondary: "#FFFFFF",
     inverse: "#27AE60",
+    inverse2: "#F3F3F3",
   },
   text: {
     primary: "#27AE60",
