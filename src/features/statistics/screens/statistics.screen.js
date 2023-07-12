@@ -1,4 +1,3 @@
-import { NotificationScreen } from "../../notifications/screens/notifications.screen";
 import React, { useContext, useEffect, useState } from "react";
 import { TextInput, View, Text, ScrollView } from "react-native";
 import styled from "styled-components";
@@ -7,13 +6,6 @@ import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { LineChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
-import {
-  Chart,
-  VerticalAxis,
-  HorizontalAxis,
-  Line,
-} from "react-native-responsive-linechart";
-import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const ItemsCenter = styled.View`
   align-items: center;
@@ -148,12 +140,6 @@ export const StatisticsScreen = () => {
 
     setIsAdd(!isAdd);
   };
-
-  // useEffect(() => {
-  //   console.log(cropTypes);
-  //   setHarvest();
-  //   console.log(harvest);
-  // }, []);
 
   return (
     <SafeArea>
