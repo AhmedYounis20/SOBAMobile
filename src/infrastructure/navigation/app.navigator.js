@@ -5,6 +5,9 @@ import { ApplicationNavigator } from "./application.navigator";
 import { DiseaseDetectorNavigator } from "./diseasedetection.navigator";
 import { AccountNavigator } from "./account.navigator";
 import { WelcomeNavigator } from "./welcome.navigator";
+import { ProfileNavigator } from "./profile.navigator";
+import Notes from "../../features/notes/screens/notes.screen";
+import { StatisticsScreen } from "../../features/statistics/screens/statistics.screen";
 
 const Drawer = createDrawerNavigator();
 export const AppNavigator = () => {
@@ -34,6 +37,9 @@ export const AppNavigator = () => {
       />
       <Drawer.Screen name="Account" component={AccountNavigator} />
       <Drawer.Screen name="welcome" component={WelcomeNavigator} />
+      <Drawer.Screen name="Profile" component={ProfileNavigator} />
+      <Drawer.Screen name="Notes" component={Notes} />
+      <Drawer.Screen name="Statistics" component={StatisticsScreen} />
     </Drawer.Navigator>
   );
 };

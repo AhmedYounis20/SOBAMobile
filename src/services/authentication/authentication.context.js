@@ -17,7 +17,7 @@ const getSavedUser = async () => {
 export const AuthenticationContext = createContext();
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [userInfo, setUserInfo] = useState("");
+  const [userInfo, setUserInfo] = useState(null);
   const [error, setError] = useState("");
   const [currentUser, setCurrentUser] = useState("");
 
@@ -32,18 +32,18 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (userInfo != null) {
-      const load = async () => {
-        console.log("Token: " + userInfo.token);
-        const res = await apiPost("api/authorize/GetUserByJwt", userInfo.token)
-          .then((res) => res.json())
-          .then((res) => {
-            setCurrentUser(res);
-            console.log(currentUser);
-            return currentUser;
-          });
-        console.log("usersr: " + JSON.stringify(res));
-      };
-      load();
+      // const load = async () => {
+      //   console.log("Token: " + userInfo.token);
+      //   const res = await apiPost("api/authorize/GetUserByJwt", userInfo.token)
+      //     .then((res) => res.json())
+      //     .then((res) => {
+      //       setCurrentUser(res);
+      //       console.log(currentUser);
+      //       return currentUser;
+      //     });
+      //   console.log("usersr: " + JSON.stringify(res));
+      // };
+      // load();
     }
   }, [userInfo]);
 
@@ -54,16 +54,18 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   const onLogin = (email, password, rememberMe) => {
     setIsLoading(true);
-    loginrequest(email, password, rememberMe)
-      .then((user) => {
-        console.log("user:", user);
-        setUserInfo(user);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setIsLoading(false);
-      });
+    // loginrequest(email, password, rememberMe)
+    //   .then((user) => {
+    //     console.log("user:", user);
+    //     setUserInfo(user);
+    //     setIsLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     setError(error);
+    //     setIsLoading(false);
+    //   });
+    setUserInfo("UserData");
+    setIsLoading(false);
   };
   const onLogout = () => {
     logout();
@@ -73,16 +75,18 @@ export const AuthenticationContextProvider = ({ children }) => {
   };
   const onRegister = (email, password, passwordConfirmation) => {
     setIsLoading(true);
-    registerRequest(email, password, passwordConfirmation)
-      .then((user) => {
-        console.log("user:", user);
-        setUserInfo(user);
-        setIsLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setIsLoading(false);
-      });
+    // registerRequest(email, password, passwordConfirmation)
+    //   .then((user) => {
+    //     console.log("user:", user);
+    //     setUserInfo(user);
+    //     setIsLoading(false);
+    //   })
+    //   .catch((error) => {
+    //     setError(error);
+    //     setIsLoading(false);
+    //   });
+    setUserInfo("UserData");
+    setIsLoading(false);
   };
 
   return (
