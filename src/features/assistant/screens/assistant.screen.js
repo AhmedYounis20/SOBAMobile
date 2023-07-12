@@ -43,7 +43,6 @@ export const FormBox = styled.View`
   z-index: 5;
   border-radius: 25px;
   align-self: center;
-
   top: 30 %;
 `;
 
