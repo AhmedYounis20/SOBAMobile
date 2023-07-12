@@ -20,6 +20,16 @@ import {
   Line,
 } from "react-native-responsive-linechart";
 
+export const Background = styled.View`
+  height: ${Platform.OS == "android" ? "12%" : "14%"};
+  width: 100%;
+  top: 0px;
+  right: 0px;
+  background-color: ${(props) => props.theme.colors.ui.primary};
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+  justify-content: center;
+`;
 export const AssistantScreen = () => {
   const { theme } = useContext(ThemeContext);
 
@@ -41,64 +51,67 @@ export const AssistantScreen = () => {
     Math.random() * 100,
   ];
   return (
-    <View
-      style={{
-        position: "absolute",
-        top: "35%",
-        alignSelf: "center",
-      }}
-    >
-      <LineChart
-        data={{
-          labels: [
-            "Jan",
-            "Feb",
-            "Mar",
-            "Apr",
-            "May",
-            "Jun",
-            "Jul",
-            "Aug",
-            "Sep",
-            "Oct",
-            "Nov",
-            "Dec",
-          ],
-          datasets: [
-            {
-              data: TimeSeriesData,
-            },
-          ],
-        }}
-        width={Dimensions.get("window").width - 10} // from react-native
-        height={280}
-        yAxisLabel=""
-        yAxisSuffix="ْkg"
-        yAxisInterval={1} // optional, defaults to 1
-        chartConfig={{
-          backgroundGradientFrom: theme.colors.bg.secondary,
-          backgroundGradientTo: theme.colors.bg.secondary,
-          decimalPlaces: 2, // optional, defaults to 2dp
-          color: (opacity = 1) => `rgba(120, 120, 120, ${opacity})`,
-          labelColor: (opacity = 1) => `rgba(120, 120, 120, ${opacity})`,
-          style: {
-            borderRadius: 16,
-          },
-          propsForDots: {
-            r: "6",
-            strokeWidth: "2",
-            stroke: "#ffa726",
-          },
-          propsForLabels: {
-            transform: [{ rotate: "-45deg" }], // Rotate the labels by -45 degrees
-          },
-        }}
-        bezier
+    <View>
+      <Background></Background>
+      <View
         style={{
-          marginVertical: 8,
-          borderRadius: 16,
+          position: "absolute",
+          top: "35%",
+          alignSelf: "center",
         }}
-      />
+      >
+        <LineChart
+          data={{
+            labels: [
+              "Jan",
+              "Feb",
+              "Mar",
+              "Apr",
+              "May",
+              "Jun",
+              "Jul",
+              "Aug",
+              "Sep",
+              "Oct",
+              "Nov",
+              "Dec",
+            ],
+            datasets: [
+              {
+                data: TimeSeriesData,
+              },
+            ],
+          }}
+          width={Dimensions.get("window").width - 10} // from react-native
+          height={280}
+          yAxisLabel=""
+          yAxisSuffix="ْkg"
+          yAxisInterval={1} // optional, defaults to 1
+          chartConfig={{
+            backgroundGradientFrom: theme.colors.bg.secondary,
+            backgroundGradientTo: theme.colors.bg.secondary,
+            decimalPlaces: 2, // optional, defaults to 2dp
+            color: (opacity = 1) => `rgba(120, 120, 120, ${opacity})`,
+            labelColor: (opacity = 1) => `rgba(120, 120, 120, ${opacity})`,
+            style: {
+              borderRadius: 16,
+            },
+            propsForDots: {
+              r: "6",
+              strokeWidth: "2",
+              stroke: "#ffa726",
+            },
+            propsForLabels: {
+              transform: [{ rotate: "-45deg" }], // Rotate the labels by -45 degrees
+            },
+          }}
+          bezier
+          style={{
+            marginVertical: 8,
+            borderRadius: 16,
+          }}
+        />
+      </View>
     </View>
   );
 };
