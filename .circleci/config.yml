@@ -11,8 +11,8 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Expo CLI
-          command: yarn global add expo-cli
+          name: Install EAS CLI
+          command: yarn add eas-cli@latest
       - run:
           name: Install dependencies
           command: yarn install

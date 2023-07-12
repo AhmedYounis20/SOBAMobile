@@ -16,6 +16,7 @@ export const Navigation = () => {
   useEffect(() => {
     console.log("auth", isAuthenticated);
   }, [isAuthenticated]);
+
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>

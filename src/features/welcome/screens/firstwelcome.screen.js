@@ -15,10 +15,11 @@ import {
   PrevView,
 } from "../components/welcome.styles";
 import styled from "styled-components";
+import { ScreenView } from "../../../components/views/screenView.component";
 
 export const FirstWelcome = ({ navigation }) => {
   return (
-    <>
+    <ScreenView>
       <BackGround
         resizeMode="cover"
         source={require("../../../../assets/images/intro1/intro1.png")}
@@ -75,6 +76,6 @@ export const FirstWelcome = ({ navigation }) => {
           </NavigationContainer>
         </BackGround>
       </BackGround>
-    </>
+    </ScreenView>
   );
 };

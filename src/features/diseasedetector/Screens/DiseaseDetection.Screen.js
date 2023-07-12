@@ -24,16 +24,24 @@ export const DiseaseDetectionScreen = ({ navigation }) => {
           <Text style={{ textAlign: "center" }}>
             We need your permission to show the camera
           </Text>
-          <Button onPress={requestPermission} title="grant permission" />
+          <Button
+            onPress={async () => {
+              await requestPermission();
+            }}
+            title="grant permission"
+          />
         </View>
       </SafeArea>
     );
   }
   const takePicture = async () => {
     if (cameraRef.current) {
-      requestPermission();
-      const { uri } = await cameraRef.current.takePictureAsync(false);
-      navigation.navigate("DetectionResult", { uri: uri });
+      await requestPermission();
+      const options = { quality: 1, base64: true };
+      const result = await cameraRef.current.takePictureAsync(options);
+      const { uri } = result;
+      console.log(uri);
+      navigation.navigate("DetectionResult", { img: result });
     }
   };
   function toggleCameraType() {
@@ -53,95 +61,90 @@ export const DiseaseDetectionScreen = ({ navigation }) => {
     // await getPredictions(result.assets[0].uri);
 
     if (!result.canceled) {
-      navigation.navigate("DetectionResult", { uri: result.assets[0].uri });
+      console.log(result.assets[0]);
+      navigation.navigate("DetectionResult", { uri: result.assets[0] });
     }
   };
 
   return (
-    <SafeArea>
-      <View style={{ flex: 1, backgroundColor: "black", paddingTop: 30 }}>
-        <View
+    <View style={{ flex: 1, backgroundColor: "black", paddingTop: 40 }}>
+      <View
+        style={{
+          height: "80%",
+          borderRadius: 30,
+          overflow: "hidden",
+        }}
+      >
+        <Camera
+          ref={cameraRef}
           style={{
-            height: "80%",
-            borderRadius: 30,
-            overflow: "hidden",
+            flex: 1,
+            aspectRatio: 1,
           }}
+          ratio={"1:1"}
+          type={type}
+          zoom={0.01}
         >
-          <Camera
-            ref={cameraRef}
-            style={{
-              flex: 1,
-              aspectRatio: 1,
-            }}
-            ratio={"1:1"}
-            type={type}
-            zoom={0.01}
-          >
-            {/* Your camera view */}
-          </Camera>
-        </View>
-        <View
-          style={{
-            position: "absolute",
-            bottom: 30,
-            alignSelf: "center",
-            alignItems: "center",
-            flexDirection: "row",
-            left: 15,
-          }}
-        >
-          <View
-            style={{ left: 30, paddingRight: 90, justifyContent: "center" }}
-          >
-            <TouchableOpacity onPress={pickImage}>
-              <Icon
-                iconType={IconTypes.Entypo}
-                name="image"
-                size={50}
-                color="white"
-              />
-            </TouchableOpacity>
-          </View>
-          <TouchableOpacity
-            onPress={takePicture}
-            style={{
-              alignSelf: "center",
-              flexDirection: "row",
-              justifyContent: "center",
-              backgroundColor: "transparent",
-              borderRadius: 70,
-              height: 90,
-              width: 90,
-              borderWidth: 3,
-              borderColor: "white",
-            }}
-          >
-            <View
-              style={{
-                borderRadius: 50,
-                backgroundColor: "white",
-                alignSelf: "center",
-                width: 80,
-                height: 80,
-                marginLeft: 1,
-              }}
+          {/* Your camera view */}
+        </Camera>
+      </View>
+      <View
+        style={{
+          position: "absolute",
+          bottom: 30,
+          alignSelf: "center",
+          alignItems: "center",
+          flexDirection: "row",
+          left: 15,
+        }}
+      >
+        <View style={{ left: 30, paddingRight: 90, justifyContent: "center" }}>
+          <TouchableOpacity onPress={pickImage}>
+            <Icon
+              iconType={IconTypes.Entypo}
+              name="image"
+              size={50}
+              color="white"
             />
           </TouchableOpacity>
+        </View>
+        <TouchableOpacity
+          onPress={takePicture}
+          style={{
+            alignSelf: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+            backgroundColor: "transparent",
+            borderRadius: 70,
+            height: 90,
+            width: 90,
+            borderWidth: 3,
+            borderColor: "white",
+          }}
+        >
           <View
-            style={{ paddingLeft: 100, right: 40, justifyContent: "center" }}
-          >
-            <TouchableOpacity onPress={toggleCameraType}>
-              <Icon
-                iconType={IconTypes.Entypo}
-                name="cycle"
-                size={50}
-                color={"rgba(255,255,255,0.7)"}
-              />
-            </TouchableOpacity>
-          </View>
+            style={{
+              borderRadius: 50,
+              backgroundColor: "white",
+              alignSelf: "center",
+              width: 80,
+              height: 80,
+              marginLeft: 1,
+            }}
+          />
+        </TouchableOpacity>
+        <View style={{ paddingLeft: 100, right: 40, justifyContent: "center" }}>
+          <TouchableOpacity onPress={toggleCameraType}>
+            <Icon
+              iconType={IconTypes.Entypo}
+              name="cycle"
+              size={50}
+              color={"rgba(255,255,255,0.7)"}
+            />
+          </TouchableOpacity>
         </View>
       </View>
-    </SafeArea>
+    </View>
   );
 };
 

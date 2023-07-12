@@ -6,6 +6,8 @@ import { IconTypes } from "../../../components/Icons/Icons.components";
 import { Card } from "react-native-paper";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 import { useContext } from "react";
+import { StatusBar } from "react-native";
+import { ScreenView } from "../../../components/views/screenView.component";
 const TopSlider = styled.View`
   height: 40%;
   background-color: "red";
@@ -24,6 +26,8 @@ export const GreenHouseScreen = ({ navigation }) => {
       unit: "watt",
       icon: "sun",
       iconType: IconTypes.Feather,
+      minValue: 200,
+      maxValue: 2000,
     },
     {
       name: "Temperature",
@@ -31,6 +35,8 @@ export const GreenHouseScreen = ({ navigation }) => {
       unit: "℃",
       icon: "thermometer",
       iconType: IconTypes.Feather,
+      minValue: 10,
+      maxValue: 60,
     },
     {
       name: "watering",
@@ -38,6 +44,8 @@ export const GreenHouseScreen = ({ navigation }) => {
       unit: "ml",
       icon: "water",
       iconType: IconTypes.Entypo,
+      minValue: 200,
+      maxValue: 2000,
     },
     {
       name: "ventilation",
@@ -45,11 +53,17 @@ export const GreenHouseScreen = ({ navigation }) => {
       unit: "m/s",
       icon: "wind",
       iconType: IconTypes.Feather,
+      minValue: 20,
+      maxValue: 2000,
     },
   ];
 
   return (
-    <SafeArea>
+    <ScreenView
+      style={{
+        paddingTop: 30,
+      }}
+    >
       <View
         style={{ minHeight: "100%", backgroundColor: theme.colors.bg.primary }}
       >
@@ -72,6 +86,8 @@ export const GreenHouseScreen = ({ navigation }) => {
                 value={item.value}
                 unit={item.unit}
                 iconName={item.icon}
+                sensor={item}
+                sensors={sens}
                 iconType={item.iconType}
                 key={index}
               />
@@ -79,6 +95,6 @@ export const GreenHouseScreen = ({ navigation }) => {
           />
         </PageContent>
       </View>
-    </SafeArea>
+    </ScreenView>
   );
 };

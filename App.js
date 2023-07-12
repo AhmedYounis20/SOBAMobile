@@ -1,11 +1,16 @@
 import { AuthenticationContextProvider } from "./src/services/authentication/authentication.context";
 import { Navigation } from "./src/infrastructure/navigation";
 import { LoadFonts } from "./src/services/fonts/fonts.services";
-import { ThemeContextProvider } from "./src/services/ThemeContext/Theme.context";
+import {
+  ThemeContext,
+  ThemeContextProvider,
+} from "./src/services/ThemeContext/Theme.context";
+import { useContext, useEffect } from "react";
 
 export default function App() {
   const isfontloaded = LoadFonts();
   if (!isfontloaded) return null;
+
   return (
     <ThemeContextProvider>
       <AuthenticationContextProvider>

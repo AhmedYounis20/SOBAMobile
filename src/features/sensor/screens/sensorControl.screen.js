@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { View } from "react-native";
 import Slider from "@react-native-community/slider";
 import { Text } from "../../../components/typography/text.component";
@@ -23,38 +23,61 @@ import {
 import { LineChart } from "react-native-chart-kit";
 import { Dimensions } from "react-native";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { ScreenView } from "../../../components/views/screenView.component";
 const SensorTitle = styled(Text)`
   font-weight: bold;
   font-size: 20px;
+  color: ${(props) => props.theme.colors.text.primary};
 `;
 
-export const SensorControl = () => {
+export const SensorControl = ({ route, navigation }) => {
   const { theme } = useContext(ThemeContext);
-  const sensors = [
-    { name: "sun", icon: IconTypes.Feather },
-    { name: "water", icon: IconTypes.Entypo },
-    { name: "thermometer", icon: IconTypes.Feather },
-    { name: "wind", icon: IconTypes.Feather },
+  const { sensor, sensors } = route.params;
+  const [sliderValue, setSliderValue] = useState(sensor.value);
+
+  useEffect(() => {
+    setSliderValue(sensor.value);
+    console.log(`val${sensor.value}`);
+  }, [sensor]);
+  const TimeSeriesData = [
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
+    Math.random() * 100,
   ];
 
   return (
-    <SafeArea>
+    <ScreenView style={{ paddingTop: 20 }}>
       <Container>
         <View style={{ marginBottom: 20 }}>
-          <SensorTitle>Sensor Control</SensorTitle>
+          <SensorTitle>{sensor.name}</SensorTitle>
         </View>
         <FansControlView>
           <View>
             <LeftFanView>
               <Switch />
-              <Icon name="fan" iconType={IconTypes.MaterialCommunityIcons} />
+              <Icon
+                name="fan"
+                iconType={IconTypes.MaterialCommunityIcons}
+                color={theme.colors.text.whiteBlack}
+              />
             </LeftFanView>
             <FanLabel>fan is off when window is open</FanLabel>
           </View>
 
           <View>
             <RightFanView>
-              <Icon name="fan" iconType={IconTypes.MaterialCommunityIcons} />
+              <Icon
+                name="fan"
+                iconType={IconTypes.MaterialCommunityIcons}
+                color={theme.colors.text.whiteBlack}
+              />
               <Switch />
             </RightFanView>
             <FanLabel>fan is off if humidity stable</FanLabel>
@@ -65,11 +88,11 @@ export const SensorControl = () => {
           <ProgressContainer>
             <ProgressCard />
             <CircularProgress
-              value={60}
+              value={sensor.value}
               radius={130}
               duration={1000}
               maxValue={200}
-              title={"ْC"}
+              title={sensor.unit}
               clockwise
               rotation={180}
               strokeLinecap="round"
@@ -88,33 +111,49 @@ export const SensorControl = () => {
             }}
           >
             <View style={{ marginBottom: 50 }}>
-              <SliderText>35 ْC</SliderText>
+              <SliderText>{sliderValue}</SliderText>
             </View>
             <Slider
-              value={50}
+              value={sensor.value}
               style={{
                 width: 200,
                 height: 100,
                 transform: [{ rotate: "-90deg" }],
               }}
+              onValueChange={(val) => {
+                setSliderValue(val);
+                console.log(val);
+              }}
               step={20}
               maximumTrackTintColor={"rgba(120,120,120,0.25)"}
-              minimumValue={0}
-              maximumValue={100}
+              minimumValue={sensor.minValue}
+              maximumValue={sensor.maxValue}
             />
           </View>
         </CenterView>
         <Row>
-          {sensors.map((item, index) => (
-            <RoundedButton key={index}>
-              <Icon
-                name={item.name}
-                iconType={item.icon}
-                size={30}
-                color={"white"}
-              />
-            </RoundedButton>
-          ))}
+          {sensors.map((item, index) => {
+            console.log(item);
+            return (
+              <RoundedButton
+                key={index}
+                color={item.name == sensor.name ? "white" : "black"}
+                onPress={() =>
+                  navigation.navigate("SensorControl", {
+                    sensor: item,
+                    sensors: sensors,
+                  })
+                }
+              >
+                <Icon
+                  name={item.icon}
+                  iconType={item.iconType}
+                  size={30}
+                  color={item.name != sensor.name ? "white" : "black"}
+                />
+              </RoundedButton>
+            );
+          })}
         </Row>
         <View>
           <LineChart
@@ -122,18 +161,7 @@ export const SensorControl = () => {
               labels: ["January", "February", "March", "April", "May", "June"],
               datasets: [
                 {
-                  data: [
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                    Math.random() * 100,
-                  ],
+                  data: TimeSeriesData,
                 },
               ],
             }}
@@ -165,6 +193,6 @@ export const SensorControl = () => {
           />
         </View>
       </Container>
-    </SafeArea>
+    </ScreenView>
   );
 };
