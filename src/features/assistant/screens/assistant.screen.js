@@ -19,6 +19,7 @@ import {
   HorizontalAxis,
   Line,
 } from "react-native-responsive-linechart";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export const Background = styled.View`
   height: ${Platform.OS == "android" ? "12%" : "14%"};
@@ -30,8 +31,18 @@ export const Background = styled.View`
   border-bottom-left-radius: 12px;
   justify-content: center;
 `;
+export const SupportTitle = styled.Text`
+font-family : ${(props) => props.theme.fonts.title}
+font-size: ${(props) => props.theme.fontSizes.title};
+color: ${(props) => props.theme.colors.text.white};
+margin-left:8%
+`;
 export const AssistantScreen = () => {
   const { theme } = useContext(ThemeContext);
+  const [isAdd, setIsAdd] = useState(false);
+  const OnAdd = () => {
+    setIsAdd(true);
+  };
 
   const TimeSeriesData = [
     Math.random() * 100,
@@ -51,8 +62,10 @@ export const AssistantScreen = () => {
     Math.random() * 100,
   ];
   return (
-    <View>
-      <Background></Background>
+    <SafeArea>
+      <Background>
+        <SupportTitle>Harvest</SupportTitle>
+      </Background>
       <View
         style={{
           position: "absolute",
@@ -111,7 +124,36 @@ export const AssistantScreen = () => {
             borderRadius: 16,
           }}
         />
+        <TouchableOpacity
+          style={{
+            alignSelf: "center",
+            alignItems: "center",
+            marginTop: "10%",
+            width: "95%",
+            backgroundColor: "red",
+            borderRadius: 25,
+          }}
+          onPress={OnAdd}
+        >
+          <Text style={{ fontSize: 18, fontWeight: "600" }}>Add</Text>
+        </TouchableOpacity>
       </View>
-    </View>
+      {isAdd && (
+        <View
+          style={{
+            position: "absolute",
+            width: "95%",
+            borderRadius: 25,
+            backgroundColor: "red",
+            top: "50%",
+            alignSelf: "center",
+          }}
+        >
+          <View style={{ alignItems: "center" }}>
+            <Text>ddffdfd</Text>
+          </View>
+        </View>
+      )}
+    </SafeArea>
   );
 };
