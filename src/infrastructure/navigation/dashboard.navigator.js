@@ -24,7 +24,7 @@ export const DashboardNavigator = () => {
     >
       <DashboardStack.Screen name="dashboard" component={DashboardScreen} />
       <DashboardStack.Screen name="SensorControl" component={SensorControl} />
-      <DashboardStack.Screen name="Profile" component={ProfileNavigator} />
+
       <DashboardStack.Screen
         name="Notifications"
         component={NotificationScreen}
@@ -39,7 +39,6 @@ export const DashboardNavigator = () => {
         component={AddGreenHouseScreen}
       />
       <DashboardStack.Screen name="CropDetails" component={CropDetailsScreen} />
-      <DashboardStack.Screen name="Notes" component={Notes} />
     </DashboardStack.Navigator>
   );
 };
