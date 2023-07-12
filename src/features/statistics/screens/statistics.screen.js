@@ -89,9 +89,26 @@ export const CropText = styled.Text`
   color: ${(props) => props.theme.colors.text.primary};
 `;
 
-export const AssistantScreen = () => {
+export const StatisticsScreen = () => {
   const { theme } = useContext(ThemeContext);
-  const [harvest, setHarvest] = useState({});
+  const [harvest, setHarvest] = useState({
+    apple: {
+      amount: [500, 600, 550, 650],
+      month: ["mar", "apr", "aug", "oct"],
+    },
+    orange: {
+      amount: [500, 600, 550, 650, 700],
+      month: ["mar", "apr", "aug", "oct", "nov"],
+    },
+    bannana: {
+      amount: [500, 600, 700],
+      month: ["mar", , "oct", "nov"],
+    },
+    tomatoes: {
+      amount: [100, 200, 250, 350, 300],
+      month: ["mar", "apr", "aug", "oct", "nov"],
+    },
+  });
   const [cropTypes, setCropTypes] = useState([
     "apple",
     "orange",
@@ -132,28 +149,11 @@ export const AssistantScreen = () => {
     setIsAdd(!isAdd);
   };
 
-  useEffect(() => {
-    console.log(cropTypes);
-    setHarvest({
-      apple: {
-        amount: [500, 600, 550, 650],
-        month: ["mar", "apr", "aug", "oct"],
-      },
-      orange: {
-        amount: [500, 600, 550, 650, 700],
-        month: ["mar", "apr", "aug", "oct", "nov"],
-      },
-      bannana: {
-        amount: [500, 600, 700],
-        month: ["mar", , "oct", "nov"],
-      },
-      tomatoes: {
-        amount: [100, 200, 250, 350, 300],
-        month: ["mar", "apr", "aug", "oct", "nov"],
-      },
-    });
-    console.log(harvest);
-  }, []);
+  // useEffect(() => {
+  //   console.log(cropTypes);
+  //   setHarvest();
+  //   console.log(harvest);
+  // }, []);
 
   return (
     <SafeArea>
