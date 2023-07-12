@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { WelcomeScreen } from "./welcomescreen.navigator";
 import { AccountNavigator } from "./account.navigator";
 import { WelcomeNavigator } from "./welcome.navigator";
+import { NotificationMessage } from "../../features/notifications/screens/notificationMessage.screen";
 
 export const Navigation = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
@@ -18,7 +19,14 @@ export const Navigation = () => {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
-        {isAuthenticated ? <AppNavigator /> : <WelcomeNavigator />}
+        {isAuthenticated ? (
+          <>
+            <NotificationMessage />
+            <AppNavigator />
+          </>
+        ) : (
+          <WelcomeNavigator />
+        )}
       </NavigationContainer>
     </ThemeProvider>
   );
