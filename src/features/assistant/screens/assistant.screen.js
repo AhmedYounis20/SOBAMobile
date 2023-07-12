@@ -110,18 +110,18 @@ export const AssistantScreen = () => {
   const OnSave = () => {
     if (name && harvest[name]) {
       amountNumber = Number(amount);
-      harvest[name]["amounts"].push(amountNumber);
-      if (!harvest[name]["months"].includes(month)) {
-        harvest[name]["months"].push(month);
+      harvest[name]["amount"].push(amountNumber);
+      if (!harvest[name]["month"].includes(month)) {
+        harvest[name]["month"].push(month);
       }
     } else if (name) {
       harvest[name] = {};
-      harvest[name]["months"] = [];
-      harvest[name]["amounts"] = [];
+      harvest[name]["month"] = [];
+      harvest[name]["amount"] = [];
       amountNumber = Number(amount);
-      harvest[name]["amounts"].push(amountNumber);
-      if (!harvest[name]["months"].includes(month)) {
-        harvest[name]["months"].push(month);
+      harvest[name]["amount"].push(amountNumber);
+      if (!harvest[name]["month"].includes(month)) {
+        harvest[name]["month"].push(month);
       }
     }
 
