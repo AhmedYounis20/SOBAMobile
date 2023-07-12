@@ -63,11 +63,12 @@ export const InputLabel = styled.Text`
   font-size: 17px;
   font-weight: 600;
   margin-right: 1%;
+  color: ${(props) => props.theme.colors.text.disabled};
 `;
 
 export const InputFieldContainer = styled.View`
   width: 90%;
-  background-color: #f7f6f2;
+  background-color: ${(props) => props.theme.colors.bg.secondary};
   border-radius: 10px;
   align-self: center;
 `;

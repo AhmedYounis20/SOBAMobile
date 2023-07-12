@@ -5,7 +5,7 @@ const ItemsCenter = styled.View`
   align-items: center;
 `;
 
-const SentBox = styled()`
+const SentBox = styled.View`
   position: absolute;
   width: 70%;
   height: 15%;
@@ -32,7 +32,7 @@ const SuccessfullySentOk = styled.Text`
   font-weight: 700;
 `;
 
-const SentMessage = ({ isSent, handleSent }) => {
+export const SentMessage = ({ isSent, handleSent }) => {
   return (
     <View>
       {isSent && (
@@ -53,4 +53,4 @@ const SentMessage = ({ isSent, handleSent }) => {
   );
 };
 
-export default SentMessage;
+// export default SentMessage;

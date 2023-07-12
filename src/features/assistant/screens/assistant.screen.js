@@ -20,7 +20,12 @@ import {
   SupportTitle,
   InputFieldContainer,
 } from "../components/assistant.styles";
+import { SentMessage } from "../components/sentMessage.component.js";
 
+const ScreenContainer = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.colors.bg.primary};
+`;
 export const AssistantScreen = () => {
   const [email, setEmail] = useState("");
   const [subject, setSubject] = useState("");
@@ -34,7 +39,7 @@ export const AssistantScreen = () => {
     setIsSent(!isSent);
   };
   return (
-    <View style={{ flex: 1 }}>
+    <ScreenContainer>
       {isSent && (
         <SentBox>
           <View style={{ alignSelf: "center" }}>
@@ -49,6 +54,7 @@ export const AssistantScreen = () => {
           </View>
         </SentBox>
       )}
+      {/* <SentMessage isSent={isSent} handleSent={handleSent} /> */}
 
       <Background>
         <SupportTitle>Support</SupportTitle>
@@ -125,6 +131,6 @@ export const AssistantScreen = () => {
           <SendText>Send</SendText>
         </SendContainer>
       </FieldContainer>
-    </View>
+    </ScreenContainer>
   );
 };
