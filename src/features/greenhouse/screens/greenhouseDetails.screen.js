@@ -4,7 +4,6 @@ import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { Card, ProgressBar, Text } from "react-native-paper";
 import { useContext, useEffect, useState } from "react";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
-import { set } from "react-native-reanimated";
 
 const previous = [
   {
@@ -92,11 +91,6 @@ const DataText = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.caption};
   color: ${(props) => props.theme.colors.text.white};
 `;
-
-// const ImageView = styled.View`
-
-// `;
-
 const CurrentCropImage = styled(Image)`
   width: 100px;
   height: 100px;
@@ -174,7 +168,7 @@ export const GreenHouseDetailsScreen = ({ navigation }) => {
               </ProgressView>
               <DataText>{current.estimatedHarvestTime}</DataText>
             </ProgressDataView>
-            <DataText>Crops healthy</DataText>
+            <DataText>Crops health</DataText>
             <ProgressDataView>
               <DataText>0%</DataText>
               <ProgressView>
@@ -205,12 +199,3 @@ export const GreenHouseDetailsScreen = ({ navigation }) => {
     </SafeArea>
   );
 };
-
-/*
- * green house name and area **
- * no. of sensors and actuators
- * current season**
- * N# of seasons**
- * types of plant that has been harvested**
- * ratio of healthy crops in each harvest**
- */
