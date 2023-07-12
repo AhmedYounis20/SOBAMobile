@@ -81,7 +81,7 @@ export const DiscribtionInputFieldContainer = styled(InputFieldContainer)`
 
 export const SendContainer = styled.TouchableOpacity`
   padding: 2.5%;
-  background-color: #1fcf9d;
+  background-color: ${(props) => props.theme.colors.ui.primary};
   width: 90%;
   align-self: center;
   border-radius: 25px;

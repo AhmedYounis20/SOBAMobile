@@ -13,7 +13,7 @@ export const colors = {
     // tertiary: "#F1F1F1",
     // quaternary: "#FFFFFF",
     // error: "#D0421B",
-    // success: "#138000",
+    success: "#138000",
     // lightTitle: "rgba(200, 155, 230, 0.9)",
   },
   bg: {
