@@ -33,6 +33,7 @@ const SensorValue = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.body};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
+  color: ${(props) => props.theme.colors.text.whiteBlack}
 `;
 
 const DisabledSensorValue = styled.Text`
@@ -43,7 +44,7 @@ const DisabledSensorValue = styled.Text`
 `;
 
 const GreenHouseText = styled.Text`
-  color: ${(props) => props.theme.colors.text.primary};
+  color: ${(props) => props.theme.colors.text.white};
   font-size: ${(props) => props.theme.fontSizes.title};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
@@ -75,7 +76,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color={theme.colors.text.secondary}
+                color={theme.colors.ui.primaryTransparent}
               />
               <SensorValue>59%</SensorValue>
             </SensorRead>
@@ -84,7 +85,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color={theme.colors.text.secondary}
+                color={theme.colors.ui.primaryTransparent}
               />
               <SensorValue>59%</SensorValue>
             </SensorRead>
@@ -93,7 +94,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color={theme.colors.text.disabled}
+                color={theme.colors.ui.disabled}
               />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
@@ -102,7 +103,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color={theme.colors.text.disabled}
+                color={theme.colors.ui.disabled}
               />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
@@ -125,7 +126,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color="black"
+                color={theme.colors.ui.primaryTransparent}
               />
               <SensorValue>59%</SensorValue>
             </SensorRead>
@@ -134,7 +135,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color={theme.colors.text.secondary}
+                color={theme.colors.ui.primaryTransparent}
               />
               <SensorValue>59%</SensorValue>
             </SensorRead>
@@ -143,7 +144,7 @@ export const GreenHouses = ({ navigation }) => {
                 iconType={IconTypes.Ionicons}
                 name="md-sunny"
                 size={32}
-                color={theme.colors.text.disabled}
+                color={theme.colors.ui.disabled}
               />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
@@ -158,7 +159,7 @@ export const GreenHouses = ({ navigation }) => {
             </SensorRead>
           </SensorReads>
           <GreenHouseName>
-            <GreenHouseText>Greenhouse 1</GreenHouseText>
+            <GreenHouseText>Greenhouse 2</GreenHouseText>
           </GreenHouseName>
         </GreenHouseCard>
       </TouchableOpacity>

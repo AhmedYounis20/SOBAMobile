@@ -7,6 +7,7 @@ import { GreenHouses } from "../components/greenhouses.component";
 import { ScrollView, StatusBar, View, TouchableOpacity } from "react-native";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 import { ScreenView } from "../../../components/views/screenView.component";
+import { Button } from "react-native-paper";
 
 const TopContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -40,7 +41,10 @@ const Background = styled.View`
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
 `;
-
+const AddNoteButton = styled(Button)`
+  background-color: ${(props) => props.theme.colors.ui.primary};
+  margin-bottom: ${(props) => props.theme.space[2]};
+`;
 export const DashboardScreen = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -55,12 +59,15 @@ export const DashboardScreen = ({ navigation }) => {
           {/* <Notes /> */}
         </MidContainer>
         <BottomContainer>
-          <TouchableOpacity
+          <GreenHousesText>Your GreenHouses</GreenHousesText>
+          <GreenHouses navigation={navigation} />
+          <AddNoteButton
+            icon="plus-circle"
+            mode="contained"
             onPress={() => navigation.navigate("AddGreenHouse")}
           >
-            <GreenHousesText>Your GreenHouses</GreenHousesText>
-          </TouchableOpacity>
-          <GreenHouses navigation={navigation} />
+            Add Greenhouse
+          </AddNoteButton>
         </BottomContainer>
       </ScrollView>
     </ScreenView>
