@@ -138,13 +138,13 @@ export const AddGreenHouseScreen = () => {
             <Input label="Latitude" value={`${currentLocation.latitude}`} />
           </LocationFieldView>
           <SectionTitleView>
-            <SectionTitle>Area</SectionTitle>
+            <SectionTitle>Dimensions</SectionTitle>
           </SectionTitleView>
           <InputFieldView>
-            <Input label="Width(in m)" />
+            <Input label="Width(m)" />
           </InputFieldView>
           <InputFieldView>
-            <Input label="Length(in m)" />
+            <Input label="Length(m)" />
           </InputFieldView>
           <SectionTitleView>
             <SectionTitle>Basic infomation</SectionTitle>
@@ -153,7 +153,7 @@ export const AddGreenHouseScreen = () => {
             <Input label="Greenhouse Name" />
           </InputFieldView>
           <InputFieldView>
-            <Input label="Notes" />
+            <Input label="Description" />
           </InputFieldView>
           <SwitchView>
             <SwitchLabel>I have my own greenhouse</SwitchLabel>
@@ -166,7 +166,7 @@ export const AddGreenHouseScreen = () => {
         </FormView>
       </ScreenView>
       <AddButton icon="plus-circle" mode="contained">
-        Add Greenhouse
+        Add
       </AddButton>
     </FullScreenView>
   );

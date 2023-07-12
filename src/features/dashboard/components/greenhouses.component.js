@@ -57,7 +57,7 @@ const GreenHouseName = styled.View`
   top: 10px;
   left: 10px;
 `;
-
+// change text color and name
 export const GreenHouses = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   return (

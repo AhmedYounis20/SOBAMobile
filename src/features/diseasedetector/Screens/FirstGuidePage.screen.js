@@ -54,10 +54,10 @@ export const DisDetectFirstPage = ({ navigation }) => {
           </View>
           <CenterView>
             <Titletext>
-              Welcome to our plant disease detection service!
+              Check your plant for infections
             </Titletext>
             <ContentText>
-              Our goal is to help you identify any issues with your plants
+              Our goal is to help you identify any disease which your plant might be infected with 
               quickly and easily, using just your smartphone.
             </ContentText>
           </CenterView>
