@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import { ProfileHeader } from "../components/profileheader.component";
 import { ProfileContent } from "../components/profilecontent.component";
-import { Text, View } from "react-native";
+import { StatusBar } from "expo-status-bar";
+import { useContext } from "react";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
 const ProfileView = styled.View`
   flex: 1;
@@ -25,6 +27,7 @@ const infoList = [
 ];
 
 export const ProfileScreen = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   return (
     <ProfileView>
       <ProfileHeader navigation={navigation} />

@@ -28,20 +28,8 @@ const previous = [
   },
 ];
 
-const getImage = (crop) => {
-  switch (crop) {
-    case "tomato":
-      return "../../../../assets/tomato.png";
-      break;
-
-    default:
-      return "";
-      break;
-  }
-};
-
 const Background = styled.View`
-  height: ${Platform.OS == "android" ? "14%" : "14%"};
+  height: 10%;
   width: 100%;
   position: absolute;
   top: 0px;
@@ -56,7 +44,7 @@ const ScreenTitle = styled.Text`
   font-family: ${(props) => props.theme.fonts.title};
   font-size: ${(props) => props.theme.fontSizes.title};
   color: ${(props) => props.theme.colors.text.white};
-  margin: 7% 1% 0 1%;
+  margin: 0% 1% 0 1%;
   padding: ${(props) => props.theme.space[3]};
   padding-bottom: 0;
 `;
