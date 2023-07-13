@@ -7,12 +7,7 @@ export const NotesView = styled.View`
   flex: 1;
   margin: ${(props) => props.theme.space[2]};
   padding: ${(props) => props.theme.space[3]};
-`;
-
-export const NotesTitle = styled.Text`
-  font-family : ${(props) => props.theme.fonts.title};
-  font-size: ${(props) => props.theme.fontSizes.title};
-  color: ${(props) => props.theme.colors.text.white};
+  margin-top: ${(props) => props.theme.space[4]};
 `;
 
 export const NotesList = styled.ScrollView`

@@ -55,7 +55,7 @@ export const DashboardScreen = ({ navigation }) => {
       <TopContainer>
         <Topbar nav={navigation} />
       </TopContainer>
-      <ScrollView style={{ backgroundColor: theme.colors.bg.primary }}>
+      <ScrollView style={{ backgroundColor: theme.colors.bg.primary, marginBottom:64 }}>
         <MidContainer>
           <WeatherViewComponent />
         </MidContainer>
