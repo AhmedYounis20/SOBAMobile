@@ -4,7 +4,7 @@ import { DateContainer, DateText } from "./notifications.styles";
 const DistinctDates = ({ date }) => {
   return (
     <DateContainer>
-      <DateText>{date}</DateText>
+      <DateText>{date.substring(0, 10)}</DateText>
     </DateContainer>
   );
 };

@@ -13,14 +13,16 @@ const DateNotifications = ({ item, idx }) => {
     <NotificationContainer key={idx}>
       <NotificationContent>
         <View>
-          <NotificationTitle>{item.title}</NotificationTitle>
+          <NotificationTitle>{item.Title}</NotificationTitle>
         </View>
         <View>
-          <NotificationBody>{item.body}</NotificationBody>
+          <NotificationBody>{item.Body}</NotificationBody>
         </View>
       </NotificationContent>
       <NotificationTimeContainer>
-        <NotificationTimeValue>last date</NotificationTimeValue>
+        <NotificationTimeValue>
+          {item.Date.substring(10, 16)}
+        </NotificationTimeValue>
       </NotificationTimeContainer>
     </NotificationContainer>
   );
