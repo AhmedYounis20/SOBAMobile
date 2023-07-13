@@ -23,6 +23,25 @@ const PageContent = styled.View`
   background-color: "red";
 `;
 
+const Background = styled.View`
+  height: 8%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  background-color: ${(props) => props.theme.colors.ui.primary};
+  border-bottom-right-radius: 12px;
+  border-bottom-left-radius: 12px;
+`;
+
+const ScreenTitle = styled.Text`
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: ${(props) => props.theme.fontSizes.title};
+  color: ${(props) => props.theme.colors.text.white};
+  margin: 0 1% 0 1%;
+  padding: ${(props) => props.theme.space[3]};
+`;
+
 export const GreenHouseScreen = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   const sens = [
@@ -70,8 +89,11 @@ export const GreenHouseScreen = ({ navigation }) => {
         paddingTop: 30,
       }}
     >
+      <Background>
+        <ScreenTitle>Greenhouse1</ScreenTitle>
+      </Background>
       <View
-        style={{ minHeight: "100%", backgroundColor: theme.colors.bg.primary }}
+        style={{ marginTop:30, minHeight: "100%", backgroundColor: theme.colors.bg.primary }}
       >
         <TopSlider style={{ padding: 10 }}>
           <Card>

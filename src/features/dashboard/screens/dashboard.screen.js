@@ -4,7 +4,8 @@ import { Topbar } from "../components/topbar.component";
 import { WeatherViewComponent } from "../components/weatherview.component";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { GreenHouses } from "../components/greenhouses.component";
-import { ScrollView, StatusBar, View, TouchableOpacity } from "react-native";
+import { ScrollView,StatusBar, View, TouchableOpacity, SafeAreaView } from "react-native";
+import {  } from "expo-status-bar";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 import { ScreenView } from "../../../components/views/screenView.component";
 import { Button } from "react-native-paper";
@@ -32,7 +33,7 @@ const GreenHousesText = styled.Text`
 `;
 
 const Background = styled.View`
-  height: 100px;
+  height: 8%;
   width: 100%;
   position: absolute;
   top: 0px;
@@ -48,15 +49,15 @@ const AddNoteButton = styled(Button)`
 export const DashboardScreen = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   return (
-    <ScreenView style={{ paddingTop: 25 }}>
+    <SafeAreaView>
+      <StatusBar backgroundColor={theme.colors.ui.primary} />
       <Background />
       <TopContainer>
         <Topbar nav={navigation} />
       </TopContainer>
-      <ScrollView style={{ backgroundColor: theme.colors.bg.primary }}>
+      <ScrollView style={{ backgroundColor: theme.colors.bg.primary, marginBottom:64 }}>
         <MidContainer>
           <WeatherViewComponent />
-          {/* <Notes /> */}
         </MidContainer>
         <BottomContainer>
           <GreenHousesText>Your GreenHouses</GreenHousesText>
@@ -70,6 +71,6 @@ export const DashboardScreen = ({ navigation }) => {
           </AddNoteButton>
         </BottomContainer>
       </ScrollView>
-    </ScreenView>
+    </SafeAreaView>
   );
 };

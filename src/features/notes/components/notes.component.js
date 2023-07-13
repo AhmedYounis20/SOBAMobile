@@ -9,7 +9,6 @@ import React, { useContext, useEffect, useState } from "react";
 
 import {
   NotesView,
-  NotesTitle,
   NotesList,
   NoteItem,
   NoteView,
@@ -81,7 +80,7 @@ export const NotesComponent = () => {
   return (
     <>
       <NotesView>
-        <NotesTitle>Notes</NotesTitle>
+        {/* <NotesTitle>Notes</NotesTitle> */}
         <NotesList showsVerticalScrollIndicator={false}>
           {notes.map((note, index) => (
             <NoteItem key={index}>
