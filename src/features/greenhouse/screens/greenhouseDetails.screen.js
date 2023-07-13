@@ -148,7 +148,9 @@ export const GreenHouseDetailsScreen = ({ navigation }) => {
         <ScreenTitle>Greenhouse1</ScreenTitle>
         <ScreenSubtitle>As Santa</ScreenSubtitle>
       </Background>
-      <TouchableOpacity onPress={() => navigation.navigate("CropDetails")}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate("CropDetails", { index: 0 })}
+      >
         <CurrentSeasonCard>
           <CurrentSeasonView>
             <CurrentSeasonText>{current.season}</CurrentSeasonText>
