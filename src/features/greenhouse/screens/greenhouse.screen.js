@@ -46,8 +46,8 @@ export const GreenHouseScreen = ({ navigation }) => {
     },
     {
       name: "watering",
-      value: 0,
-      unit: "NAN",
+      value: "10",
+      unit: "%",
       icon: "water",
       iconType: IconTypes.Entypo,
       minValue: 200,
@@ -55,8 +55,8 @@ export const GreenHouseScreen = ({ navigation }) => {
     },
     {
       name: "ventilation",
-      value: 0,
-      unit: "NAN",
+      value: "",
+      unit: "",
       icon: "wind",
       iconType: IconTypes.Feather,
       minValue: 20,

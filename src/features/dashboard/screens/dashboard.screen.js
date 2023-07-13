@@ -43,7 +43,7 @@ const Background = styled.View`
 `;
 const AddNoteButton = styled(Button)`
   background-color: ${(props) => props.theme.colors.ui.primary};
-  margin-bottom: ${(props) => props.theme.space[2]};
+  margin-bottom: ${(props) => props.theme.space[4]};
 `;
 export const DashboardScreen = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);

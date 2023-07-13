@@ -33,7 +33,7 @@ const SensorValue = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.body};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  color: ${(props) => props.theme.colors.text.whiteBlack}
+  color: ${(props) => props.theme.colors.text.whiteBlack};
 `;
 
 const DisabledSensorValue = styled.Text`
@@ -73,35 +73,35 @@ export const GreenHouses = ({ navigation }) => {
           <SensorReads>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="sun"
                 size={32}
                 color={theme.colors.ui.primaryTransparent}
               />
-              <SensorValue>59%</SensorValue>
+              <SensorValue>12 Lux</SensorValue>
             </SensorRead>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="thermometer"
                 size={32}
                 color={theme.colors.ui.primaryTransparent}
               />
-              <SensorValue>59%</SensorValue>
+              <SensorValue>24℃</SensorValue>
             </SensorRead>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Entypo}
+                name="water"
                 size={32}
                 color={theme.colors.ui.disabled}
               />
-              <DisabledSensorValue>off</DisabledSensorValue>
+              <DisabledSensorValue>5%</DisabledSensorValue>
             </SensorRead>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="wind"
                 size={32}
                 color={theme.colors.ui.disabled}
               />
@@ -123,39 +123,39 @@ export const GreenHouses = ({ navigation }) => {
           <SensorReads>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
-                size={32}
-                color={theme.colors.ui.primaryTransparent}
-              />
-              <SensorValue>59%</SensorValue>
-            </SensorRead>
-            <SensorRead>
-              <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
-                size={32}
-                color={theme.colors.ui.primaryTransparent}
-              />
-              <SensorValue>59%</SensorValue>
-            </SensorRead>
-            <SensorRead>
-              <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="sun"
                 size={32}
                 color={theme.colors.ui.disabled}
               />
-              <DisabledSensorValue>off</DisabledSensorValue>
+              <DisabledSensorValue>5 Lux</DisabledSensorValue>
             </SensorRead>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="thermometer"
                 size={32}
                 color={theme.colors.text.disabled}
               />
-              <DisabledSensorValue>off</DisabledSensorValue>
+              <DisabledSensorValue>18℃</DisabledSensorValue>
+            </SensorRead>
+            <SensorRead>
+              <Icon
+                iconType={IconTypes.Entypo}
+                name="water"
+                size={32}
+                color={theme.colors.ui.primaryTransparent}
+              />
+              <SensorValue>10%</SensorValue>
+            </SensorRead>
+            <SensorRead>
+              <Icon
+                iconType={IconTypes.Feather}
+                name="wind"
+                size={32}
+                color={theme.colors.ui.primaryTransparent}
+              />
+              <SensorValue>On</SensorValue>
             </SensorRead>
           </SensorReads>
           <GreenHouseName>

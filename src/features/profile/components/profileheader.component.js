@@ -71,14 +71,6 @@ export const ProfileHeader = ({ navigation }) => {
                   onPress={() => navigation.goBack()}
                 />
               </TouchableOpacity>
-              <SettingsView>
-                <Icon
-                  name="settings"
-                  iconType={IconTypes.Feather}
-                  size={24}
-                  color={theme.colors.ui.primaryTransparent}
-                />
-              </SettingsView>
             </NavigationButtonsView>
           </ProfileHeaderViews>
         </Cover>
