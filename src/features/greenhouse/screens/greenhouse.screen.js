@@ -29,7 +29,7 @@ export const GreenHouseScreen = ({ navigation }) => {
     {
       name: "Light",
       value: 12,
-      unit: "watt",
+      unit: "Lux",
       icon: "sun",
       iconType: IconTypes.Feather,
       minValue: 200,
@@ -46,8 +46,8 @@ export const GreenHouseScreen = ({ navigation }) => {
     },
     {
       name: "watering",
-      value: 200,
-      unit: "ml",
+      value: "10",
+      unit: "%",
       icon: "water",
       iconType: IconTypes.Entypo,
       minValue: 200,
@@ -55,8 +55,8 @@ export const GreenHouseScreen = ({ navigation }) => {
     },
     {
       name: "ventilation",
-      value: 10,
-      unit: "m/s",
+      value: "",
+      unit: "",
       icon: "wind",
       iconType: IconTypes.Feather,
       minValue: 20,

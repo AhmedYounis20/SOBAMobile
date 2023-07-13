@@ -73,6 +73,7 @@ export const WeatherViewComponent = () => {
             />
             <Text variant="body">As Santa</Text>
           </LocationContainer>
+          {/* remove low and high temp make it current only */}
           <TodayTemperature h="12" l="10" />
           <LocationContainer>
             <Icon

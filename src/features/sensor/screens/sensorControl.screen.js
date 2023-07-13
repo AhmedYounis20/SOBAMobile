@@ -68,7 +68,7 @@ export const SensorControl = ({ route, navigation }) => {
                 color={theme.colors.text.whiteBlack}
               />
             </LeftFanView>
-            <FanLabel>fan is off when window is open</FanLabel>
+            <FanLabel>Auto/Manual</FanLabel>
           </View>
 
           <View>
@@ -80,7 +80,7 @@ export const SensorControl = ({ route, navigation }) => {
               />
               <Switch />
             </RightFanView>
-            <FanLabel>fan is off if humidity stable</FanLabel>
+            <FanLabel>On/Off</FanLabel>
           </View>
         </FansControlView>
 

@@ -168,7 +168,7 @@ export const GreenHouseDetailsScreen = ({ navigation }) => {
               </ProgressView>
               <DataText>{current.estimatedHarvestTime}</DataText>
             </ProgressDataView>
-            <DataText>Crops health</DataText>
+            <DataText>Healthy Yield</DataText>
             <ProgressDataView>
               <DataText>0%</DataText>
               <ProgressView>
