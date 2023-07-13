@@ -13,80 +13,38 @@ import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import { Dimensions } from "react-native";
 
 import { LineChart } from "react-native-chart-kit";
+import {
+  ChartContainer,
+  CropRequirementsContainer,
+  DetailsContainer,
+  ImageContainer,
+  ScreenConatiner,
+  ScrollContainer,
+  StatisticsContainer,
+  StatisticsTitle,
+  TitleContainer,
+  CropTitle,
+  MainImage,
+  DetailsText,
+  CropDetailsContainer,
+  CropDetailsItemView,
+  ImageView,
+  CropItemsImage,
+  MainDataView,
+  DataText,
+  SecondaryNoteText,
+  SecondaryNotesView,
+  CropRequirementsTitle,
+  RequirementitemContainer,
+  NavigationView,
+} from "../components/cropDetails.styles";
 
-const CropDetailsItemView = styled.View`
-  height: 80px;
-  width: 95%;
-  border-radius: 20px;
-  margin-vertical: 5px;
-  flex-direction: row;
-  align-items: center;
-  padding-left: 20px;
-  background-color: ${(props) => props.theme.colors.ui.primary};
-`;
-const DataText = styled.Text`
-  font-family: ${(props) => props.theme.fonts.text};
-  font-size: 14px;
-  color: ${(props) => props.theme.colors.text.white};
-  font-weight: bold;
-  margin-left: 20px;
-`;
-const SecondaryNoteText = styled.Text`
-  font-family: ${(props) => props.theme.fonts.text};
-  font-size: 14px;
-  color: ${(props) => props.theme.colors.text.white};
-  margin-left: 20px;
-`;
-const MainDataView = styled.View`
-  width: 55%;
-`;
-const SecondaryNotesView = styled.View`
-  width: 30%;
-`;
-const ImageView = styled.View`
-  height: 50px;
-  width: 50px;
-  border-radius: 30px;
-  background-color: rgba(255, 255, 255, 0.4);
-  align-items: center;
-  justify-content: center;
-`;
-const ScrollContainer = styled.ScrollView`
-  margin-vertical: 10px;
-  border-radius: 20px;
-  width: 95%;
-  height: 90%;
-`;
-const ImageContainer = styled.View`
-  height: 300px;
-  width: 95%;
-  border-radius: 20px;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(props) => props.theme.colors.bg.secondary};
-`;
-const MainImage = styled.Image`
-  width: 300px;
-  height: 100%;
-`;
-const CropTitle = styled.Text`
-  font-size: 25px;
-  font-weight: bold;
-  font-style: italic;
-  color: ${(props) => props.theme.colors.text.primary};
-`;
-
-const NavigationView = styled.View`
-  width: 90%;
-  border-radius: 50px;
-  height: 70px;
-  flex-direction: row;
-  padding-horizontal: 5%;
-  align-items: center;
-  justify-content: center;
-  border-color: rgba(0, 0, 0, 0.1);
-  border-width: 1px;
-`;
+// const NavigationScrollView = styled.View`
+//   border-radius: 50px;
+//   height: 70px;
+//   flex-direction: row;
+//   padding-horizontal: 5%;
+// `;
 export const CropDetailsScreen = ({ route, navigation }) => {
   const { index } = route.params;
 
@@ -245,14 +203,7 @@ export const CropDetailsScreen = ({ route, navigation }) => {
     },
   ];
   return (
-    <View
-      style={{
-        alignItems: "center",
-        paddingBottom: 20,
-        paddingTop: 40,
-        backgroundColor: theme.colors.bg.primary,
-      }}
-    >
+    <ScreenConatiner>
       <ScrollContainer
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
@@ -260,46 +211,18 @@ export const CropDetailsScreen = ({ route, navigation }) => {
           backgroundColor: theme.colors.bg.primary,
         }}
       >
-        <View style={{ width: "100%", padding: 10, paddingLeft: 20 }}>
+        <TitleContainer>
           <CropTitle>{crops[index].name}</CropTitle>
-        </View>
+        </TitleContainer>
         <ImageContainer>
           <MainImage source={crops[index]["image"]} resizeMode="contain" />
         </ImageContainer>
-        <View
-          style={{
-            marginVertical: 10,
-            borderRadius: 20,
-            width: "95%",
-            backgroundColor: theme.colors.bg.secondary,
-            marginVertical: 10,
-          }}
-        >
-          <Text
-            style={{
-              marginHorizontal: 15,
-              marginVertical: 10,
-              fontSize: 20,
-              fontWeight: "bold",
-              color: theme.colors.text.primary,
-            }}
-          >
-            Crop Details
-          </Text>
-          <View
-            style={{
-              marginVertical: 10,
-              width: "100%",
-              alignItems: "center",
-              backgroundColor: theme.colors.bg.secondary,
-              justifyContent: "space-between",
-              borderRadius: 20,
-            }}
-          >
+        <DetailsContainer>
+          <DetailsText>Crop Details</DetailsText>
+          <CropDetailsContainer>
             <CropDetailsItemView>
               <ImageView>
-                <Image
-                  style={{ height: 25, width: 25 }}
+                <CropItemsImage
                   source={require("../../../../assets/images/plant.png")}
                 />
               </ImageView>
@@ -314,8 +237,7 @@ export const CropDetailsScreen = ({ route, navigation }) => {
             </CropDetailsItemView>
             <CropDetailsItemView>
               <ImageView>
-                <Image
-                  style={{ height: 25, width: 25 }}
+                <CropItemsImage
                   source={require("../../../../assets/images/plant.png")}
                 />
               </ImageView>
@@ -328,8 +250,7 @@ export const CropDetailsScreen = ({ route, navigation }) => {
             </CropDetailsItemView>
             <CropDetailsItemView>
               <ImageView>
-                <Image
-                  style={{ height: 25, width: 25 }}
+                <CropItemsImage
                   source={require("../../../../assets/images/plant.png")}
                 />
               </ImageView>
@@ -342,8 +263,7 @@ export const CropDetailsScreen = ({ route, navigation }) => {
             </CropDetailsItemView>
             <CropDetailsItemView>
               <ImageView>
-                <Image
-                  style={{ height: 25, width: 25 }}
+                <CropItemsImage
                   source={require("../../../../assets/images/plant.png")}
                 />
               </ImageView>
@@ -361,8 +281,7 @@ export const CropDetailsScreen = ({ route, navigation }) => {
             </CropDetailsItemView>
             <CropDetailsItemView>
               <ImageView>
-                <Image
-                  style={{ height: 25, width: 25 }}
+                <CropItemsImage
                   source={require("../../../../assets/images/plant.png")}
                 />
               </ImageView>
@@ -380,8 +299,7 @@ export const CropDetailsScreen = ({ route, navigation }) => {
             </CropDetailsItemView>
             <CropDetailsItemView>
               <ImageView>
-                <Image
-                  style={{ height: 25, width: 25 }}
+                <CropItemsImage
                   source={require("../../../../assets/images/plant.png")}
                 />
               </ImageView>
@@ -398,37 +316,11 @@ export const CropDetailsScreen = ({ route, navigation }) => {
                 </SecondaryNoteText>
               </SecondaryNotesView>
             </CropDetailsItemView>
-          </View>
-        </View>
-        <View
-          style={{
-            marginVertical: 10,
-            borderRadius: 20,
-            width: "95%",
-            backgroundColor: theme.colors.bg.secondary,
-          }}
-        >
-          <Text
-            style={{
-              marginHorizontal: 15,
-              marginVertical: 10,
-              fontSize: 20,
-              fontWeight: "bold",
-              color: theme.colors.text.primary,
-            }}
-          >
-            Health Statistics
-          </Text>
-          <View
-            style={{
-              marginVertical: 10,
-              width: "100%",
-              alignItems: "center",
-              backgroundColor: theme.colors.bg.secondary,
-              justifyContent: "space-between",
-              borderRadius: 20,
-            }}
-          >
+          </CropDetailsContainer>
+        </DetailsContainer>
+        <StatisticsContainer>
+          <StatisticsTitle>Health Statistics</StatisticsTitle>
+          <ChartContainer>
             <LineChart
               data={{
                 labels: [
@@ -471,44 +363,16 @@ export const CropDetailsScreen = ({ route, navigation }) => {
                 borderRadius: 16,
               }}
             />
-          </View>
-        </View>
-        <View
-          style={{
-            marginVertical: 10,
-            borderRadius: 20,
-            width: "95%",
-            backgroundColor: theme.colors.bg.secondary,
-            marginVertical: 10,
-          }}
-        >
-          <Text
-            style={{
-              marginHorizontal: 15,
-              marginVertical: 10,
-              fontSize: 20,
-              fontWeight: "bold",
-              color: theme.colors.text.primary,
-            }}
-          >
-            Crop Requirments
-          </Text>
-          <View
-            style={{
-              marginVertical: 10,
-              width: "100%",
-              alignItems: "center",
-              backgroundColor: theme.colors.bg.secondary,
-              justifyContent: "space-between",
-              borderRadius: 20,
-            }}
-          >
+          </ChartContainer>
+        </StatisticsContainer>
+        <CropRequirementsContainer>
+          <CropRequirementsTitle>Crop Requirments</CropRequirementsTitle>
+          <RequirementitemContainer>
             {crops[index]["cropRequirements"] &&
               crops[index]["cropRequirements"].map((item, index) => (
                 <CropDetailsItemView key={index}>
                   <ImageView>
-                    <Image
-                      style={{ height: 25, width: 25 }}
+                    <CropItemsImage
                       source={require("../../../../assets/images/plant.png")}
                     />
                   </ImageView>
@@ -521,8 +385,8 @@ export const CropDetailsScreen = ({ route, navigation }) => {
                   </SecondaryNotesView>
                 </CropDetailsItemView>
               ))}
-          </View>
-        </View>
+          </RequirementitemContainer>
+        </CropRequirementsContainer>
       </ScrollContainer>
       <NavigationView>
         <ScrollView
@@ -561,7 +425,7 @@ export const CropDetailsScreen = ({ route, navigation }) => {
           ))}
         </ScrollView>
       </NavigationView>
-    </View>
+    </ScreenConatiner>
   );
 };
 
