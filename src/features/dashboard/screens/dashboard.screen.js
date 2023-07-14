@@ -1,14 +1,12 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
-import { Topbar } from "../components/topbar.component";
-import { WeatherViewComponent } from "../components/weatherview.component";
-import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
-import { GreenHouses } from "../components/greenhouses.component";
-import { ScrollView,StatusBar, View, TouchableOpacity, SafeAreaView } from "react-native";
-import {  } from "expo-status-bar";
-import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
-import { ScreenView } from "../../../components/views/screenView.component";
+import React, { useContext } from "react";
 import { Button } from "react-native-paper";
+import { ScrollView, StatusBar, SafeAreaView } from "react-native";
+
+import { Topbar } from "../components/topbar.component";
+import { GreenHouses } from "../components/greenhouses.component";
+import { WeatherViewComponent } from "../components/weatherview.component";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
 const TopContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -42,20 +40,24 @@ const Background = styled.View`
   border-bottom-right-radius: 12px;
   border-bottom-left-radius: 12px;
 `;
+
 const AddNoteButton = styled(Button)`
   background-color: ${(props) => props.theme.colors.ui.primary};
   margin-bottom: ${(props) => props.theme.space[4]};
 `;
+
 export const DashboardScreen = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   return (
-    <SafeAreaView>
+    <SafeAreaView style={{ backgroundColor: theme.colors.bg.primary }}>
       <StatusBar backgroundColor={theme.colors.ui.primary} />
       <Background />
       <TopContainer>
         <Topbar nav={navigation} />
       </TopContainer>
-      <ScrollView style={{ backgroundColor: theme.colors.bg.primary, marginBottom:64 }}>
+      <ScrollView
+        style={{ backgroundColor: theme.colors.bg.primary, marginBottom: 64 }}
+      >
         <MidContainer>
           <WeatherViewComponent />
         </MidContainer>

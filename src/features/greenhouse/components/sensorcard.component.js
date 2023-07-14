@@ -1,19 +1,22 @@
-import { RowView } from "../../../components/views/row.component";
-import { Card, Switch } from "react-native-paper";
-import { useContext, useState } from "react";
-import { Icon } from "../../../components/Icons/Icons.components";
-import { TouchableOpacity, View } from "react-native";
 import styled from "styled-components";
+import { useContext, useState } from "react";
+import { Card, Switch } from "react-native-paper";
+import { TouchableOpacity, View } from "react-native";
+
+import { RowView } from "../../../components/views/row.component";
+import { Icon } from "../../../components/Icons/Icons.components";
 import { Text } from "../../../components/typography/text.component";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
 const BodyView = styled.View`
   padding: 12px;
 `;
+
 const SensorTitle = styled(Text)`
   font-size: ${(props) => props.theme.fontSizes.body};
   font-weight: ${(props) => props.theme.fontWeights.bold};
 `;
+
 const SensorData = styled(Text)`
   font-size: ${(props) => props.theme.fontSizes.caption};
 `;
@@ -23,6 +26,7 @@ const DataCard = styled(Card)`
   margin: 5%;
   height: 150px;
 `;
+
 export const SensorCard = ({
   navigation,
   name,

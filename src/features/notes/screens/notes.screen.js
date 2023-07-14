@@ -1,8 +1,7 @@
 import React from "react";
-import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
-import { NotesComponent } from "../components/notes.component";
 import styled from "styled-components";
-import { Platform, StatusBar } from "react-native";
+
+import { NotesComponent } from "../components/notes.component";
 import { ScreenView } from "../../../components/views/screenView.component";
 
 const Background = styled.View`

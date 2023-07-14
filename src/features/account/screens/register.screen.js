@@ -1,3 +1,8 @@
+import { ActivityIndicator } from "react-native-paper";
+import { Colors } from "react-native/Libraries/NewAppScreen";
+import { useContext, useEffect, useRef, useState } from "react";
+import { Keyboard, View, TouchableOpacity } from "react-native";
+
 import {
   AuthButton,
   AuthButtonView,
@@ -16,17 +21,12 @@ import {
   TitleView,
   WelocomeText,
 } from "../components/account.styles";
-import { ActivityIndicator } from "react-native-paper";
-import { Spacer } from "../../../components/spacer/spacer.component";
-import { useContext, useEffect, useRef, useState } from "react";
-import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-import { Text } from "../../../components/typography/text.component";
-import { Colors } from "react-native/Libraries/NewAppScreen";
-import { Keyboard, View } from "react-native";
-import { TouchableOpacity } from "react-native";
-import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import { CenterRow } from "../../welcome/components/welcome.styles";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { Text } from "../../../components/typography/text.component";
 import { ScreenView } from "../../../components/views/screenView.component";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
 
 export const RegisterScreen = ({ navigation }) => {
   const { error, isLoading, onRegister, setError } = useContext(
@@ -79,15 +79,6 @@ export const RegisterScreen = ({ navigation }) => {
           </TitleView>
           <Spacer position={"top"} size={"xl"} />
           <InputFieldsView>
-            {/* <InputFieldView>
-              <Input
-                label={"Username"}
-                secureTextEntry={true}
-                onChangeText={(input) => setPassword(input)}
-                textContentType="username"
-              />
-            </InputFieldView>
-            <Spacer position={"top"} size={"large"} /> */}
             <InputFieldView>
               <Input
                 label={"Email address"}
@@ -203,88 +194,6 @@ export const RegisterScreen = ({ navigation }) => {
             </AuthButtonView>
           </InputFieldsView>
           <Spacer position={"top"} size={"xl"} />
-
-          {/* <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              alignSelf: "center",
-            }}
-          >
-            <View style={{ width: 90 }}>
-              <HairLine />
-            </View>
-            <View style={{ marginHorizontal: 15 }}>
-              <Text style={{ fontSize: 15, top: -5, color: "black" }}>
-                or sign up with
-              </Text>
-            </View>
-            <View style={{ width: 90 }}>
-              <HairLine />
-            </View>
-          </View>
-          <Spacer position={"top"} size={"xl"} />
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <TouchableOpacity>
-              <View
-                style={{
-                  width: 100,
-                  borderColor: "black",
-                  borderWidth: 2,
-                  height: 50,
-                  borderRadius: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Icon
-                  iconType={IconTypes.MaterialIcons}
-                  name="facebook"
-                  size={40}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View
-                style={{
-                  width: 100,
-                  borderColor: "black",
-                  borderWidth: 2,
-                  height: 50,
-                  borderRadius: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Icon
-                  iconType={IconTypes.MaterialCommunityIcons}
-                  name="twitter"
-                  size={40}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View
-                style={{
-                  width: 100,
-                  borderColor: "black",
-                  borderWidth: 2,
-                  height: 50,
-                  borderRadius: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Icon
-                  iconType={IconTypes.MaterialCommunityIcons}
-                  name="google"
-                  size={40}
-                />
-              </View>
-            </TouchableOpacity>
-          </View> */}
           <Spacer position={"top"} size={"xl"} />
           <CenterRow style={{ alignSelf: "center" }}>
             <Text style={{ color: "#000000", fontSize: 12, fontWeight: 300 }}>
