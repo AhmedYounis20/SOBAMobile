@@ -144,7 +144,7 @@ export const StatisticsScreen = () => {
   };
 
   return (
-    <View>
+    <View style={{backgroundColor:theme.colors.bg.primary}}>
       <Background>
         <HarvestTitle>Harvest</HarvestTitle>
       </Background>
@@ -200,19 +200,10 @@ export const StatisticsScreen = () => {
           ))}
         {!isAdd && (
           <AddContainer onPress={OnAdd}>
-            <Text style={{ fontSize: 18, fontWeight: "600" }}>Add</Text>
+            <Text style={{ fontSize: 18, fontWeight: "600", color:theme.colors.text.white, backgroundColor:theme.colors.ui.primary }}>Add</Text>
           </AddContainer>
         )}
       </ScrollView>
-      {/* <View
-        style={{
-          marginBottom: "10%",
-          alignSelf: "center",
-          width: "100%",
-        }}
-      > */}
-
-      {/* </View> */}
       {isAdd && (
         <FormBox>
           <FieldContainer>

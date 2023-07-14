@@ -1,10 +1,10 @@
-import { Ionicons } from "@expo/vector-icons";
-import React, { useContext } from "react";
-import { TouchableOpacity } from "react-native";
-import { Card } from "react-native-paper";
 import styled from "styled-components";
-import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import React, { useContext } from "react";
+import { Card } from "react-native-paper";
+import { TouchableOpacity } from "react-native";
+
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
 const GreenHouseCard = styled(Card)`
   margin: 20px 0px;
@@ -58,7 +58,7 @@ const GreenHouseName = styled.View`
   top: 10px;
   left: 10px;
 `;
-// change text color and name
+
 export const GreenHouses = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   return (
