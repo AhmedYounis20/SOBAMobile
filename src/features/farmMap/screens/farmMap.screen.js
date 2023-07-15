@@ -12,8 +12,8 @@ const Map = styled(MapView)`
 const greenhouses = [
   {
     name: "greenhouse1",
-    lang: 31,
-    lat: 30,
+    lang: 41,
+    lat: 50,
   },
   {
     name: "greenhouse2",
@@ -40,6 +40,12 @@ export const FarmMap = ({ navigation }) => {
             coordinate={{
               latitude: g.lat,
               longitude: g.lang,
+            }}
+            region={{
+              latitude: g.lat,
+              longitude: g.lang,
+              latitudeDelta: 0.001, // Zoom level (adjust as needed)
+              longitudeDelta: 0.001, // Zoom level (adjust as needed)
             }}
           >
             <Callout

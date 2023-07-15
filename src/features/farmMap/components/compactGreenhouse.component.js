@@ -23,9 +23,11 @@ const Item = styled.View`
 const isAndroid = Platform.OS === "android";
 export const CompactGreenhouseInfo = ({ greenhouse, isMap = false }) => {
   const Image = isAndroid && isMap ? CompactWebView : CompactImage;
+  const imageUri =
+    "https://images.unsplash.com/photo-1516253593875-bd7ba052fbc5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3870&q=80";
   return (
     <Item>
-      <Image source={require("../../../../assets/green_house.jpg")} />
+      <Image source={{ uri: imageUri }} />
       <Text>{greenhouse}</Text>
     </Item>
   );
