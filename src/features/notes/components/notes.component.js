@@ -1,26 +1,51 @@
-import { Modal, KeyboardAvoidingView, Platform } from "react-native";
-import { Text } from "../../../components/typography/text.component";
-import React, { useState } from "react";
+import {
+  Modal,
+  KeyboardAvoidingView,
+  Platform,
+  TouchableOpacity,
+} from "react-native";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
-  NotesCard,
+  NotesView,
   NotesList,
   NoteItem,
+  NoteView,
   NoteText,
   NoteTime,
   AddNoteButton,
   ModalContainer,
   ModalCard,
+  AddText,
   ModalInput,
   ModalButtonContainer,
   SaveButton,
   CancelButton,
 } from "./notes.styles";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export const Notes = () => {
+export const NotesComponent = () => {
+  const { theme } = useContext(ThemeContext);
   const [notes, setNotes] = useState([]);
   const [note, setNote] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(async () => {
+    await getNotesStorage();
+  }, []);
+
+  const setNotesStorage = async (notes) => {
+    let savedNotes = JSON.stringify(notes);
+    await AsyncStorage.setItem("@appNotes", savedNotes);
+  };
+
+  const getNotesStorage = async () => {
+    let savedNotes = await AsyncStorage.getItem("@appNotes");
+    savedNotes = savedNotes ? (savedNotes) : [];
+    setNotes(JSON.parse(savedNotes));
+  };
 
   const handleNoteChange = (text) => {
     setNote(text);
@@ -37,20 +62,37 @@ export const Notes = () => {
     };
     const time = now.toLocaleTimeString("en-us", options);
     const newNote = { text: note, time: time };
-    setNotes([...notes, newNote]);
+    setNotes([newNote, ...notes]);
+    setNotesStorage(notes);
     setNote("");
     setModalVisible(false);
   };
 
+  const handleDeleteNote = (index) => {
+    const updatedNotes = [...notes];
+    updatedNotes.splice(index, 1);
+    setNotes(updatedNotes);
+    setNotesStorage();
+  };
+
   return (
     <>
-      <NotesCard>
-        <Text>Notes</Text>
+      <NotesView>
         <NotesList showsVerticalScrollIndicator={false}>
           {notes.map((note, index) => (
             <NoteItem key={index}>
-              <NoteTime>{note.time}</NoteTime>
-              <NoteText>{note.text}</NoteText>
+              <NoteView>
+                <NoteTime>{note.time}</NoteTime>
+                <NoteText>{note.text}</NoteText>
+              </NoteView>
+              <TouchableOpacity onPress={() => handleDeleteNote(index)}>
+                <Icon
+                  name="delete"
+                  iconType={IconTypes.MaterialIcons}
+                  size={24}
+                  color={theme.colors.ui.error}
+                />
+              </TouchableOpacity>
             </NoteItem>
           ))}
         </NotesList>
@@ -61,7 +103,7 @@ export const Notes = () => {
         >
           Add Note
         </AddNoteButton>
-      </NotesCard>
+      </NotesView>
       <Modal transparent visible={modalVisible} animationType="fade">
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : null}
@@ -69,13 +111,16 @@ export const Notes = () => {
         >
           <ModalContainer>
             <ModalCard>
-              <Text>Add Note</Text>
+              <AddText>Add Note</AddText>
               <ModalInput
                 mode="outlined"
                 placeholder="Type your note here"
                 multiline={true}
                 numberOfLines={2}
                 value={note}
+                textColor={theme.colors.text.primary}
+                outlineColor={theme.colors.ui.disabled}
+                activeOutlineColor={theme.colors.ui.outlineActive}
                 onChangeText={handleNoteChange}
               />
               <ModalButtonContainer>

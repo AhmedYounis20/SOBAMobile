@@ -23,7 +23,7 @@ export const ProfileName = styled(Text)`
   font-family: ${(props) => props.theme.fonts.title};
   font-size: ${(props) => props.theme.fontSizes.body};
   font-weight: ${(props) => props.theme.fontWeights.bold};
-  color: ${(props) => props.theme.colors.text.white};
+  color: ${(props) => props.theme.colors.text.primary};
   line-height: 24px;
   align-self: stretch;
 `;
@@ -31,7 +31,7 @@ export const ProfileUsername = styled(Text)`
   font-family: ${(props) => props.theme.fonts.text};
   font-size: ${(props) => props.theme.fontSizes.caption};
   font-weight: ${(props) => props.theme.fontWeights.regular};
-  color: ${(props) => props.theme.colors.text.white};
+  color: ${(props) => props.theme.colors.text.primary};
   line-height: 18px;
   align-self: stretch;
 `;

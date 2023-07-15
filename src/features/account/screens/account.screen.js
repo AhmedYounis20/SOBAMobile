@@ -1,3 +1,6 @@
+import { View, Image, Text, TouchableOpacity } from "react-native";
+import { Button } from "react-native-paper";
+
 import {
   Background,
   CenterView,
@@ -6,11 +9,11 @@ import {
   Titletext,
   WhiteText,
 } from "../components/account.styles";
-import { View, Image, Text, TouchableOpacity } from "react-native";
-import { Button } from "react-native-paper";
+import { ScreenView } from "../../../components/views/screenView.component";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+
 export const AccountScreen = ({ navigation }) => (
-  <>
+  <ScreenView>
     <Background
       resizeMode="cover"
       source={require("../../../../assets/images/account/account.png")}
@@ -99,5 +102,5 @@ export const AccountScreen = ({ navigation }) => (
         </View>
       </View>
     </Background>
-  </>
+  </ScreenView>
 );

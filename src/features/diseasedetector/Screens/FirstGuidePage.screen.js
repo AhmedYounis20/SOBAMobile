@@ -7,6 +7,7 @@ import {
   MainGuideButton,
 } from "../components/guide.styles";
 import styled from "styled-components";
+import { ScreenView } from "../../../components/views/screenView.component";
 
 const Titletext = styled(Text)`
   font-size: 29px;
@@ -32,7 +33,7 @@ const CenterView = styled(View)`
 
 export const DisDetectFirstPage = ({ navigation }) => {
   return (
-    <>
+    <ScreenView>
       <Background
         resizeMode="cover"
         source={require("../../../../assets/images/diseaseDetectionGuide/page1.png")}
@@ -53,10 +54,10 @@ export const DisDetectFirstPage = ({ navigation }) => {
           </View>
           <CenterView>
             <Titletext>
-              Welcome to our plant disease detection service!
+              Check your plant for infections
             </Titletext>
             <ContentText>
-              Our goal is to help you identify any issues with your plants
+              Our goal is to help you identify any disease which your plant might be infected with 
               quickly and easily, using just your smartphone.
             </ContentText>
           </CenterView>
@@ -78,6 +79,6 @@ export const DisDetectFirstPage = ({ navigation }) => {
           </GuideButtonsView>
         </Background>
       </Background>
-    </>
+    </ScreenView>
   );
 };

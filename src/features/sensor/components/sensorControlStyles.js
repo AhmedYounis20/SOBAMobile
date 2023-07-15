@@ -38,7 +38,7 @@ export const CenterView = styled.View`
 `;
 
 export const SliderText = styled(Text)`
-  color: red;
+  color: ${(props) => props.theme.colors.text.whiteBlack};
   font-weight: bold;
   font-size: 20px;
 `;
@@ -54,6 +54,7 @@ export const ProgressCard = styled(Card)`
 
 export const FanLabel = styled(Text)`
   font-size: 10px;
+  color: ${(props) => props.theme.colors.text.whiteBlack};
 `;
 
 export const ProgressContainer = styled.View`

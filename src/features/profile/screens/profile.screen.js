@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { ProfileHeader } from "../components/profileheader.component";
 import { ProfileContent } from "../components/profilecontent.component";
+import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
-const ProfileView = styled.View``;
+const ProfileView = styled.View`
+  flex: 1;
+  background-color: ${(props) => props.theme.colors.bg.primary};
+`;
 
 const infoList = [
   {
@@ -10,27 +15,21 @@ const infoList = [
     value: "amandasmith25@gmail.com",
   },
   {
-    property: "Mobile",
+    property: "Telephone",
     value: "01012345678",
   },
+
   {
-    property: "Twitter",
-    value: "@amanda25",
-  },
-  {
-    property: "Behance",
-    value: "www.behance.net/amandasmith25",
-  },
-  {
-    property: "Facebook",
-    value: "www.facebook.net/amandasmith25",
+    property: "Location",
+    value: "Egypt,Tanta",
   },
 ];
 
-export const ProfileScreen = ({navigation}) => {
+export const ProfileScreen = ({ navigation }) => {
+  const { theme } = useContext(ThemeContext);
   return (
     <ProfileView>
-      <ProfileHeader navigation={navigation}/>
+      <ProfileHeader navigation={navigation} />
       <ProfileContent infoList={infoList} />
     </ProfileView>
   );

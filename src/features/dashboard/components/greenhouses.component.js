@@ -1,10 +1,10 @@
-import { Ionicons } from "@expo/vector-icons";
-import React, { useContext } from "react";
-import { TouchableOpacity } from "react-native";
-import { Card } from "react-native-paper";
 import styled from "styled-components";
-import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import React, { useContext } from "react";
+import { Card } from "react-native-paper";
+import { TouchableOpacity } from "react-native";
+
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
 const GreenHouseCard = styled(Card)`
   margin: 20px 0px;
@@ -33,6 +33,7 @@ const SensorValue = styled.Text`
   font-size: ${(props) => props.theme.fontSizes.body};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
+  color: ${(props) => props.theme.colors.text.whiteBlack};
 `;
 
 const DisabledSensorValue = styled.Text`
@@ -43,7 +44,7 @@ const DisabledSensorValue = styled.Text`
 `;
 
 const GreenHouseText = styled.Text`
-  color: ${(props) => props.theme.colors.text.primary};
+  color: ${(props) => props.theme.colors.text.white};
   font-size: ${(props) => props.theme.fontSizes.title};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
@@ -72,37 +73,37 @@ export const GreenHouses = ({ navigation }) => {
           <SensorReads>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="sun"
                 size={32}
-                color={theme.colors.text.secondary}
+                color={theme.colors.ui.primaryTransparent}
               />
-              <SensorValue>59%</SensorValue>
+              <SensorValue>12 Lux</SensorValue>
             </SensorRead>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="thermometer"
                 size={32}
-                color={theme.colors.text.secondary}
+                color={theme.colors.ui.primaryTransparent}
               />
-              <SensorValue>59%</SensorValue>
+              <SensorValue>24℃</SensorValue>
             </SensorRead>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Entypo}
+                name="water"
                 size={32}
-                color={theme.colors.text.disabled}
+                color={theme.colors.ui.disabled}
               />
-              <DisabledSensorValue>off</DisabledSensorValue>
+              <DisabledSensorValue>5%</DisabledSensorValue>
             </SensorRead>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="wind"
                 size={32}
-                color={theme.colors.text.disabled}
+                color={theme.colors.ui.disabled}
               />
               <DisabledSensorValue>off</DisabledSensorValue>
             </SensorRead>
@@ -122,43 +123,43 @@ export const GreenHouses = ({ navigation }) => {
           <SensorReads>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="sun"
                 size={32}
-                color="black"
+                color={theme.colors.ui.disabled}
               />
-              <SensorValue>59%</SensorValue>
+              <DisabledSensorValue>5 Lux</DisabledSensorValue>
             </SensorRead>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
-                size={32}
-                color={theme.colors.text.secondary}
-              />
-              <SensorValue>59%</SensorValue>
-            </SensorRead>
-            <SensorRead>
-              <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Feather}
+                name="thermometer"
                 size={32}
                 color={theme.colors.text.disabled}
               />
-              <DisabledSensorValue>off</DisabledSensorValue>
+              <DisabledSensorValue>18℃</DisabledSensorValue>
             </SensorRead>
             <SensorRead>
               <Icon
-                iconType={IconTypes.Ionicons}
-                name="md-sunny"
+                iconType={IconTypes.Entypo}
+                name="water"
                 size={32}
-                color={theme.colors.text.disabled}
+                color={theme.colors.ui.primaryTransparent}
               />
-              <DisabledSensorValue>off</DisabledSensorValue>
+              <SensorValue>10%</SensorValue>
+            </SensorRead>
+            <SensorRead>
+              <Icon
+                iconType={IconTypes.Feather}
+                name="wind"
+                size={32}
+                color={theme.colors.ui.primaryTransparent}
+              />
+              <SensorValue>On</SensorValue>
             </SensorRead>
           </SensorReads>
           <GreenHouseName>
-            <GreenHouseText>Greenhouse 1</GreenHouseText>
+            <GreenHouseText>Greenhouse 2</GreenHouseText>
           </GreenHouseName>
         </GreenHouseCard>
       </TouchableOpacity>

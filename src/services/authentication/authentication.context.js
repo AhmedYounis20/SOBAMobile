@@ -4,78 +4,98 @@ import {
   logout,
   saveUser,
   removeUser,
+  registerRequest,
+  getUserWithJwt,
 } from "./authentication.service";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { getProfile } from "../profile/profile.service";
 
-
-const getSavedUser=async ()=>{
-  const data=await AsyncStorage.getItem("@user");
-  const user=JSON.parse(data);
+const getSavedUser = async () => {
+  const data = await AsyncStorage.getItem("@user");
+  const user = JSON.parse(data);
   return user;
-}
+};
 export const AuthenticationContext = createContext();
 export const AuthenticationContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [user, setUser] = useState("");
-  const [error, setError] = useState("");
-
+  const [userInfo, setUserInfo] = useState(null);
+  const [error, setError] = useState(null);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [profile, setProfile] = useState(null);
   useEffect(() => {
-    const load=async()=>{
-        const usr=await getSavedUser();
-        if (usr) setUser(usr);
-        setIsLoading(false);
-    }
+    const load = async () => {
+      const usr = await getSavedUser();
+      if (usr) setUserInfo(usr);
+      setIsLoading(false);
+      if (userInfo) {
+        console.log("user Info", userInfo);
+        getUserWithJwt(userInfo.token).then(async (res) => {
+          await setCurrentUser(res);
+          console.log("current User: ", currentUser);
+          if (currentUser) setProfile(await getProfile(currentUser.id));
+        });
+      }
+    };
     load();
-}, []);
+  }, []);
 
-  useEffect(() => {
-    if (user) setUser(user);
-    setIsLoading(false);
-  }, [user]);
-
-  const onLogin = (email, password) => {
-    loginrequest(email, password)
+  const onLogin = (email, password, rememberMe) => {
+    setIsLoading(true);
+    loginrequest(email, password, rememberMe)
+      .then((res) => JSON.parse(res))
       .then((user) => {
-        setUser(user);
-        setIsLoading(false);
+        console.log("user:", user);
+        setUserInfo(user);
+        getUserWithJwt(user.token).then((res) => {
+          setCurrentUser(res);
+          if (currentUser) setProfile(getProfile(res.id));
+        });
+
+        return user;
       })
       .catch((error) => {
-        setError(error.toString().split(":").slice(-1));
-        setIsLoading(false);
+        setError(error);
       });
+    setIsLoading(false);
   };
   const onLogout = () => {
     logout();
-    removeUser(user);
-    setUser(null);
+    removeUser(userInfo);
+    setUserInfo(null);
     setError(null);
   };
   const onRegister = (email, password, passwordConfirmation) => {
-    if (password !== passwordConfirmation) {
-      setError("Error:Password does not match");
-      return;
-    }
-    registerrequest(email, password)
+    setIsLoading(true);
+    registerRequest(email, password, passwordConfirmation)
+      .then((res) => JSON.parse(res))
       .then((user) => {
-        setUser(user);
-        setIsLoading(false);
+        console.log("user:", user);
+        setUserInfo(user);
+        getUserWithJwt(user.token).then((res) => {
+          setCurrentUser(res);
+          if (currentUser) setProfile(getProfile(res.id));
+        });
+        return JSON.parse(user);
       })
       .catch((error) => {
-        setError(error.toString().split(":").slice(-1));
-        setIsLoading(false);
+        setError(error);
       });
+    setIsLoading(false);
   };
 
   return (
     <AuthenticationContext.Provider
       value={{
-        user,
+        userInfo,
+        currentUser,
+        profile,
         isLoading,
-        isAuthenticated: !!user,
+        isAuthenticated: !!userInfo,
         error,
         onLogin,
         onRegister,
         onLogout,
+        setError,
       }}
     >
       {children}

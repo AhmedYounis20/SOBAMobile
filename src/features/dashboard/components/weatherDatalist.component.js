@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Text } from "../../../components/typography/text.component";
 
 const WeatherReadContainer = styled.View`
   flex-direction:column

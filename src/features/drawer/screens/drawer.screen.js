@@ -19,6 +19,7 @@ import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 import { Switch } from "react-native-paper";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import styled from "styled-components";
+import { ScreenView } from "../../../components/views/screenView.component";
 
 const DarkThemeView = styled.View`
   flex: 1;
@@ -34,12 +35,14 @@ export const DrawerScreen = (props) => {
 
   const { navigation } = props;
   return (
-    <>
+    <ScreenView>
       <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
-        <ImageBackground
-          source={require("../../../../assets/green_cover1.jpg")}
-          style={{ height: 162, paddingTop: 20, borderTopRightRadius: 100 }}
-          borderTopRightRadius={50}
+        <View
+          style={{
+            height: 140,
+            paddingTop: 10,
+            backgroundColor: theme.colors.bg.secondary,
+          }}
         >
           <ProfileView>
             <ProfileImage
@@ -50,7 +53,7 @@ export const DrawerScreen = (props) => {
               <ProfileUsername>@amandasmith</ProfileUsername>
             </UsernameView>
           </ProfileView>
-        </ImageBackground>
+        </View>
       </TouchableOpacity>
       <DrawerContentScrollView
         {...props}
@@ -61,7 +64,7 @@ export const DrawerScreen = (props) => {
           title={"Account"}
           navigation={navigation}
           key={"profile"}
-          items={["Notifications", "Profile Settings", "Notes"]}
+          items={["Notifications", "Notes"]}
         />
         <HairLine />
         <CurrentDrawerSection
@@ -69,12 +72,7 @@ export const DrawerScreen = (props) => {
           title={"Farm"}
           navigation={navigation}
           key={"Farm"}
-          items={[
-            "Disease Detection",
-            "Statistics",
-            "Farm Map",
-            "Sensors Control",
-          ]}
+          items={["Disease Detection", "Statistics", "Farm Map"]}
         />
         <HairLine />
         <DrawerSection showDivider={false}>
@@ -123,6 +121,6 @@ export const DrawerScreen = (props) => {
           />
         </DrawerSection>
       </DrawerContentScrollView>
-    </>
+    </ScreenView>
   );
 };
