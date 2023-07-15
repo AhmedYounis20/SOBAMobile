@@ -88,7 +88,9 @@ export const registerRequest = (email, password, passwordConfirmation) => {
         reject(registerError);
       } else {
         // Replace dataToSave with the appropriate variable
-        saveUser(result);
+        // console.log("register result: ", result);
+        // console.log("register result json: ", typeof result);
+        saveUser(result.value);
       }
 
       resolve(AsyncStorage.getItem("@user")); // Move resolve here

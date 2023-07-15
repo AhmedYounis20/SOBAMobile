@@ -27,11 +27,14 @@ export const AuthenticationContextProvider = ({ children }) => {
       const usr = await getSavedUser();
       if (usr) setUserInfo(usr);
       setIsLoading(false);
-      if (userInfo)
+      if (userInfo) {
+        console.log("user Info", userInfo);
         getUserWithJwt(userInfo.token).then(async (res) => {
-          setCurrentUser(res);
-          setProfile(await getProfile(currentUser.id));
+          await setCurrentUser(res);
+          console.log("current User: ", currentUser);
+          if (currentUser) setProfile(await getProfile(currentUser.id));
         });
+      }
     };
     load();
   }, []);
@@ -39,13 +42,15 @@ export const AuthenticationContextProvider = ({ children }) => {
   const onLogin = (email, password, rememberMe) => {
     setIsLoading(true);
     loginrequest(email, password, rememberMe)
-      .then(async (user) => {
+      .then((res) => JSON.parse(res))
+      .then((user) => {
         console.log("user:", user);
         setUserInfo(user);
-        getUserWithJwt(userInfo.token).then(async (res) => {
+        getUserWithJwt(user.token).then((res) => {
           setCurrentUser(res);
-          setProfile(await getProfile(currentUser.id));
+          if (currentUser) setProfile(getProfile(res.id));
         });
+
         return user;
       })
       .catch((error) => {
@@ -62,12 +67,13 @@ export const AuthenticationContextProvider = ({ children }) => {
   const onRegister = (email, password, passwordConfirmation) => {
     setIsLoading(true);
     registerRequest(email, password, passwordConfirmation)
+      .then((res) => JSON.parse(res))
       .then((user) => {
         console.log("user:", user);
-        setUserInfo(JSON.parse(user));
-        getUserWithJwt(userInfo.token).then(async (res) => {
+        setUserInfo(user);
+        getUserWithJwt(user.token).then((res) => {
           setCurrentUser(res);
-          setProfile(await getProfile(currentUser.id));
+          if (currentUser) setProfile(getProfile(res.id));
         });
         return JSON.parse(user);
       })
