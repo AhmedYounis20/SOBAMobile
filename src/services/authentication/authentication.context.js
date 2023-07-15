@@ -8,6 +8,7 @@ import {
 } from "./authentication.service";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { apiGet, apiPost } from "../apirequest/apirequest.service";
+import { createProfile } from "../profile/profile.service";
 
 const getSavedUser = async () => {
   const data = await AsyncStorage.getItem("@user");
@@ -32,18 +33,19 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (userInfo != null) {
-      // const load = async () => {
-      //   console.log("Token: " + userInfo.token);
-      //   const res = await apiPost("api/authorize/GetUserByJwt", userInfo.token)
-      //     .then((res) => res.json())
-      //     .then((res) => {
-      //       setCurrentUser(res);
-      //       console.log(currentUser);
-      //       return currentUser;
-      //     });
-      //   console.log("usersr: " + JSON.stringify(res));
-      // };
-      // load();
+      const load = async () => {
+        console.log("Token: " + userInfo.token);
+        const res = await apiPost("api/authorize/GetUserByJwt", userInfo.token)
+          .then((res) => res.json())
+          .then(async (res) => {
+            await setCurrentUser(res);
+            createProfile(currentUser.id);
+            console.log(currentUser);
+            return currentUser;
+          });
+        console.log("usersr: " + JSON.stringify(res));
+      };
+      load();
     }
   }, [userInfo]);
 
@@ -54,17 +56,17 @@ export const AuthenticationContextProvider = ({ children }) => {
 
   const onLogin = (email, password, rememberMe) => {
     setIsLoading(true);
-    // loginrequest(email, password, rememberMe)
-    //   .then((user) => {
-    //     console.log("user:", user);
-    //     setUserInfo(user);
-    //     setIsLoading(false);
-    //   })
-    //   .catch((error) => {
-    //     setError(error);
-    //     setIsLoading(false);
-    //   });
-    setUserInfo("UserData");
+    loginrequest(email, password, rememberMe)
+      .then((user) => {
+        console.log("user:", user);
+        setUserInfo(user);
+
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setIsLoading(false);
+      });
     setIsLoading(false);
   };
   const onLogout = () => {
@@ -75,17 +77,16 @@ export const AuthenticationContextProvider = ({ children }) => {
   };
   const onRegister = (email, password, passwordConfirmation) => {
     setIsLoading(true);
-    // registerRequest(email, password, passwordConfirmation)
-    //   .then((user) => {
-    //     console.log("user:", user);
-    //     setUserInfo(user);
-    //     setIsLoading(false);
-    //   })
-    //   .catch((error) => {
-    //     setError(error);
-    //     setIsLoading(false);
-    //   });
-    setUserInfo("UserData");
+    registerRequest(email, password, passwordConfirmation)
+      .then((user) => {
+        console.log("user:", user);
+        setUserInfo(user);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(error);
+        setIsLoading(false);
+      });
     setIsLoading(false);
   };
 
