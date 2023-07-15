@@ -11,6 +11,7 @@ import { NotificationScreen } from "../../features/notifications/screens/notific
 import Notes from "../../features/notes/screens/notes.screen";
 import { GreenHouseDetailsScreen } from "../../features/greenhouse/screens/greenhouseDetails.screen";
 import { CropDetailsScreen } from "../../features/Crops/Screens/cropDetails.screen";
+import { FarmMap } from "../../features/farmMap/screens/farmMap.screen";
 
 const DashboardStack = createStackNavigator();
 export const DashboardNavigator = () => {
@@ -39,6 +40,7 @@ export const DashboardNavigator = () => {
         component={AddGreenHouseScreen}
       />
       <DashboardStack.Screen name="CropDetails" component={CropDetailsScreen} />
+      <DashboardStack.Screen name="Farm Map" component={FarmMap} />
     </DashboardStack.Navigator>
   );
 };
