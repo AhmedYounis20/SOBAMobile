@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ThemeConsumer } from "styled-components";
 
-const base_url = "https://sobatanta.azurewebsites.net/";
+const base_url = "https://soba-greenhouse.azurewebsites.net/";
 const methods = {
   GET: "GET",
   POST: "POST",
@@ -27,8 +26,8 @@ export const apiRequest = async (
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Host: "sobatanta.azurewebsites.net",
-      Origin: "https://sobatanta.azurewebsites.net",
+      Host: "soba-greenhouse.azurewebsites.net",
+      Origin: "https://soba-greenhouse.azurewebsites.net/",
       ...headers,
     },
     body: JSON.stringify(bodyForm),
