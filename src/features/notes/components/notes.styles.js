@@ -1,18 +1,12 @@
-import { Card, TextInput, Button } from "react-native-paper";
 import { Text } from "react-native";
 import styled from "styled-components";
+import { Card, TextInput, Button } from "react-native-paper";
 
-// background-color: ${(props) => props.theme.colors.bg.primary};
 export const NotesView = styled.View`
   flex: 1;
   margin: ${(props) => props.theme.space[2]};
   padding: ${(props) => props.theme.space[3]};
-`;
-
-export const NotesTitle = styled.Text`
-  font-family : ${(props) => props.theme.fonts.title}
-  font-size: ${(props) => props.theme.fontSizes.title};
-  color: ${(props) => props.theme.colors.text.white};
+  margin-top: ${(props) => props.theme.space[4]};
 `;
 
 export const NotesList = styled.ScrollView`
@@ -64,15 +58,14 @@ export const AddText = styled.Text`
   color: ${(props) => props.theme.colors.text.primary};
   font-family : ${(props) => props.theme.fonts.title}
   font-size: ${(props) => props.theme.fontSizes.title};
-`; 
+`;
 
 export const ModalInput = styled(TextInput)`
   margin: ${(props) => props.theme.space[2]} ${(props) => props.theme.space[3]};
   padding: ${(props) => props.theme.space[2]};
   font-size: ${(props) => props.theme.fontSizes.body};
   background-color: ${(props) => props.theme.colors.bg.primary};
-  `;
-  // color: ${(props) => props.theme.colors.text.inverse};
+`;
 
 export const ModalButtonContainer = styled.View`
   margin-top: ${(props) => props.theme.space[2]};

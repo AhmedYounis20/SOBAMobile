@@ -1,6 +1,7 @@
+import { useContext } from "react";
 import styled from "styled-components";
 import { Image, TouchableOpacity } from "react-native";
-import { useContext } from "react";
+
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
@@ -48,12 +49,6 @@ const NavigationButtonsView = styled.View`
   margin-top: 45px;
 `;
 
-const SettingsView = styled.View`
-  flex: 1;
-  flex-direction: row;
-  justify-content: flex-end;
-`;
-
 export const ProfileHeader = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   return (
@@ -71,14 +66,6 @@ export const ProfileHeader = ({ navigation }) => {
                   onPress={() => navigation.goBack()}
                 />
               </TouchableOpacity>
-              <SettingsView>
-                <Icon
-                  name="settings"
-                  iconType={IconTypes.Feather}
-                  size={24}
-                  color={theme.colors.ui.primaryTransparent}
-                />
-              </SettingsView>
             </NavigationButtonsView>
           </ProfileHeaderViews>
         </Cover>

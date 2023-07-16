@@ -1,3 +1,7 @@
+import { useContext, useEffect, useState } from "react";
+import { ActivityIndicator, Checkbox } from "react-native-paper";
+import { View, TouchableOpacity, Text, Keyboard } from "react-native";
+
 import {
   AuthButton,
   AuthButtonView,
@@ -20,28 +24,27 @@ import {
   TitleView,
   WelocomeText,
 } from "../components/account.styles";
-import { ActivityIndicator, Checkbox } from "react-native-paper";
-import { Spacer } from "../../../components/spacer/spacer.component";
-import { useContext, useState } from "react";
-import { AuthenticationContext } from "../../../services/authentication/authentication.context";
-import { Text } from "../../../components/typography/text.component";
 import { Colors } from "react-native/Libraries/NewAppScreen";
-import { View, TouchableOpacity } from "react-native";
-import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
-// import { HairLine } from "../../../components/hairlines/hairline.component";
 import { CenterRow } from "../../welcome/components/welcome.styles";
-import styled from "styled-components";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { ScreenView } from "../../../components/views/screenView.component";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
+import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+
 export const LoginScreen = ({ navigation }) => {
-  const { onLogin, error, isLoading } = useContext(AuthenticationContext);
+  const { onLogin, error, isLoading, setError } = useContext(
+    AuthenticationContext
+  );
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  useEffect(() => setError(null), []);
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
   return (
-    <>
+    <ScreenView>
       <LoginBackGround>
         <PlantsView>
           <FirstPlant
@@ -74,18 +77,32 @@ export const LoginScreen = ({ navigation }) => {
           <InputFieldsView>
             <InputFieldView>
               <Input
-                label={"Email address"}
+                label={"User Name"}
                 secureTextEntry={true}
-                onChangeText={(input) => setPassword(input)}
+                onChangeText={(input) => setEmail(input)}
                 textContentType="emailAddress"
                 keyboardType="email-address"
               />
             </InputFieldView>
+            <View style={{ alignSelf: "flex-start", left: 10 }}>
+              {error &&
+                error.UserName &&
+                error.UserName.map((item, index) => {
+                  return (
+                    <Text
+                      key={index}
+                      style={{ color: "red", fontWeight: "bold" }}
+                    >
+                      {item}
+                    </Text>
+                  );
+                })}
+            </View>
             <Spacer position={"top"} size={"large"} />
             <InputFieldView>
               <PasswordInput
                 label={"Password"}
-                secureTextEntry={showPassword}
+                secureTextEntry={!showPassword}
                 onChangeText={(input) => setPassword(input)}
               />
               <TouchableOpacity onPress={() => togglePassword()}>
@@ -96,20 +113,35 @@ export const LoginScreen = ({ navigation }) => {
                 />
               </TouchableOpacity>
             </InputFieldView>
-            <Spacer position={"top"} size={"medium"} />
-            {error && (
-              <>
-                <ErrorContainer>
-                  <Text
-                    variation={error}
-                    style={{ color: "red", fontWeight: "bold" }}
-                  >
-                    {error[0]}
-                  </Text>
-                </ErrorContainer>
-                <Spacer position={"top"} size={"xl"} />
-              </>
-            )}
+            <View style={{ alignSelf: "flex-start", left: 10 }}>
+              {error &&
+                error.Password &&
+                error.Password.map((item, index) => {
+                  return (
+                    <Text
+                      key={index}
+                      style={{ color: "red", fontWeight: "bold" }}
+                    >
+                      {item}
+                    </Text>
+                  );
+                })}
+            </View>
+            <View style={{ alignSelf: "flex-start", left: 10 }}>
+              {error &&
+                error.errors &&
+                error.errors.map((item, index) => {
+                  return (
+                    <Text
+                      key={index}
+                      style={{ color: "red", fontWeight: "bold" }}
+                    >
+                      {`\u2022`}
+                      {item}
+                    </Text>
+                  );
+                })}
+            </View>
             <Spacer position={"top"} size={"large"} />
 
             <RememberForgotView>
@@ -133,7 +165,10 @@ export const LoginScreen = ({ navigation }) => {
                 <AuthButton
                   icon="lock-open-outline"
                   mode={"contained"}
-                  onPress={() => onLogin(email, password)}
+                  onPress={() => {
+                    onLogin(email, password, rememberMe);
+                    Keyboard.dismiss();
+                  }}
                 >
                   LOGIN
                 </AuthButton>
@@ -143,81 +178,6 @@ export const LoginScreen = ({ navigation }) => {
             </AuthButtonView>
           </InputFieldsView>
           <Spacer position={"top"} size={"xl"} />
-          {/* <SeparaterView>
-            <HairLineView>
-              <HairLine />
-            </HairLineView>
-            <View style={{ marginHorizontal: 15 }}>
-              <Text style={{ fontSize: 15, top: -5, color: "black" }}>
-                or log in with
-              </Text>
-            </View>
-            <HairLineView>
-              <HairLine />
-            </HairLineView>
-          </SeparaterView>
-          <Spacer position={"top"} size={"xl"} />
-          <View
-            style={{ flexDirection: "row", justifyContent: "space-between" }}
-          >
-            <TouchableOpacity>
-              <View
-                style={{
-                  width: 100,
-                  borderColor: "black",
-                  borderWidth: 2,
-                  height: 50,
-                  borderRadius: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Icon
-                  iconType={IconTypes.MaterialIcons}
-                  name="facebook"
-                  size={40}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View
-                style={{
-                  width: 100,
-                  borderColor: "black",
-                  borderWidth: 2,
-                  height: 50,
-                  borderRadius: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Icon
-                  iconType={IconTypes.MaterialCommunityIcons}
-                  name="twitter"
-                  size={40}
-                />
-              </View>
-            </TouchableOpacity>
-            <TouchableOpacity>
-              <View
-                style={{
-                  width: 100,
-                  borderColor: "black",
-                  borderWidth: 2,
-                  height: 50,
-                  borderRadius: 10,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
-              >
-                <Icon
-                  iconType={IconTypes.MaterialCommunityIcons}
-                  name="google"
-                  size={40}
-                />
-              </View>
-            </TouchableOpacity>
-          </View> */}
           <Spacer position={"top"} size={"xl"} />
 
           <CenterRow style={{ alignSelf: "center" }}>
@@ -251,6 +211,6 @@ export const LoginScreen = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
       </View>
-    </>
+    </ScreenView>
   );
 };

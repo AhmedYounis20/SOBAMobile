@@ -2,14 +2,12 @@ import {
   Modal,
   KeyboardAvoidingView,
   Platform,
-  Text,
   TouchableOpacity,
 } from "react-native";
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import {
   NotesView,
-  NotesTitle,
   NotesList,
   NoteItem,
   NoteView,
@@ -24,15 +22,30 @@ import {
   SaveButton,
   CancelButton,
 } from "./notes.styles";
-import { Button } from "react-native-paper";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export const NotesComponent = () => {
   const { theme } = useContext(ThemeContext);
   const [notes, setNotes] = useState([]);
   const [note, setNote] = useState("");
   const [modalVisible, setModalVisible] = useState(false);
+
+  useEffect(async () => {
+    await getNotesStorage();
+  }, []);
+
+  const setNotesStorage = async (notes) => {
+    let savedNotes = JSON.stringify(notes);
+    await AsyncStorage.setItem("@appNotes", savedNotes);
+  };
+
+  const getNotesStorage = async () => {
+    let savedNotes = await AsyncStorage.getItem("@appNotes");
+    savedNotes = savedNotes ? (savedNotes) : [];
+    setNotes(JSON.parse(savedNotes));
+  };
 
   const handleNoteChange = (text) => {
     setNote(text);
@@ -50,6 +63,7 @@ export const NotesComponent = () => {
     const time = now.toLocaleTimeString("en-us", options);
     const newNote = { text: note, time: time };
     setNotes([newNote, ...notes]);
+    setNotesStorage(notes);
     setNote("");
     setModalVisible(false);
   };
@@ -58,12 +72,12 @@ export const NotesComponent = () => {
     const updatedNotes = [...notes];
     updatedNotes.splice(index, 1);
     setNotes(updatedNotes);
+    setNotesStorage();
   };
 
   return (
     <>
       <NotesView>
-        <NotesTitle>Notes</NotesTitle>
         <NotesList showsVerticalScrollIndicator={false}>
           {notes.map((note, index) => (
             <NoteItem key={index}>

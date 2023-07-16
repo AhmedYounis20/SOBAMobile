@@ -1,8 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ThemeConsumer } from "styled-components";
 
-const base_url =
-  "https://stackoverflow.com/questions/30203044/using-an-authorization-header-with-fetch-in-react-native";
+const base_url = "https://soba-greenhouse.azurewebsites.net/";
 const methods = {
   GET: "GET",
   POST: "POST",
@@ -16,14 +14,21 @@ const loadToken = async () => {
   return token;
 };
 
-export const apiRequest = async (requestType = "GET", url = "", bodyForm) => {
-  const token = await loadToken();
+export const apiRequest = async (
+  requestType = "GET",
+  url = "",
+  bodyForm,
+  headers = {}
+) => {
+  // const token = await loadToken();
   return fetch(base_url + url, {
     method: requestType,
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: "Bearer " + token,
+      Host: "soba-greenhouse.azurewebsites.net",
+      Origin: "https://soba-greenhouse.azurewebsites.net/",
+      ...headers,
     },
     body: JSON.stringify(bodyForm),
   });

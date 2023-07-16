@@ -1,11 +1,11 @@
 import React from "react";
-import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
-import { NotesComponent } from "../components/notes.component";
 import styled from "styled-components";
-import { Platform } from "react-native";
+
+import { NotesComponent } from "../components/notes.component";
+import { ScreenView } from "../../../components/views/screenView.component";
 
 const Background = styled.View`
-  height: ${Platform.OS == "android" ? "12%": "14%"};
+  height: 8%;
   width: 100%;
   position: absolute;
   top: 0px;
@@ -15,11 +15,21 @@ const Background = styled.View`
   border-bottom-left-radius: 12px;
 `;
 
+const ScreenTitle = styled.Text`
+  font-family: ${(props) => props.theme.fonts.title};
+  font-size: ${(props) => props.theme.fontSizes.title};
+  color: ${(props) => props.theme.colors.text.white};
+  margin: 0 1% 0 1%;
+  padding: ${(props) => props.theme.space[3]};
+`;
+
 export default function Notes() {
   return (
-    <SafeArea>
-      <Background />
+    <ScreenView>
+      <Background>
+      <ScreenTitle>Notes</ScreenTitle>
+      </Background>
       <NotesComponent />
-    </SafeArea>
+    </ScreenView>
   );
 }

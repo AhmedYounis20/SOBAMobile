@@ -1,5 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
-import { AssistantScreen } from "../../features/assistant/screens/assistant.screen";
+import { AssistantScreen } from "../../features/statistics/screens/statistics.screen";
 
 const AssistantStack = createStackNavigator();
 
