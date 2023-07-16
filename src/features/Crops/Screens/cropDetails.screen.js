@@ -208,7 +208,10 @@ export const CropDetailsScreen = ({ route, navigation }) => {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           alignItems: "center",
+          paddingTop: 40,
+          paddingBottom: 60,
           backgroundColor: theme.colors.bg.primary,
+          borderRadius: 50,
         }}
       >
         <TitleContainer>
@@ -412,7 +415,9 @@ export const CropDetailsScreen = ({ route, navigation }) => {
               <ImageView
                 style={{
                   backgroundColor:
-                    idx == index ? "white" : "rgba(255, 255, 255, 0.4)",
+                    idx == index
+                      ? theme.colors.bg.secondary
+                      : theme.colors.bg.secondaryOpacity,
                 }}
               >
                 <Image
