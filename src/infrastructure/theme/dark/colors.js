@@ -21,6 +21,7 @@ export const colors = {
   bg: {
     primary: "#182C25",
     secondary: "#104828",
+    secondaryOpacity: "rgba(16,72,40,0.4)",
     inverse: "#FFFFFF",
     inverse2: "#FFFFFF",
   },

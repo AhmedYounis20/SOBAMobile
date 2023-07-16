@@ -38,10 +38,9 @@ export const ImageView = styled.View`
   justify-content: center;
 `;
 export const ScrollContainer = styled.ScrollView`
-  margin-vertical: 10px;
-  border-radius: 20px;
+  border-radius: 50px;
   width: 95%;
-  height: 90%;
+  margin-bottom: 20px;
 `;
 export const ImageContainer = styled.View`
   height: 300px;
@@ -63,7 +62,7 @@ export const CropTitle = styled.Text`
 `;
 
 export const NavigationView = styled.View`
-  width: 90%;
+  width: 92%;
   border-radius: 50px;
   height: 70px;
   flex-direction: row;
@@ -72,12 +71,15 @@ export const NavigationView = styled.View`
   justify-content: center;
   border-color: rgba(0, 0, 0, 0.1);
   border-width: 1px;
+  position: absolute;
+  bottom: 10px;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 export const ScreenConatiner = styled.View`
   align-items: center;
   padding-bottom: 20px;
-  padding-top: 40px;
-  backgroun-dolor: ${(props) => props.theme.colors.text.primary};
+  height: 100%;
+  background-color: ${(props) => props.theme.colors.bg.primary};
 `;
 export const DetailsContainer = styled.View`
   margin-vertical: 10px;
