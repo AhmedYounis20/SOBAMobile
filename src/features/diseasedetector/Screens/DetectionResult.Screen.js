@@ -63,17 +63,14 @@ export const DetectionResultScreen = ({ route }) => {
     const load = async () => {
       setIsLoading(true);
       const sentData = { img: base64 };
-      await fetch(
-        "https://sbaaaaaaaaaaa.azurewebsites.net/api/sobaaaaaaaaa?code=2Jlt3mlqBP72wbAGURfeYXB8eoOcGVu3VIHVn3spCT5iAzFu-33JRA%3D%3D",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(sentData),
-        }
-      )
+      await fetch("https://336c-105-197-10-100.ngrok-free.app/predict", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(sentData),
+      })
         .then((res) => res.text())
         .then((res) => setResult(res))
         .catch((error) => console.log(error));
