@@ -18,18 +18,19 @@
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile":"./google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.mohamedkhatab.SOBAMobile"
+      "package": "com.ahmedyounis20.SOBAMobile"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": "d2c99a3d-2402-44f2-8b37-cac43568b183"
+        "projectId": "fe210bf5-bf4f-468c-bb14-a6ff474be9d8"
       }
     }
   }
