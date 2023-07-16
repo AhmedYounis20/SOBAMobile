@@ -39,7 +39,11 @@ export const SensorCard = ({
 }) => {
   const { theme } = useContext(ThemeContext);
   const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const toggleSwitch = () => {
+    setIsEnabled((previousState) => !previousState);
+    // await fetch(sensor.actuatorUrl,{}).then(res=>res.json());
+    console.log(sensor.actuatorUrl);
+  };
   let front_color = isEnabled
     ? theme.colors.bg.secondary
     : theme.colors.text.primary;

@@ -53,6 +53,7 @@ export const GreenHouseScreen = ({ navigation }) => {
       iconType: IconTypes.Feather,
       minValue: 200,
       maxValue: 2000,
+      actuatorUrl: "https://336c-105-197-10-100.ngrok-free.app/predict",
     },
     {
       name: "Temperature",
@@ -62,24 +63,27 @@ export const GreenHouseScreen = ({ navigation }) => {
       iconType: IconTypes.Feather,
       minValue: 10,
       maxValue: 60,
+      actuatorUrl: "https://336c-105-197-10-100.ngrok-free.app/predict",
     },
     {
       name: "watering",
-      value: "10",
+      value: 10,
       unit: "%",
       icon: "water",
       iconType: IconTypes.Entypo,
       minValue: 200,
       maxValue: 2000,
+      actuatorUrl: "https://336c-105-197-10-100.ngrok-free.app/predict",
     },
     {
       name: "ventilation",
-      value: "",
-      unit: "",
+      value: 20,
+      unit: "%",
       icon: "wind",
       iconType: IconTypes.Feather,
       minValue: 20,
       maxValue: 2000,
+      actuatorUrl: "https://336c-105-197-10-100.ngrok-free.app/predict",
     },
   ];
 
@@ -93,7 +97,11 @@ export const GreenHouseScreen = ({ navigation }) => {
         <ScreenTitle>Greenhouse1</ScreenTitle>
       </Background>
       <View
-        style={{ marginTop:30, minHeight: "100%", backgroundColor: theme.colors.bg.primary }}
+        style={{
+          marginTop: 30,
+          minHeight: "100%",
+          backgroundColor: theme.colors.bg.primary,
+        }}
       >
         <TopSlider style={{ padding: 10 }}>
           <Card>
