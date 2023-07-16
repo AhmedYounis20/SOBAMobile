@@ -1,10 +1,8 @@
-import { Card } from "react-native-paper";
-import { Spacer } from "../../../components/spacer/spacer.component";
 import styled from "styled-components";
 import { Text } from "../../../components/typography/text.component";
 import { React, useContext, useState } from "react";
 import { WeatherDataList } from "./weatherDatalist.component";
-import { View, StyleSheet, ScrollView } from "react-native";
+import { ScrollView } from "react-native";
 import { TodayTemperature } from "./todaytemperature.component";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
@@ -40,8 +38,6 @@ const CardBottom = styled(ScrollView).attrs({
   flex-direction: row;
 `;
 
-const TemperatureContainer = styled.View``;
-
 const WeatherIconContainer = styled.View`
   justify-content: center;
   margin: 10px 20px;
@@ -73,6 +69,7 @@ export const WeatherViewComponent = () => {
             />
             <Text variant="body">As Santa</Text>
           </LocationContainer>
+          {/* remove low and high temp make it current only */}
           <TodayTemperature h="12" l="10" />
           <LocationContainer>
             <Icon

@@ -7,7 +7,7 @@ import { Platform, ScrollView } from "react-native";
 import * as Location from "expo-location";
 import { ScreenView as FullScreenView } from "../../../components/views/screenView.component";
 const Background = styled.View`
-  height: 14%;
+  height: 8%;
   width: 100%;
   position: absolute;
   top: 0px;
@@ -26,7 +26,7 @@ const ScreenTitle = styled.Text`
   font-family: ${(props) => props.theme.fonts.title};
   font-size: ${(props) => props.theme.fontSizes.title};
   color: ${(props) => props.theme.colors.text.white};
-  margin: 7% 1% 0 1%;
+  margin: 0 1% 0 1%;
   padding: ${(props) => props.theme.space[3]};
 `;
 
@@ -138,13 +138,13 @@ export const AddGreenHouseScreen = () => {
             <Input label="Latitude" value={`${currentLocation.latitude}`} />
           </LocationFieldView>
           <SectionTitleView>
-            <SectionTitle>Area</SectionTitle>
+            <SectionTitle>Dimensions</SectionTitle>
           </SectionTitleView>
           <InputFieldView>
-            <Input label="Width(in m)" />
+            <Input label="Width(m)" />
           </InputFieldView>
           <InputFieldView>
-            <Input label="Length(in m)" />
+            <Input label="Length(m)" />
           </InputFieldView>
           <SectionTitleView>
             <SectionTitle>Basic infomation</SectionTitle>
@@ -153,7 +153,7 @@ export const AddGreenHouseScreen = () => {
             <Input label="Greenhouse Name" />
           </InputFieldView>
           <InputFieldView>
-            <Input label="Notes" />
+            <Input label="Description" />
           </InputFieldView>
           <SwitchView>
             <SwitchLabel>I have my own greenhouse</SwitchLabel>
@@ -166,7 +166,7 @@ export const AddGreenHouseScreen = () => {
         </FormView>
       </ScreenView>
       <AddButton icon="plus-circle" mode="contained">
-        Add Greenhouse
+        Add
       </AddButton>
     </FullScreenView>
   );

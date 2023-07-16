@@ -5,12 +5,13 @@ import {
 import { DashboardScreen } from "../../features/dashboard/screens/dashboard.screen";
 import { ProfileNavigator } from "./profile.navigator";
 import { GreenHouseScreen } from "../../features/greenhouse/screens/greenhouse.screen";
-import { AddGreenHouseScreen } from "../../features/addGreenhouse/screens/addGreenHouse.Screen";
+import { AddGreenHouseScreen } from "../../features/greenhouse/screens/addGreenHouse.Screen";
 import { SensorControl } from "../../features/sensor/screens/sensorControl.screen";
 import { NotificationScreen } from "../../features/notifications/screens/notifications.screen";
 import Notes from "../../features/notes/screens/notes.screen";
 import { GreenHouseDetailsScreen } from "../../features/greenhouse/screens/greenhouseDetails.screen";
 import { CropDetailsScreen } from "../../features/Crops/Screens/cropDetails.screen";
+import { FarmMap } from "../../features/farmMap/screens/farmMap.screen";
 
 const DashboardStack = createStackNavigator();
 export const DashboardNavigator = () => {
@@ -39,6 +40,7 @@ export const DashboardNavigator = () => {
         component={AddGreenHouseScreen}
       />
       <DashboardStack.Screen name="CropDetails" component={CropDetailsScreen} />
+      <DashboardStack.Screen name="Farm Map" component={FarmMap} />
     </DashboardStack.Navigator>
   );
 };

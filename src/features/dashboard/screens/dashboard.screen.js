@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
+import React, { useContext } from "react";
+import { Button } from "react-native-paper";
+import { ScrollView, StatusBar, SafeAreaView } from "react-native";
+
 import { Topbar } from "../components/topbar.component";
-import { WeatherViewComponent } from "../components/weatherview.component";
-import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 import { GreenHouses } from "../components/greenhouses.component";
-import { ScrollView, StatusBar, View, TouchableOpacity } from "react-native";
+import { WeatherViewComponent } from "../components/weatherview.component";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
-import { ScreenView } from "../../../components/views/screenView.component";
 
 const TopContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -31,7 +31,7 @@ const GreenHousesText = styled.Text`
 `;
 
 const Background = styled.View`
-  height: 100px;
+  height: 8%;
   width: 100%;
   position: absolute;
   top: 0px;
@@ -41,28 +41,38 @@ const Background = styled.View`
   border-bottom-left-radius: 12px;
 `;
 
+const AddNoteButton = styled(Button)`
+  background-color: ${(props) => props.theme.colors.ui.primary};
+  margin-bottom: ${(props) => props.theme.space[4]};
+`;
+
 export const DashboardScreen = ({ navigation }) => {
   const { theme } = useContext(ThemeContext);
   return (
-    <ScreenView style={{ paddingTop: 25 }}>
+    <SafeAreaView style={{ backgroundColor: theme.colors.bg.primary }}>
+      <StatusBar backgroundColor={theme.colors.ui.primary} />
       <Background />
       <TopContainer>
         <Topbar nav={navigation} />
       </TopContainer>
-      <ScrollView style={{ backgroundColor: theme.colors.bg.primary }}>
+      <ScrollView
+        style={{ backgroundColor: theme.colors.bg.primary, marginBottom: 64 }}
+      >
         <MidContainer>
           <WeatherViewComponent />
-          {/* <Notes /> */}
         </MidContainer>
         <BottomContainer>
-          <TouchableOpacity
+          <GreenHousesText>Your GreenHouses</GreenHousesText>
+          <GreenHouses navigation={navigation} />
+          <AddNoteButton
+            icon="plus-circle"
+            mode="contained"
             onPress={() => navigation.navigate("AddGreenHouse")}
           >
-            <GreenHousesText>Your GreenHouses</GreenHousesText>
-          </TouchableOpacity>
-          <GreenHouses navigation={navigation} />
+            Add Greenhouse
+          </AddNoteButton>
         </BottomContainer>
       </ScrollView>
-    </ScreenView>
+    </SafeAreaView>
   );
 };

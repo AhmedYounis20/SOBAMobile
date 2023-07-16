@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { TextInput, View, Text, ScrollView } from "react-native";
+import { TextInput, View, Text, ScrollView, SafeAreaView } from "react-native";
 import styled from "styled-components";
 import { SafeArea } from "../../../components/SafeArea/SafeArea.Component";
 
@@ -12,7 +12,7 @@ export const ItemsCenter = styled.View`
 `;
 
 export const Background = styled.View`
-  height: ${Platform.OS == "android" ? "12%" : "14%"};
+  height: 8%;
   width: 100 %;
   top: 0px;
   right: 0px;
@@ -72,6 +72,8 @@ export const SaveContainer = styled.TouchableOpacity`
 `;
 export const AddContainer = styled(SaveContainer)`
   width: 95%;
+  margin-bottom: 25%;
+  margin-top: 2%;
 `;
 
 export const CropText = styled.Text`
@@ -142,7 +144,7 @@ export const StatisticsScreen = () => {
   };
 
   return (
-    <SafeArea>
+    <View style={{backgroundColor:theme.colors.bg.primary}}>
       <Background>
         <HarvestTitle>Harvest</HarvestTitle>
       </Background>
@@ -196,20 +198,12 @@ export const StatisticsScreen = () => {
               </View>
             </View>
           ))}
-      </ScrollView>
-      <View
-        style={{
-          marginBottom: "1%",
-          alignSelf: "center",
-          width: "100%",
-        }}
-      >
         {!isAdd && (
           <AddContainer onPress={OnAdd}>
-            <Text style={{ fontSize: 18, fontWeight: "600" }}>Add</Text>
+            <Text style={{ fontSize: 18, fontWeight: "600", color:theme.colors.text.white, backgroundColor:theme.colors.ui.primary }}>Add</Text>
           </AddContainer>
         )}
-      </View>
+      </ScrollView>
       {isAdd && (
         <FormBox>
           <FieldContainer>
@@ -276,6 +270,6 @@ export const StatisticsScreen = () => {
           </FieldContainer>
         </FormBox>
       )}
-    </SafeArea>
+    </View>
   );
 };

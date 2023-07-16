@@ -1,10 +1,8 @@
-import styled from "styled-components";
-import { Text } from "../../../components/typography/text.component";
-import { FontAwesome5 } from "@expo/vector-icons";
-import { View } from "react-native";
-import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import { useContext } from "react";
+import styled from "styled-components";
+
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 
 const TemperatureView = styled.View`
   flex-direction: row;
