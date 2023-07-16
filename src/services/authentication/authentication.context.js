@@ -39,9 +39,9 @@ export const AuthenticationContextProvider = ({ children }) => {
     load();
   }, []);
 
-  const onLogin = (email, password, rememberMe) => {
+  const onLogin = async (email, password, rememberMe) => {
     setIsLoading(true);
-    loginrequest(email, password, rememberMe)
+    await loginrequest(email, password, rememberMe)
       .then((res) => JSON.parse(res))
       .then((user) => {
         console.log("user:", user);
@@ -64,9 +64,9 @@ export const AuthenticationContextProvider = ({ children }) => {
     setUserInfo(null);
     setError(null);
   };
-  const onRegister = (email, password, passwordConfirmation) => {
+  const onRegister = async (email, password, passwordConfirmation) => {
     setIsLoading(true);
-    registerRequest(email, password, passwordConfirmation)
+    await registerRequest(email, password, passwordConfirmation)
       .then((res) => JSON.parse(res))
       .then((user) => {
         console.log("user:", user);

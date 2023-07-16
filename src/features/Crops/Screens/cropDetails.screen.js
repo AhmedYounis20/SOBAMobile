@@ -5,10 +5,10 @@ export const CropDetailsScreen = () => {
 };
 
 /*
-* plant scene and its name
-* life form (seeding)
-* has a diesise?
-* expected harvest time
-* expected yield
-* time-series chart of health of crop
-*/
+ * plant scene and its name
+ * life form (seeding)
+ * has a diesise?
+ * expected harvest time
+ * expected yield
+ * time-series chart of health of crop
+ */
