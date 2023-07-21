@@ -24,10 +24,10 @@ export const SecondaryNoteText = styled.Text`
   margin-left: 20px;
 `;
 export const MainDataView = styled.View`
-  width: 55%;
+  width: 52%;
 `;
 export const SecondaryNotesView = styled.View`
-  width: 30%;
+  width: 33%;
 `;
 export const ImageView = styled.View`
   height: 50px;

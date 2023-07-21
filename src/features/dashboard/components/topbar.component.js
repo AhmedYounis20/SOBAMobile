@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import { TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { React, useState, useContext } from "react";
 
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 import { Icon, IconTypes } from "../../../components/Icons/Icons.components";
 import { AuthenticationContext } from "../../../services/authentication/authentication.context";
+import { Text } from "react-native";
+import { View } from "react-native";
 
 const TopbarContainer = styled.View``;
 
@@ -47,7 +49,33 @@ export const Topbar = ({ nav }) => {
           />
         </TouchableOpacity>
         <AppNameContainer>
-          <BrandName>SOBA</BrandName>
+          <Text
+            style={{
+              fontSize: 40,
+              fontWeight: "600",
+              color: theme.colors.text.whiteBlack,
+            }}
+          >
+            S
+          </Text>
+          <View style={{ marginTop: 5 }}>
+            <Icon
+              iconType={IconTypes.MaterialCommunityIcons}
+              name="leaf-circle-outline"
+              size={50}
+              color={theme.colors.text.whiteBlack}
+            />
+          </View>
+          <Text
+            style={{
+              fontSize: 40,
+              fontWeight: "600",
+              color: theme.colors.text.whiteBlack,
+              letterSpacing: 3,
+            }}
+          >
+            BA
+          </Text>
         </AppNameContainer>
         <NotificationView>
           <Icon

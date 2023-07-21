@@ -7,6 +7,7 @@ import { Topbar } from "../components/topbar.component";
 import { GreenHouses } from "../components/greenhouses.component";
 import { WeatherViewComponent } from "../components/weatherview.component";
 import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
+import { View } from "react-native";
 
 const TopContainer = styled.View`
   padding: ${(props) => props.theme.space[3]};
@@ -24,7 +25,7 @@ const BottomContainer = styled.View`
 `;
 
 const GreenHousesText = styled.Text`
-  font-size: ${(props) => props.theme.fontSizes.h5};
+  font-size: ${(props) => props.theme.fontSizes.title};
   font-family: ${(props) => props.theme.fonts.heading};
   font-weight: ${(props) => props.theme.fontWeights.bold};
   color: ${(props) => props.theme.colors.text.primary};
@@ -42,8 +43,10 @@ const Background = styled.View`
 `;
 
 const AddNoteButton = styled(Button)`
-  background-color: ${(props) => props.theme.colors.ui.primary};
-  margin-bottom: ${(props) => props.theme.space[4]};
+  background-color: transparent;
+  margin-bottom: ${(props) => props.theme.space[2]};
+  margin-top: -2px;
+  margin-left: 2px;
 `;
 
 export const DashboardScreen = ({ navigation }) => {
@@ -57,20 +60,30 @@ export const DashboardScreen = ({ navigation }) => {
       </TopContainer>
       <ScrollView
         style={{ backgroundColor: theme.colors.bg.primary, marginBottom: 64 }}
+        contentContainerStyle={{
+          paddingBottom: 50,
+        }}
       >
         <MidContainer>
           <WeatherViewComponent />
         </MidContainer>
         <BottomContainer>
-          <GreenHousesText>Your GreenHouses</GreenHousesText>
-          <GreenHouses navigation={navigation} />
-          <AddNoteButton
-            icon="plus-circle"
-            mode="contained"
-            onPress={() => navigation.navigate("AddGreenHouse")}
+          <View
+            style={{ flexDirection: "row", justifyContent: "space-between" }}
           >
-            Add Greenhouse
-          </AddNoteButton>
+            <GreenHousesText>Your GreenHouses</GreenHousesText>
+            <AddNoteButton
+              icon="plus-circle"
+              mode="text"
+              onPress={() => navigation.navigate("AddGreenHouse")}
+              labelStyle={{
+                fontSize: 16,
+              }}
+            >
+              Add Greenhouse
+            </AddNoteButton>
+          </View>
+          <GreenHouses navigation={navigation} />
         </BottomContainer>
       </ScrollView>
     </SafeAreaView>

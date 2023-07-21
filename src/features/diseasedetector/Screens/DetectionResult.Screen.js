@@ -63,7 +63,7 @@ export const DetectionResultScreen = ({ route }) => {
     const load = async () => {
       setIsLoading(true);
       const sentData = { img: base64 };
-      await fetch("https://336c-105-197-10-100.ngrok-free.app/predict", {
+      await fetch("https://9d3e-156-221-42-96.ngrok-free.app/predict", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -71,7 +71,9 @@ export const DetectionResultScreen = ({ route }) => {
         },
         body: JSON.stringify(sentData),
       })
-        .then((res) => res.text())
+        .then((res) => {
+          return res.text();
+        })
         .then((res) => setResult(res))
         .catch((error) => console.log(error));
       console.log(uri);
@@ -117,18 +119,11 @@ export const DetectionResultScreen = ({ route }) => {
             </Background>
             <PlantImage source={{ uri: uri }} />
             <ResultText>
-              Plant is :{" "}
-              {result
-                .split("___")[0]
-                .replace("_", " ")
-                .replace("The image is a ", "")}
+              Plant is : {result.split("__")[0].replaceAll("_", " ")}
             </ResultText>
-            {result
-              .split("___")[1]
-              .replace("The image is a ", "")
-              .replace("_", " ") != "healthy" ? (
+            {result.split("__")[1] != "healthy" ? (
               <ResultText>
-                Health status : {result.split("___")[1].replace("_", " ")}
+                Health status : {result.split("__")[1].replaceAll("_", " ")}
               </ResultText>
             ) : (
               <ResultText>Healthy</ResultText>
@@ -137,7 +132,7 @@ export const DetectionResultScreen = ({ route }) => {
           <AddNoteButton
             icon="grass"
             mode="contained"
-            disabled={result.split("___")[1].replace("_", " ") == "healthy"}
+            disabled={result.split("__")[1].replaceAll("_", " ") == "healthy"}
           >
             Show suggested treatment
           </AddNoteButton>

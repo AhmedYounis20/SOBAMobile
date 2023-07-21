@@ -7,9 +7,9 @@ import { ThemeContext } from "../../../services/ThemeContext/Theme.context";
 
 const previous = [
   {
-    season: "Summer 2023",
+    season: "2nd Season (Current Season)",
     actualTime: "1Month 14dDays",
-    crop: "tomato",
+    crops: ["tomato", "cherries"],
     startAt: "20 Jun",
     estimatedHarvestTime: "14Aug",
     estimatedProgress: 0.57,
@@ -17,9 +17,9 @@ const previous = [
     isFinished: 0,
   },
   {
-    season: "Spring 2023",
+    season: "1st Season",
     actualTime: "2Months 1Day",
-    crop: "carrot",
+    crops: ["carrot"],
     startAt: "20 Mar",
     estimatedHarvestTime: "21 May",
     estimatedProgress: 1,
@@ -144,7 +144,7 @@ export const GreenHouseDetailsScreen = ({ navigation }) => {
             <CurrentSeasonText>{current.season}</CurrentSeasonText>
             <DataText>{current.actualTime}</DataText>
             <CurrentCropImage
-              source={require("../../../../assets/tomato.png")}
+              source={require("../../../../assets/images/plant.png")}
             />
             <DataText>Estimated harvest time</DataText>
             <ProgressDataView>
@@ -179,7 +179,7 @@ export const GreenHouseDetailsScreen = ({ navigation }) => {
           <SeasonCard>
             <SeasonView>
               <SeasonCropImage
-                source={require("../../../../assets/tomato.png")}
+                source={require("../../../../assets/images/plant.png")}
               />
               <DataText>{s.season}</DataText>
             </SeasonView>
